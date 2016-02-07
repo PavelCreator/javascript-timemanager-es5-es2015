@@ -1,24 +1,17 @@
 var
-  /*Variables*/
+  /*Entities*/
   timer,
-  oneSec,
   events,
+  view,
 
-  /*Flags*/
+  /*Timeout*/
+  oneSec,
 
-  /*FUNCTIONS*/
+  /*App Services*/
+  timerSvc,
+  data,
 
   /*Auxiliary Services*/
   logger,
-  classFnc,
-
-  /*App Services*/
-  mathSvc
-
-  /*Entities*/
-
-  /*View Layout*/
-
-  /*Handler Services*/
-
+  classFnc
   ;

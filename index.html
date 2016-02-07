@@ -11,7 +11,7 @@
 <body>
 
 <div class="parent">
-  <div class="calc-wrapper">
+  <div class="timer-wrapper">
     <div class="header">
       <h2 class="title">ES5 Timer</h2>
       <p class="author">by <a href="http://pavelcreator.com" target='_blank'>PavelCreator</a></p>
@@ -45,56 +45,72 @@
       </tr>
       <tr>
         <td>
-          <div class="btn btn-default simple-button btn-color2" id="set0">Reset</div>
+          <button class="btn btn-default simple-button btn-color2" id="set0">Reset</button>
         </td>
         <td>
-          <div class="btn btn-default simple-button btn-color2" id="set1">1 min</div>
+          <button class="btn btn-default simple-button btn-color2" id="set1">1 min</button>
         </td>
         <td>
-          <div class="btn btn-default simple-button btn-color2" id="set2">2 min</div>
+          <button class="btn btn-default simple-button btn-color2" id="set2">2 min</button>
         </td>
         <td>
-          <div class="btn btn-default simple-button btn-color2" id="set5">5 min</div>
+          <button class="btn btn-default simple-button btn-color2" id="set5">5 min</button>
         </td>
         <td>
-          <div class="btn btn-default simple-button btn-color2" id="set10">10 min</div>
+          <button class="btn btn-default simple-button btn-color2" id="set10">10 min</button>
         </td>
         <td>
-          <div class="btn btn-default simple-button btn-color2" id="set15">15 min</div>
+          <button class="btn btn-default simple-button btn-color2" id="set15">15 min</button>
         </td>
         <td rowspan="2">
-          <div class="btn btn-default simple-button btn-color2 rowspan2" id="push">Run<br>Stop</div>
+          <button class="btn btn-default simple-button btn-color2 rowspan2" id="push">Run<br>Stop</button>
         </td>
       </tr>
       <tr>
         <td>
-          <div class="btn btn-default simple-button btn-color2" id="set20">20 min</div>
+          <button class="btn btn-default simple-button btn-color2" id="set20">20 min</button>
         </td>
         <td>
-          <div class="btn btn-default simple-button btn-color2" id="set30">30 min</div>
+          <button class="btn btn-default simple-button btn-color2" id="set30">30 min</button>
         </td>
         <td>
-          <div class="btn btn-default simple-button btn-color2" id="set45">45 min</div>
+          <button class="btn btn-default simple-button btn-color2" id="set45">45 min</button>
         </td>
         <td>
-          <div class="btn btn-default simple-button btn-color2" id="set60">1 hour</div>
+          <button class="btn btn-default simple-button btn-color2" id="set60">1 hour</button>
         </td>
         <td>
-          <div class="btn btn-default simple-button btn-color2" id="set90">1.5 hour</div>
+          <button class="btn btn-default simple-button btn-color2" id="set90">1.5 hour</button>
         </td>
         <td>
-          <div class="btn btn-default simple-button btn-color2" id="set120">2 hour</div>
+          <button  class="btn btn-default simple-button btn-color2" id="set120">2 hour</button>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <button class="btn btn-default simple-button btn-color2 colspan2" id="sound">
+            <span id="sound-on">
+              Enable alarm - <i class="fa fa-volume-up" ></i>
+            </span>
+            <span id="sound-off" class="hide">
+              Disable alarm - <i class="fa fa-volume-off"></i>
+            </span>
+          </button>
         </td>
       </tr>
     </table>
+    <button class="transparent" id="hidden"></button>
   </div>
 </div>
+<audio src="audio/ring.mp3"></audio>
 
 <script src="src/hoisting.js"></script>
-<script src="src/services/math_service.js"></script>
+<script src="src/services/app_service.js"></script>
+<script src="src/services/data_service.js"></script>
 <script src="src/services/auxiliary_service.js"></script>
 <script src="src/controllers/app_controller.js"></script>
 <script src="src/controllers/event_controller.js"></script>
+<script src="src/controllers/view_controller.js"></script>
 <script src="src/start.js"></script>
 </body>
 </html>

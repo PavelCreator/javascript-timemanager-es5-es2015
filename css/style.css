@@ -1,4 +1,4 @@
-.calc-wrapper * {
+.timer-wrapper * {
   outline: none !important;
   font-family: 'Coda', cursive; }
 
@@ -50,6 +50,9 @@
   font-size: 37px;
   margin-bottom: -3px; }
 
+.transparent {
+  opacity: 0; }
+
 .simple-button {
   z-index: 100;
   position: relative;
@@ -61,6 +64,10 @@
   height: 97px;
   font-size: 30px;
   padding: 7px 0 0 0; }
+
+.colspan2 {
+  width: 207px;
+  margin: 3px 2px 3px 3px; }
 
 .field-wrapper {
   position: relative; }

@@ -1,8 +1,8 @@
 logger = function(){
-  console.log("time.h = ");console.log(timer.time.h);
-  console.log("time.m = ");console.log(timer.time.m);
-  console.log("time.s = ");console.log(timer.time.s);
-  console.log("timeInSec = ");console.log(timer.timeInSec);
+  console.log("time.h = ");console.log(data.time.h);
+  console.log("time.m = ");console.log(data.time.m);
+  console.log("time.s = ");console.log(data.time.s);
+  console.log("timeInSec = ");console.log(data.timeInSec);
 };
 classFnc = {
   add: function (o, c) {
