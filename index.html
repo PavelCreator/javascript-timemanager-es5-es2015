@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<div class="parent">
+<div class="parent" id="app-wrapper">
   <div class="timer-wrapper">
     <div class="header">
       <h2 class="title">ES5 Timer</h2>
@@ -113,6 +113,18 @@
         </td>
       </tr>
     </table>
+    <div class="settings">
+      <p><span class="legend">Alarm:</span> <span id="settings-alarm-on">On</span> / <span id="settings-alarm-off" class="active">Off</span></p>
+      <p><span class="legend">In the end:</span>
+        <span id="settings-end-continue" class="active">Continue</span> / <span id="settings-end-stop">Stop</span>
+      </p>
+      <p id="settings-melody" class="hide">
+        <span class="legend">Current melody:</span> <span id="settings-melody-name" class="active">Alarm Clock 1</span>
+        <i class="fa fa-play-circle" id="settings-melody-play"></i>
+        <i class="fa fa-stop-circle-o hide" id="settings-melody-stop"></i>
+      </p>
+    </div>
+    
     <button class="transparent" id="hidden"></button>
   </div>
 </div>

@@ -13,5 +13,6 @@ var
 
   /*Auxiliary Services*/
   logger,
-  classFnc
+  classFnc,
+  addEvent
   ;

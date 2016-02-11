@@ -9,8 +9,8 @@
   justify-content: center;
   left: 0;
   overflow: auto;
-  position: fixed;
-  top: -5%;
+  position: relative;
+  top: 20px;
   width: 100%; }
 
 .clock-face {
@@ -58,6 +58,18 @@
 
 .transparent {
   opacity: 0; }
+
+.settings {
+  margin: 10px; }
+  .settings p {
+    color: #000;
+    font-size: 20px; }
+    .settings p span.legend {
+      color: #666366; }
+    .settings p span.active {
+      font-weight: bold; }
+    .settings p i {
+      margin-left: 3px; }
 
 .simple-button {
   z-index: 100;

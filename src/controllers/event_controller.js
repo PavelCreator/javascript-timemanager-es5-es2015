@@ -42,27 +42,15 @@ events = {
       timer.startOrStop();
     }
     document.getElementById("sound").onclick = function () {
-      if (data.flag.sound){
-        data.flag.sound = false;
-        classFnc.remove(document.getElementById('sound-on'), 'hide');
-        classFnc.add(document.getElementById('sound-off'), 'hide');
-      }else{
-        data.flag.sound = true;
-        classFnc.remove(document.getElementById('sound-off'), 'hide');
-        classFnc.add(document.getElementById('sound-on'), 'hide');
-      }
+      view.setSoundMode();
     }
     document.getElementById("finish").onclick = function () {
-      if (data.flag.finish){
-        data.flag.finish = false;
-        classFnc.remove(document.getElementById('finish-on'), 'hide');
-        classFnc.add(document.getElementById('finish-off'), 'hide');
-      }else{
-        data.flag.finish = true;
-        classFnc.remove(document.getElementById('finish-off'), 'hide');
-        classFnc.add(document.getElementById('finish-on'), 'hide');
-      }
+      view.setFinishMode();
     }
+  },
+  resizeEvent: function(){
+    addEvent(window, "resize", function (event) {
+      view.setMarginTop();
+    });
   }
-
 }
