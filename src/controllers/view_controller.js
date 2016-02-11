@@ -24,7 +24,8 @@ view = {
     }
   },
   playSound: function () {
-    data.audio.src = '../../audio/alarm_clock_1.mp3';
+    data.audio.volume = data.audioSettings.volume;
+    data.audio.src = '../../audio/' + data.audioSettings.url;
     data.audio.autoplay = true;
   },
   stopSound: function () {
@@ -69,7 +70,7 @@ view = {
       classFnc.add(document.getElementById('settings-end-stop'), 'active');
     }
   },
-  setMarginTop: function(){
+  setMarginTop: function () {
     var body = document.body,
       html = document.documentElement;
 
@@ -77,8 +78,39 @@ view = {
       html.clientHeight, html.scrollHeight, html.offsetHeight);
 
     if (height > 600) {
-      var marginTop = (height - 600)*0.42;
+      var marginTop = (height - 600) * 0.42;
       document.getElementById('app-wrapper').style.marginTop = marginTop + 'px';
     }
+  },
+  setMelodyPlay: function (melodyPlay) {
+    if (melodyPlay) {
+      classFnc.remove(document.getElementById('settings-melody-stop'), 'hide');
+      classFnc.add(document.getElementById('settings-melody-play'), 'hide');
+      this.playSound();
+      data.audio.onended = function () {
+        view.setMelodyPlay(false);
+      };
+    } else {
+      classFnc.remove(document.getElementById('settings-melody-play'), 'hide');
+      classFnc.add(document.getElementById('settings-melody-stop'), 'hide');
+      this.stopSound();
+    }
+  },
+  buildMelodiesList: function () {
+    var melodiesList = '';
+    var volumeList = '';
+    for (var i = 0; i < data.audios.length; i++) {
+      melodiesList += '<option value="' + data.audios[i].url + ';' + data.audios[i].name + '">' + data.audios[i].name + '</option>';
+    }
+    for (var i = 10; i > 0; i--) {
+      if (i == 7) {
+        volumeList += '<option value="' + i / 10 + '" selected>' + i * 10 + '%</option>'
+      }
+      else {
+        volumeList += '<option value="' + i / 10 + '">' + i * 10 + '%</option>';
+      }
+    }
+    document.getElementById('melodies-list').innerHTML = melodiesList;
+    document.getElementById('volume-list').innerHTML = volumeList;
   }
 }

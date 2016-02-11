@@ -47,10 +47,29 @@ events = {
     document.getElementById("finish").onclick = function () {
       view.setFinishMode();
     }
+    document.getElementById("settings-melody-play").onclick = function () {
+      view.setMelodyPlay(true);
+    }
+    document.getElementById("settings-melody-stop").onclick = function () {
+      view.setMelodyPlay(false);
+    }
   },
   resizeEvent: function(){
     addEvent(window, "resize", function (event) {
       view.setMarginTop();
     });
+  },
+  changeMelodiesListEvent: function() {
+    document.getElementById('melodies-list').onchange = function(){
+      var value = document.getElementById('melodies-list').value;
+      var splArr = value.split(';');
+      var url = splArr[0];
+      var name = splArr[1];
+      document.getElementById('settings-melody-name').innerHTML = name;
+      data.audioSettings.url = url;
+    };
+    document.getElementById('volume-list').onchange = function(){
+      data.audioSettings.volume = document.getElementById('volume-list').value;
+    };
   }
 }

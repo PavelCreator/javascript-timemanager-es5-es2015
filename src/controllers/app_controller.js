@@ -2,7 +2,7 @@ var timer = {
   startOrStop: function () {
     if (data.flag.stop) {
       this.start();
-      data.flag.stop = false;
+
     } else {
       view.stopSound();
       this.stop();
@@ -22,16 +22,18 @@ var timer = {
     oneSec = setTimeout(function () {
       timerSvc.getValuesFromHTML();
       timerSvc.fromTimeToSec();
-      if ((data.timeInSec <= 6) && (!data.flag.reverse)) {
+      if ((data.flag.stop)&&(data.timeInSec == 0)) return false;
+      data.flag.stop = false;
+      if ((data.timeInSec !== 0) && (data.timeInSec <= 6) && (!data.flag.reverse)) {
         view.ending.set();
       }
       if (data.timeInSec == 0) {
-        if (data.flag.finish) {
-          return false;
-          clearTimeout(oneSec);
-        }
-        if ((data.flag.sound)&&(!data.flag.finish)) {
+        if (data.flag.sound) {
           view.playSound();
+        }
+        if (data.flag.finish) {
+          clearTimeout(oneSec);
+          return false;
         }
         view.ending.unset();
         view.reverse.set();

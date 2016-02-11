@@ -68,8 +68,21 @@
       color: #666366; }
     .settings p span.active {
       font-weight: bold; }
+    .settings p a:hover, .settings p a:focus {
+      text-decoration: none; }
+    .settings p .settings-melody-play-or-stop {
+      width: 68px;
+      display: inline-block; }
     .settings p i {
-      margin-left: 3px; }
+      cursor: pointer; }
+    .settings p select.melodies-list {
+      width: 145px;
+      display: inline-block;
+      margin-left: 7px;
+      position: relative;
+      top: -2px; }
+      .settings p select.melodies-list.volume-list {
+        width: 90px; }
 
 .simple-button {
   z-index: 100;
@@ -78,8 +91,8 @@
   margin: 3px;
   width: 100px; }
 
-.rowspan2 {
-  height: 97px;
+.rowspan3 {
+  height: 147px;
   font-size: 30px;
   padding: 7px 0 0 0; }
 

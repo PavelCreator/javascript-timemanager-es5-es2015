@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title id="title">ES5 Timer</title>
   <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="screen"/>
+  <link rel="stylesheet" href="css/pavelcreatorLib.css" type="text/css" media="screen"/>
   <link rel="stylesheet" href="css/style.css" type="text/css" media="screen"/>
   <link href='https://fonts.googleapis.com/css?family=Coda|Roboto+Mono:500,400,300,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -63,8 +64,8 @@
         <td>
           <button class="btn btn-default simple-button btn-color2" id="set15">15 min</button>
         </td>
-        <td rowspan="2">
-          <button class="btn btn-default simple-button btn-color2 rowspan2" id="push">Run<br>Stop</button>
+        <td rowspan="3">
+          <button class="btn btn-default simple-button btn-color2 rowspan3" id="push">Run<br>Stop</button>
         </td>
       </tr>
       <tr>
@@ -90,11 +91,11 @@
       <tr>
         <td colspan="2">
           <button class="btn btn-default simple-button btn-color2 colspan2" id="sound">
-            <span id="sound-on">
-              Enable alarm - <i class="fa fa-volume-up" ></i>
+            <span id="sound-on" class="hide">
+              Enable alarm - <i class="fa fa-bell" ></i>
             </span>
-            <span id="sound-off" class="hide">
-              Disable alarm - <i class="fa fa-volume-off"></i>
+            <span id="sound-off">
+              Disable alarm - <i class="fa fa-bell-slash"></i>
             </span>
           </button>
         </td>
@@ -114,15 +115,26 @@
       </tr>
     </table>
     <div class="settings">
-      <p><span class="legend">Alarm:</span> <span id="settings-alarm-on">On</span> / <span id="settings-alarm-off" class="active">Off</span></p>
+      <p><span class="legend">Alarm:</span> <span id="settings-alarm-on" class="active">On</span> / <span id="settings-alarm-off">Off</span></p>
       <p><span class="legend">In the end:</span>
         <span id="settings-end-continue" class="active">Continue</span> / <span id="settings-end-stop">Stop</span>
       </p>
-      <p id="settings-melody" class="hide">
-        <span class="legend">Current melody:</span> <span id="settings-melody-name" class="active">Alarm Clock 1</span>
-        <i class="fa fa-play-circle" id="settings-melody-play"></i>
-        <i class="fa fa-stop-circle-o hide" id="settings-melody-stop"></i>
-      </p>
+      <div id="settings-melody" class="">
+        <p>
+          <span class="legend">Current melody:</span>
+          <span id="settings-melody-name" class="active">Alarm Clock 1</span>
+        </p>
+        <p>
+          <a href="#" id="settings-melody-play" class="settings-melody-play-or-stop">Play
+            <i class="fa fa-play-circle"></i></a>
+          <a href="#" id="settings-melody-stop" class="settings-melody-play-or-stop hide">Stop
+            <i class="fa fa-stop-circle-o"></i></a>
+          Change:
+          <select class="form-control melodies-list" id="melodies-list"></select>
+          <span class="ml10">Volume:</span>
+          <select class="form-control melodies-list volume-list" id="volume-list"></select>
+        </p>
+      </div>
     </div>
     
     <button class="transparent" id="hidden"></button>
