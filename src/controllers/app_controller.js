@@ -4,12 +4,12 @@ var timer = {
       this.start();
       data.flag.stop = false;
     } else {
+      view.stopSound();
       this.stop();
     }
   },
   set: function (timeInMin) {
-    view.reverse.unset();
-    view.ending.unset();
+    view.reset();
     data.timeInSec = timeInMin * 60;
     if (!data.flag.stop) {
       this.stop();
@@ -17,11 +17,6 @@ var timer = {
     }
     timerSvc.fromSecToTime();
     view.renewClockFace();
-  },
-  playSound: function () {
-    var audio = new Audio();
-    audio.src = '../../audio/ring.mp3';
-    audio.autoplay = true;
   },
   start: function () {
     oneSec = setTimeout(function () {
@@ -31,8 +26,12 @@ var timer = {
         view.ending.set();
       }
       if (data.timeInSec == 0) {
-        if (data.flag.sound) {
-          timer.playSound();
+        if (data.flag.finish) {
+          return false;
+          clearTimeout(oneSec);
+        }
+        if ((data.flag.sound)&&(!data.flag.finish)) {
+          view.playSound();
         }
         view.ending.unset();
         view.reverse.set();

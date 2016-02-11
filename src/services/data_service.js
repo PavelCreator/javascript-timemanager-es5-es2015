@@ -8,6 +8,8 @@ data = {
   flag: {
     stop: true,
     reverse: false,
-    sound: false
-  }
+    sound: false,
+    finish: false
+  },
+  audio: new Audio(),
 }

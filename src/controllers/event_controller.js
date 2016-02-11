@@ -30,7 +30,7 @@ events = {
     }
   },
   buttonPress: function () {
-    var nums = ['0', '1', '2', '5', '10', '15', '20', '30', '45', '60', '90', '120'];
+    var nums = ['0', '1', '2', '3', '5', '10', '15', '20', '30', '45', '60', '90', '120'];
     for (var i = 0; i <= nums.length - 1; i++) {
       document.getElementById("set" + nums[i]).onclick = (function (x) {
         return function () {
@@ -50,6 +50,17 @@ events = {
         data.flag.sound = true;
         classFnc.remove(document.getElementById('sound-off'), 'hide');
         classFnc.add(document.getElementById('sound-on'), 'hide');
+      }
+    }
+    document.getElementById("finish").onclick = function () {
+      if (data.flag.finish){
+        data.flag.finish = false;
+        classFnc.remove(document.getElementById('finish-on'), 'hide');
+        classFnc.add(document.getElementById('finish-off'), 'hide');
+      }else{
+        data.flag.finish = true;
+        classFnc.remove(document.getElementById('finish-off'), 'hide');
+        classFnc.add(document.getElementById('finish-on'), 'hide');
       }
     }
   }

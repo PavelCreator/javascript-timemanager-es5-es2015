@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ES5 Timer</title>
+  <title id="title">ES5 Timer</title>
   <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="screen"/>
   <link rel="stylesheet" href="css/style.css" type="text/css" media="screen"/>
   <link href='https://fonts.googleapis.com/css?family=Coda|Roboto+Mono:500,400,300,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
 
@@ -45,13 +46,13 @@
       </tr>
       <tr>
         <td>
-          <button class="btn btn-default simple-button btn-color2" id="set0">Reset</button>
-        </td>
-        <td>
           <button class="btn btn-default simple-button btn-color2" id="set1">1 min</button>
         </td>
         <td>
           <button class="btn btn-default simple-button btn-color2" id="set2">2 min</button>
+        </td>
+        <td>
+          <button class="btn btn-default simple-button btn-color2" id="set3">3 min</button>
         </td>
         <td>
           <button class="btn btn-default simple-button btn-color2" id="set5">5 min</button>
@@ -97,12 +98,24 @@
             </span>
           </button>
         </td>
+        <td colspan="2">
+          <button class="btn btn-default simple-button btn-color2 colspan2" id="finish">
+            <span id="finish-on">
+              Stop on end
+            </span>
+            <span id="finish-off" class="hide">
+              Continue on end
+            </span>
+          </button>
+        </td>
+        <td colspan="2">
+          <button class="btn btn-default simple-button btn-color2 colspan2" id="set0">Reset - <i class="fa fa-refresh"></i></button>
+        </td>
       </tr>
     </table>
     <button class="transparent" id="hidden"></button>
   </div>
 </div>
-<audio src="audio/ring.mp3"></audio>
 
 <script src="src/hoisting.js"></script>
 <script src="src/services/app_service.js"></script>

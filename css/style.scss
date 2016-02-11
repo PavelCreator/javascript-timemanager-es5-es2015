@@ -30,6 +30,8 @@
     text-align:center;
     height:210px;
     line-height:0;
+    z-index:2;
+    position:relative;
   }
   .colon{
     height:210px;
@@ -37,6 +39,8 @@
     display:inline-block;
     margin:0px -25px 0 -25px;
     text-align:center;
+    z-index:1;
+    position:relative;
   }
 }
 .author{
@@ -49,6 +53,8 @@
 .header{
   text-align:center;
   color:#777;
+  z-index:3;
+  position:relative;
 }
 .title{
   font-size:37px;
@@ -71,6 +77,10 @@
 }
 .colspan2{
   width:207px;
+  margin:3px 2px 3px 3px;
+}
+.colspan3{
+  width:307px;
   margin:3px 2px 3px 3px;
 }
 .field-wrapper{

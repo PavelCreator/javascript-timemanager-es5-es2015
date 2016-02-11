@@ -27,13 +27,17 @@
     font-family: 'Roboto Mono', sans-serif;
     text-align: center;
     height: 210px;
-    line-height: 0; }
+    line-height: 0;
+    z-index: 2;
+    position: relative; }
   .clock-face .colon {
     height: 210px;
     width: 44px;
     display: inline-block;
     margin: 0px -25px 0 -25px;
-    text-align: center; }
+    text-align: center;
+    z-index: 1;
+    position: relative; }
 
 .author {
   font-size: 19px;
@@ -44,7 +48,9 @@
 
 .header {
   text-align: center;
-  color: #777; }
+  color: #777;
+  z-index: 3;
+  position: relative; }
 
 .title {
   font-size: 37px;
@@ -67,6 +73,10 @@
 
 .colspan2 {
   width: 207px;
+  margin: 3px 2px 3px 3px; }
+
+.colspan3 {
+  width: 307px;
   margin: 3px 2px 3px 3px; }
 
 .field-wrapper {
