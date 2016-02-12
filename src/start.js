@@ -7,4 +7,5 @@ view.renewClockFace();
 view.setMarginTop();
 view.buildMelodiesList();
 events.changeMelodiesListEvent();
+view.setSettingsFromStorage();
 

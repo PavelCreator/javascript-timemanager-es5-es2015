@@ -61,15 +61,19 @@ events = {
   },
   changeMelodiesListEvent: function() {
     document.getElementById('melodies-list').onchange = function(){
+      view.setMelodyPlay(false);
       var value = document.getElementById('melodies-list').value;
-      var splArr = value.split(';');
-      var url = splArr[0];
-      var name = splArr[1];
-      document.getElementById('settings-melody-name').innerHTML = name;
-      data.audioSettings.url = url;
+      document.getElementById('settings-melody-name').innerHTML = data.audios[value].name;
+      data.audioSettings.url = data.audios[value].url;
+      localStorage.setItem("sound-melody", value);
+      view.setMelodyPlay(true);
     };
     document.getElementById('volume-list').onchange = function(){
-      data.audioSettings.volume = document.getElementById('volume-list').value;
+      view.setMelodyPlay(false);
+      var volume = document.getElementById('volume-list').value;
+      data.audioSettings.volume = volume;
+      localStorage.setItem("sound-volume", volume);
+      view.setMelodyPlay(true);
     };
   }
 }

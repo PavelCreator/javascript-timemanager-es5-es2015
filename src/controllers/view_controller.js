@@ -41,6 +41,7 @@ view = {
   setSoundMode: function () {
     if (data.flag.sound) {
       data.flag.sound = false;
+      localStorage.setItem("sound-play", "0");
       classFnc.add(document.getElementById('sound-off'), 'hide');
       classFnc.remove(document.getElementById('sound-on'), 'hide');
       classFnc.add(document.getElementById('settings-melody'), 'hide');
@@ -48,6 +49,7 @@ view = {
       classFnc.add(document.getElementById('settings-alarm-off'), 'active');
     } else {
       data.flag.sound = true;
+      localStorage.setItem("sound-play", "1");
       classFnc.remove(document.getElementById('sound-off'), 'hide');
       classFnc.add(document.getElementById('sound-on'), 'hide');
       classFnc.remove(document.getElementById('settings-melody'), 'hide');
@@ -58,12 +60,14 @@ view = {
   setFinishMode: function () {
     if (data.flag.finish) {
       data.flag.finish = false;
+      localStorage.setItem("finish", "0");
       classFnc.remove(document.getElementById('finish-on'), 'hide');
       classFnc.add(document.getElementById('finish-off'), 'hide');
       classFnc.add(document.getElementById('settings-end-continue'), 'active');
       classFnc.remove(document.getElementById('settings-end-stop'), 'active');
     } else {
       data.flag.finish = true;
+      localStorage.setItem("finish", "1");
       classFnc.add(document.getElementById('finish-on'), 'hide');
       classFnc.remove(document.getElementById('finish-off'), 'hide');
       classFnc.remove(document.getElementById('settings-end-continue'), 'active');
@@ -97,20 +101,49 @@ view = {
     }
   },
   buildMelodiesList: function () {
-    var melodiesList = '';
-    var volumeList = '';
+    var melodiesList = '',
+      volumeList = '';
+
+    var defaultMelody = localStorage.getItem("sound-melody")
+      ? localStorage.getItem("sound-melody")
+      : 0;
     for (var i = 0; i < data.audios.length; i++) {
-      melodiesList += '<option value="' + data.audios[i].url + ';' + data.audios[i].name + '">' + data.audios[i].name + '</option>';
+      melodiesList += (i == defaultMelody)
+        ? '<option value="' + i + '" selected>' + data.audios[i].name + '</option>'
+        : '<option value="' + i + '">' + data.audios[i].name + '</option>';
     }
+
+    var defaultVolume = localStorage.getItem("sound-volume")
+      ? localStorage.getItem("sound-volume") * 10
+      : 7;
     for (var i = 10; i > 0; i--) {
-      if (i == 7) {
-        volumeList += '<option value="' + i / 10 + '" selected>' + i * 10 + '%</option>'
-      }
-      else {
-        volumeList += '<option value="' + i / 10 + '">' + i * 10 + '%</option>';
-      }
+      volumeList += (i == defaultVolume)
+        ? '<option value="' + i / 10 + '" selected>' + i * 10 + '%</option>'
+        : '<option value="' + i / 10 + '">' + i * 10 + '%</option>';
     }
+
     document.getElementById('melodies-list').innerHTML = melodiesList;
     document.getElementById('volume-list').innerHTML = volumeList;
+  },
+  setSettingsFromStorage: function () {
+    var
+      soundMelodyId = localStorage.getItem("sound-melody"),
+      soundVolume = localStorage.getItem("sound-volume"),
+      finish = localStorage.getItem("finish"),
+      soundPlay = localStorage.getItem("sound-play");
+
+    if (soundMelodyId) {
+      document.getElementById('settings-melody-name').innerHTML = data.audios[soundMelodyId].name;
+      data.audioSettings.url = data.audios[soundMelodyId].url;
+    }
+    if (soundVolume) {
+      data.audioSettings.volume = soundVolume;
+    }
+    if (finish === '1') {
+      this.setFinishMode();
+    }
+    if (soundPlay === '0'){
+      this.setSoundMode();
+    }
   }
 }
