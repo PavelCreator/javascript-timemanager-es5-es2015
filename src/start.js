@@ -9,3 +9,4 @@ view.buildMelodiesList();
 events.changeMelodiesListEvent();
 view.setSettingsFromStorage();
 
+console.log("data.flag =", data.flag);

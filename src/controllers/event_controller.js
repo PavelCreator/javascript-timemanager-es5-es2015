@@ -5,9 +5,9 @@ events = {
       document.getElementById(field[i]).onfocus = function () {
         view.ending.unset();
         timer.stop();
-        if (data.flag.reverse) {
+/*        if (data.flag.reverse) {
           timer.set(0);
-        }
+        }*/
       };
     }
   },
@@ -17,6 +17,7 @@ events = {
     function pressed(e) {
       var ctrlDown = e.ctrlKey || e.metaKey
       switch (e.which) {
+        //Stop or Stop - Enter, Space
         case 32:
           document.getElementById('hidden').focus();
           timer.startOrStop();
@@ -24,6 +25,19 @@ events = {
         case 13:
           document.getElementById('hidden').focus();
           timer.startOrStop();
+          break;
+        //Reset - `,r,¸,ê
+        case 96:
+          timer.set(0);
+          break;
+        case 1105:
+          timer.set(0);
+          break;
+        case 114:
+          timer.set(0);
+          break;
+        case 1082:
+          timer.set(0);
           break;
       }
       console.log(e.which);
