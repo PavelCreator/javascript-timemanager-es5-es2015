@@ -201,7 +201,19 @@ timerSvc = {
 
           default:
             data.time[shortFieldName] = data.time[shortFieldName].charAt(0) + num;
-            posEnd = 2;
+            view.renewClockFace();
+            switch (shortFieldName){
+                case 'h':
+                    document.getElementById('min').focus();
+                    document.getElementById('min').setSelectionRange(0,0);
+                break;
+
+                case 'm':
+                    document.getElementById('sec').focus();
+                    document.getElementById('sec').setSelectionRange(0,0);
+                break;
+            }
+            return false;
             break;
         }
         break;
@@ -213,7 +225,7 @@ timerSvc = {
             break;
 
           case 'right':
-          case 'del':
+          case 'delete':
             switch (shortFieldName){
                 case 'h':
                     document.getElementById('min').focus();
