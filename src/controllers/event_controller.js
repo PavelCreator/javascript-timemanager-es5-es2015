@@ -5,12 +5,29 @@ events = {
       document.getElementById(field[i]).onfocus = function () {
         view.ending.unset();
         timer.stop();
-/*        if (data.flag.reverse) {
-          timer.set(0);
-        }*/
       };
     }
   },
+  fieldInput: function () {
+    var field = ['hour', 'min', 'sec'];
+    for (var i = 0; i < field.length; i++) {
+      document.getElementById(field[i]).onkeydown = (function (fieldName) {
+        return function (e) {
+          console.log(e);
+          e.preventDefault();
+          var pos = e.target.selectionStart;
+          var num = timerSvc.getNumFromKeycode(e.keyCode);
+          if (num !== false) {
+            var positionEnd = timerSvc.setTimeFromKey(fieldName,num,pos);
+            e.target.selectionEnd = positionEnd;
+          }
+        }
+      })(field[i]);
+    }
+  },
+
+  /*getCursorPosition(document.getElementById('min')*/
+
   keypress: function () {
     window.captureEvents(Event.KEYPRESS);
     window.onkeypress = pressed;
@@ -40,7 +57,7 @@ events = {
           timer.set(0);
           break;
       }
-      console.log(e.which);
+      /*console.log(e.which);*/
     }
   },
   buttonPress: function () {
@@ -68,13 +85,13 @@ events = {
       view.setMelodyPlay(false);
     }
   },
-  resizeEvent: function(){
+  resizeEvent: function () {
     addEvent(window, "resize", function (event) {
       view.setMarginTop();
     });
   },
-  changeMelodiesListEvent: function() {
-    document.getElementById('melodies-list').onchange = function(){
+  changeMelodiesListEvent: function () {
+    document.getElementById('melodies-list').onchange = function () {
       view.setMelodyPlay(false);
       var value = document.getElementById('melodies-list').value;
       document.getElementById('settings-melody-name').innerHTML = data.audios[value].name;
@@ -82,7 +99,7 @@ events = {
       localStorage.setItem("sound-melody", value);
       view.setMelodyPlay(true);
     };
-    document.getElementById('volume-list').onchange = function(){
+    document.getElementById('volume-list').onchange = function () {
       view.setMelodyPlay(false);
       var volume = document.getElementById('volume-list').value;
       data.audioSettings.volume = volume;

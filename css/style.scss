@@ -15,7 +15,8 @@
 }
 .clock-face{
   &.reverse{
-    color:#007313;
+/*    color:#007313;*/
+    color:#337ab7;
   }
   &.ending{
     color:#d10009;
@@ -117,6 +118,12 @@
 .colspan3{
   width:307px;
   margin:3px 2px 3px 3px;
+}
+#run.active{
+  color:#007313;
+}
+#stop.active{
+  color:#d10009;
 }
 .field-wrapper{
   position:relative;

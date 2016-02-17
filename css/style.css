@@ -18,7 +18,8 @@
   font-size: 170px;
   font-weight: 500; }
   .clock-face.reverse {
-    color: #007313; }
+    /*    color:#007313;*/
+    color: #337ab7; }
   .clock-face.ending {
     color: #d10009; }
   .clock-face .time-field {
@@ -103,6 +104,12 @@
 .colspan3 {
   width: 307px;
   margin: 3px 2px 3px 3px; }
+
+#run.active {
+  color: #007313; }
+
+#stop.active {
+  color: #d10009; }
 
 .field-wrapper {
   position: relative; }

@@ -1,4 +1,13 @@
 view = {
+  startOrStop: function(startOrStop){
+    if (startOrStop === 'start') {
+      classFnc.remove(document.getElementById('run'), 'active');
+      classFnc.add(document.getElementById('stop'), 'active');
+    } else {
+      classFnc.remove(document.getElementById('stop'), 'active');
+      classFnc.add(document.getElementById('run'), 'active');
+    }
+  },
   renewClockFace: function () {
     document.getElementById('hour').value = data.time.h;
     document.getElementById('min').value = data.time.m;

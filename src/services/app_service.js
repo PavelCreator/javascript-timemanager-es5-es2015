@@ -65,5 +65,155 @@ timerSvc = {
         data.time[hms] = '00';
         break;
     }
+  },
+  getNumFromKeycode: function (keycode) {
+    console.log("keycode =", keycode);
+    switch (keycode) {
+      case 37:
+        return 'left';
+        break;
+
+      case 39:
+        return 'right';
+        break;
+
+      case 8:
+        return 'blackspace';
+        break;
+
+      case 46:
+        return 'delete';
+
+      case 48:
+      case 96:
+        return 0;
+        break;
+
+      case 49:
+      case 97:
+        return 1;
+        break;
+
+      case 50:
+      case 98:
+        return 2;
+        break;
+
+      case 51:
+      case 99:
+        return 3;
+        break;
+
+      case 52:
+      case 100:
+        return 4;
+        break;
+
+      case 53:
+      case 101:
+        return 5;
+        break;
+
+      case 54:
+      case 102:
+        return 6;
+        break;
+
+      case 55:
+      case 103:
+        return 7;
+        break;
+
+      case 56:
+      case 104:
+        return 8;
+        break;
+
+      case 57:
+      case 105:
+        return 9;
+        break;
+
+      default:
+        return false;
+        break;
+    }
+  },
+  setTimeFromKey: function (fieldName, num, pos) {
+    var posEnd, shortFieldName = fieldName.charAt(0);
+    switch (pos) {
+      case 0:
+        switch (num) {
+          case 'right':
+            posEnd = 1;
+            break;
+
+          case 'delete':
+            data.time[shortFieldName] = '0' + data.time[shortFieldName].charAt(1);
+            posEnd = 1;
+            break;
+
+          case 'blackspace':
+          case 'left':
+            posEnd = 0;
+            break;
+
+          default:
+            data.time[shortFieldName] = num + data.time[shortFieldName].charAt(1);
+            posEnd = 1;
+            break;
+        }
+        break;
+
+      case 1:
+        switch (num) {
+          case 'left':
+            posEnd = 0;
+            break;
+
+          case 'right':
+            posEnd = 2;
+            break;
+
+          case 'delete':
+            data.time[shortFieldName] = data.time[shortFieldName].charAt(0) + '0';
+            posEnd = 2;
+            break;
+
+          case 'blackspace':
+            data.time[shortFieldName] = '0' + data.time[shortFieldName].charAt(1);
+            posEnd = 0;
+            break;
+
+          default:
+            data.time[shortFieldName] = data.time[shortFieldName].charAt(0) + num;
+            posEnd = 2;
+            break;
+        }
+        break;
+
+      case 2:
+        switch (num) {
+          case 'left':
+            posEnd = 1;
+            break;
+
+          case 'right':
+            posEnd = 2;
+            break;
+
+          case 'blackspace':
+            data.time[shortFieldName] = data.time[shortFieldName].charAt(0) + '0';
+            posEnd = 1;
+            break;
+
+          default:
+            return 2;
+            break;
+        }
+        break;
+    }
+    view.renewClockFace();
+    return posEnd;
   }
 }

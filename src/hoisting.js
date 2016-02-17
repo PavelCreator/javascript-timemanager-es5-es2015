@@ -14,5 +14,7 @@ var
   /*Auxiliary Services*/
   logger,
   classFnc,
-  addEvent
+  addEvent,
+  getCursorPosition,
+  auxiliarySvc
   ;
