@@ -19,7 +19,7 @@ events = {
           var num = timerSvc.getNumFromKeycode(e.keyCode);
           if (num !== false) {
             var positionEnd = timerSvc.setTimeFromKey(fieldName,num,pos);
-            e.target.selectionEnd = positionEnd;
+            if (positionEnd !== false) e.target.selectionEnd = positionEnd;
           }
         }
       })(field[i]);

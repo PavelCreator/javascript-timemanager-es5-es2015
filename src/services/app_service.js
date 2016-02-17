@@ -141,9 +141,28 @@ timerSvc = {
   },
   setTimeFromKey: function (fieldName, num, pos) {
     var posEnd, shortFieldName = fieldName.charAt(0);
+    console.log("fieldName =", fieldName);
+    console.log("num =", num);
+    console.log("pos =", pos);
     switch (pos) {
       case 0:
         switch (num) {
+          case 'left':
+          case 'blackspace':
+            switch (shortFieldName){
+                case 'm':
+                    document.getElementById('hour').focus();
+                    document.getElementById('hour').setSelectionRange(2,2);
+                break;
+
+                case 's':
+                    document.getElementById('min').focus();
+                    document.getElementById('min').setSelectionRange(2,2);
+                break;
+            }
+            return false;
+            break;
+
           case 'right':
             posEnd = 1;
             break;
@@ -151,11 +170,6 @@ timerSvc = {
           case 'delete':
             data.time[shortFieldName] = '0' + data.time[shortFieldName].charAt(1);
             posEnd = 1;
-            break;
-
-          case 'blackspace':
-          case 'left':
-            posEnd = 0;
             break;
 
           default:
@@ -199,7 +213,19 @@ timerSvc = {
             break;
 
           case 'right':
-            posEnd = 2;
+          case 'del':
+            switch (shortFieldName){
+                case 'h':
+                    document.getElementById('min').focus();
+                    document.getElementById('min').setSelectionRange(0,0);
+                break;
+
+                case 'm':
+                    document.getElementById('sec').focus();
+                    document.getElementById('sec').setSelectionRange(0,0);
+                break;
+            }
+            return false;
             break;
 
           case 'blackspace':
