@@ -84,6 +84,9 @@ events = {
     document.getElementById("settings-melody-stop").onclick = function () {
       view.setMelodyPlay(false);
     }
+    document.getElementById("toggle-watch").onclick = function () {
+      view.toggleWatch();
+    }
   },
   resizeEvent: function () {
     addEvent(window, "resize", function (event) {

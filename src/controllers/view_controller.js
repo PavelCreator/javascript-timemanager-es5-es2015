@@ -1,5 +1,5 @@
 view = {
-  startOrStop: function(startOrStop){
+  startOrStop: function (startOrStop) {
     if (startOrStop === 'start') {
       classFnc.remove(document.getElementById('run'), 'active');
       classFnc.add(document.getElementById('stop'), 'active');
@@ -46,6 +46,7 @@ view = {
     this.stopSound();
     this.reverse.unset();
     this.ending.unset();
+    classFnc.remove(document.getElementById('set0'), 'warning');
   },
   setSoundMode: function () {
     if (data.flag.sound) {
@@ -91,7 +92,7 @@ view = {
       html.clientHeight, html.scrollHeight, html.offsetHeight);
 
     if (height > 600) {
-      var marginTop = (height - 600) * 0.42;
+      var marginTop = (height - 600) * 0.37;
       document.getElementById('app-wrapper').style.marginTop = marginTop + 'px';
     }
   },
@@ -139,7 +140,8 @@ view = {
       soundMelodyId = localStorage.getItem("sound-melody"),
       soundVolume = localStorage.getItem("sound-volume"),
       finish = localStorage.getItem("finish"),
-      soundPlay = localStorage.getItem("sound-play");
+      soundPlay = localStorage.getItem("sound-play"),
+      showWatch = localStorage.getItem("show-watch");
 
     if (soundMelodyId) {
       document.getElementById('settings-melody-name').innerHTML = data.audios[soundMelodyId].name;
@@ -151,29 +153,32 @@ view = {
     if (finish === '1') {
       this.setFinishMode();
     }
-    if (soundPlay === '0'){
+    if (soundPlay === '0') {
       this.setSoundMode();
+    }
+    if (showWatch === '0') {
+      this.toggleWatch();
     }
   },
   setTimeFromKey: function (fieldName, num, pos) {
     var posEnd, shortFieldName = fieldName.charAt(0);
-/*    console.log("fieldName =", fieldName);
-    console.log("num =", num);
-    console.log("pos =", pos);*/
+    /*    console.log("fieldName =", fieldName);
+     console.log("num =", num);
+     console.log("pos =", pos);*/
     switch (pos) {
       case 0:
         switch (num) {
           case 'left':
           case 'blackspace':
-            switch (shortFieldName){
-                case 'm':
-                    document.getElementById('hour').focus();
-                    document.getElementById('hour').setSelectionRange(2,2);
+            switch (shortFieldName) {
+              case 'm':
+                document.getElementById('hour').focus();
+                document.getElementById('hour').setSelectionRange(2, 2);
                 break;
 
-                case 's':
-                    document.getElementById('min').focus();
-                    document.getElementById('min').setSelectionRange(2,2);
+              case 's':
+                document.getElementById('min').focus();
+                document.getElementById('min').setSelectionRange(2, 2);
                 break;
             }
             return false;
@@ -218,15 +223,15 @@ view = {
           default:
             data.time[shortFieldName] = data.time[shortFieldName].charAt(0) + num;
             view.renewClockFace();
-            switch (shortFieldName){
-                case 'h':
-                    document.getElementById('min').focus();
-                    document.getElementById('min').setSelectionRange(0,0);
+            switch (shortFieldName) {
+              case 'h':
+                document.getElementById('min').focus();
+                document.getElementById('min').setSelectionRange(0, 0);
                 break;
 
-                case 'm':
-                    document.getElementById('sec').focus();
-                    document.getElementById('sec').setSelectionRange(0,0);
+              case 'm':
+                document.getElementById('sec').focus();
+                document.getElementById('sec').setSelectionRange(0, 0);
                 break;
             }
             return false;
@@ -242,15 +247,15 @@ view = {
 
           case 'right':
           case 'delete':
-            switch (shortFieldName){
-                case 'h':
-                    document.getElementById('min').focus();
-                    document.getElementById('min').setSelectionRange(0,0);
+            switch (shortFieldName) {
+              case 'h':
+                document.getElementById('min').focus();
+                document.getElementById('min').setSelectionRange(0, 0);
                 break;
 
-                case 'm':
-                    document.getElementById('sec').focus();
-                    document.getElementById('sec').setSelectionRange(0,0);
+              case 'm':
+                document.getElementById('sec').focus();
+                document.getElementById('sec').setSelectionRange(0, 0);
                 break;
             }
             return false;
@@ -269,5 +274,35 @@ view = {
     }
     view.renewClockFace();
     return posEnd;
+  },
+  warning: {
+    finishOff: function () {
+      classFnc.add(document.getElementById('finish-off'), 'warning');
+      setTimeout(function () {
+        classFnc.remove(document.getElementById('finish-off'), 'warning');
+      }, 1000);
+    },
+    reset: function () {
+      classFnc.add(document.getElementById('set0'), 'warning');
+    }
+  },
+  toggleWatch: function () {
+    if (data.flag.showWatch) {
+      data.flag.showWatch = false;
+      localStorage.setItem("show-watch", "0");
+      classFnc.add(document.getElementById('watch-clock-face'), 'transparent');
+      classFnc.remove(document.getElementById('toggle-watch-icon-show'), 'hide');
+      classFnc.add(document.getElementById('toggle-watch-icon-hide'), 'hide');
+      classFnc.remove(document.getElementById('settings-watch-show'), 'active');
+      classFnc.add(document.getElementById('settings-watch-hide'), 'active');
+    } else {
+      data.flag.showWatch = true;
+      localStorage.setItem("show-watch", "1");
+      classFnc.remove(document.getElementById('watch-clock-face'), 'transparent');
+      classFnc.add(document.getElementById('toggle-watch-icon-show'), 'hide');
+      classFnc.remove(document.getElementById('toggle-watch-icon-hide'), 'hide');
+      classFnc.add(document.getElementById('settings-watch-show'), 'active');
+      classFnc.remove(document.getElementById('settings-watch-hide'), 'active');
+    }
   }
 }

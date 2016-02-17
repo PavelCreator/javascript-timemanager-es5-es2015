@@ -1,4 +1,4 @@
-var timer = {
+timer = {
   startOrStop: function () {
     if (data.flag.stop) {
       this.start();
@@ -24,7 +24,13 @@ var timer = {
     timerSvc.fromTimeToSec();
     if (data.timeInSec == 0) {
       if (data.flag.sound) {
-        if ((!data.flag.stop) && (data.timeInSec == 0)) view.playSound();
+        if ((!data.flag.stop) && (data.timeInSec == 0)) {
+          view.playSound();
+        } else {
+          if (data.flag.finish) {
+            view.warning.finishOff();
+          }
+        }
       }
     }
     oneSec = setTimeout(function () {
@@ -41,6 +47,7 @@ var timer = {
         view.reverse.set();
       }
       if (data.flag.reverse) {
+        view.warning.reset();
         data.timeInSec++;
       } else {
         data.timeInSec--;
@@ -56,4 +63,18 @@ var timer = {
     clearTimeout(oneSec);
     data.flag.stop = true;
   },
+}
+watch = {
+  start: function () {
+    var d = new Date();
+    var h = addZero(d.getHours());
+    var m = addZero(d.getMinutes());
+    var currentTime = h+'<span>:</span>'+m
+    if (document.getElementById('watch').innerHTML != currentTime){
+      document.getElementById('watch').innerHTML = currentTime;
+    }
+    setTimeout(function () {
+      watch.start();
+    }, 1000);
+  }
 }

@@ -9,7 +9,8 @@ data = {
     stop: true,
     reverse: false,
     sound: true,
-    finish: false
+    finish: false,
+    showWatch: true
   },
   audio: new Audio(),
   audioSettings:{

@@ -1,6 +1,7 @@
 var
   /*Entities*/
   timer,
+  watch,
   events,
   view,
 
@@ -16,5 +17,5 @@ var
   classFnc,
   addEvent,
   getCursorPosition,
-  auxiliarySvc
+  addZero
   ;

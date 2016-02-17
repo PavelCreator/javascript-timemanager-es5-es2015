@@ -9,3 +9,4 @@ view.setMarginTop();
 view.buildMelodiesList();
 events.changeMelodiesListEvent();
 view.setSettingsFromStorage();
+watch.start();

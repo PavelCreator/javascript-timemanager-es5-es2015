@@ -11,7 +11,8 @@
   overflow: auto;
   position: relative;
   top: 20px;
-  width: 100%; }
+  width: 100%;
+  overflow: hidden; }
 
 .clock-face {
   height: 215px;
@@ -39,6 +40,19 @@
     text-align: center;
     z-index: 1;
     position: relative; }
+  .clock-face.watch-clock-face {
+    margin: -12px 0 -121px 0;
+    text-align: right;
+    height: auto;
+    font-size: 80px; }
+    .clock-face.watch-clock-face .watch-label {
+      margin: 25px 144px -24px 0;
+      text-align: right;
+      z-index: 10;
+      position: relative; }
+    .clock-face.watch-clock-face .watch-clock-face-field {
+      z-index: 1;
+      font-family: 'Roboto Mono', sans-serif; }
 
 .author {
   font-size: 19px;
@@ -62,6 +76,9 @@
 
 .settings {
   margin: 10px; }
+  .settings #settings-melody {
+    position: relative;
+    z-index: 2; }
   .settings p {
     color: #000;
     font-size: 20px; }
@@ -97,6 +114,11 @@
   font-size: 30px;
   padding: 7px 0 0 0; }
 
+.rowspan2 {
+  height: 96px;
+  font-size: 30px;
+  padding: 7px 0 0 0; }
+
 .colspan2 {
   width: 212px;
   margin: 3px 2px 3px 3px; }
@@ -108,8 +130,11 @@
 #run.active {
   color: #007313; }
 
-#stop.active, #set0.warning {
+#stop.active, #finish-off.warning {
   color: #d10009; }
+
+#set0.warning {
+  color: #337ab7; }
 
 .field-wrapper {
   position: relative; }

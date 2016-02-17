@@ -29,3 +29,9 @@ addEvent = function (object, type, callback) {
     object["on" + type] = callback;
   }
 };
+addZero = function (i) {
+  if (i < 10) {
+    i = "0" + i;
+  }
+  return i;
+};
