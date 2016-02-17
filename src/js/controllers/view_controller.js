@@ -34,7 +34,7 @@ view = {
   },
   playSound: function () {
     data.audio.volume = data.audioSettings.volume;
-    data.audio.src = '/timer/audio/' + data.audioSettings.url;
+    data.audio.src = '/timer/src/audio/' + data.audioSettings.url;
     data.audio.autoplay = true;
   },
   stopSound: function () {

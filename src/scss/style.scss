@@ -1,3 +1,18 @@
+body{
+/*  background:url(http://www.caronfence.com/wp-content/uploads/2014/05/background-light-caron-fence.png) no-repeat center center fixed;*/
+/*  background:url(http://creabuild.com/wp-content/uploads/2015/09/BACKGROUND-LIGHT-GRAY-copy-compressed.png) no-repeat center center fixed;*/
+/*  background:url(http://www.vdgh.ca/wp-content/uploads/2015/09/Silver-Blur-Background.jpg) no-repeat center center fixed;*/
+/*  background:url(http://www.freebiesgallery.com/wp-content/uploads/2013/08/light-blue-background-3.jpg) no-repeat center center fixed;*/
+/*  background:url(https://i.ytimg.com/vi/hPCotoawhk0/maxresdefault.jpg) no-repeat center center fixed;*/
+  background:url(../img/bg.jpg) no-repeat center center fixed;
+  -webkit-background-size:cover;
+  -moz-background-size:cover;
+  -o-background-size:cover;
+  background-size:cover;
+}
+select{
+  background: rgba(255, 255, 255, 0.8) !important;
+}
 .timer-wrapper *{
   outline:none !important;
   font-family:'Coda', cursive;
@@ -25,8 +40,10 @@
   height:215px;
   font-size:170px;
   font-weight:500;
+  text-align:center;
   .time-field{
     border:1px solid transparent;
+    background:transparent;
     width:210px;
     font-family:'Roboto Mono', sans-serif;
     text-align:center;
@@ -39,7 +56,7 @@
     height:210px;
     width:44px;
     display:inline-block;
-    margin:0px -25px 0 -25px;
+    margin:0px 8px;
     text-align:center;
     z-index:1;
     position:relative;
@@ -50,7 +67,7 @@
     height:auto;
     font-size:80px;
     .watch-label{
-      margin: 25px 144px -24px 0;
+      margin:25px 144px -24px 0;
       text-align:right;
       z-index:10;
       position:relative;
@@ -70,7 +87,7 @@
 }
 .header{
   text-align:center;
-  color:#777;
+  color:#555555;
   z-index:3;
   position:relative;
 }
@@ -92,7 +109,7 @@
     font-size:20px;
     span{
       &.legend{
-        color:#666366;
+        color:#555555;
       }
       &.active{
         font-weight:bold;
@@ -154,23 +171,20 @@
 #set0.warning{
   color:#337ab7;
 }
-
-
-
 .field-wrapper{
   position:relative;
 }
 .tac{
   text-align:center;
 }
-.btn-color1{
+.btn-color2{
   background:#fff; /* Old browsers */
   background:-moz-linear-gradient(top, #fff 0%, #f1f1f1 50%, #eee 51%, #f6f6f6 100%); /* FF3.6-15 */
   background:-webkit-linear-gradient(top, #fff 0%, #f1f1f1 50%, #eee 51%, #f6f6f6 100%); /* Chrome10-25,Safari5.1-6 */
   background:linear-gradient(to bottom, #fff 0%, #f1f1f1 50%, #eee 51%, #f6f6f6 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6', GradientType=0); /* IE6-9 */
 }
-.btn-color2{
+.btn-color1{
   background:#f3f3f3; /* Old browsers */
   background:-moz-linear-gradient(top, #f3f3f3 0%, #e6e6e6 50%, #dadada 51%, #fafafa 100%); /* FF3.6-15 */
   background:-webkit-linear-gradient(top, #f3f3f3 0%, #e6e6e6 50%, #dadada 51%, #fafafa 100%); /* Chrome10-25,Safari5.1-6 */
