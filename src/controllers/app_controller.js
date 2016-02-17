@@ -22,30 +22,32 @@ var timer = {
     view.startOrStop('start');
     timerSvc.getValuesFromHTML();
     timerSvc.fromTimeToSec();
-    if ((data.timeInSec !== 0) && (data.timeInSec <= 6) && (!data.flag.reverse)) {
-      view.ending.set();
-    }
     if (data.timeInSec == 0) {
       if (data.flag.sound) {
         if ((!data.flag.stop) && (data.timeInSec == 0)) view.playSound();
       }
-      if (data.flag.finish) {
-        clearTimeout(oneSec);
-        view.startOrStop('stop');
-        return false;
-      }
-      view.ending.unset();
-      view.reverse.set();
     }
-    if (data.flag.reverse) {
-      data.timeInSec++;
-    } else {
-      data.timeInSec--;
-    }
-    data.flag.stop = false;
-    timerSvc.fromSecToTime();
-    view.renewClockFace();
     oneSec = setTimeout(function () {
+      if ((data.timeInSec !== 0) && (data.timeInSec <= 6) && (!data.flag.reverse)) {
+        view.ending.set();
+      }
+      if (data.timeInSec == 0) {
+        if (data.flag.finish) {
+          clearTimeout(oneSec);
+          view.startOrStop('stop');
+          return false;
+        }
+        view.ending.unset();
+        view.reverse.set();
+      }
+      if (data.flag.reverse) {
+        data.timeInSec++;
+      } else {
+        data.timeInSec--;
+      }
+      data.flag.stop = false;
+      timerSvc.fromSecToTime();
+      view.renewClockFace();
       timer.start();
     }, 1000);
   },

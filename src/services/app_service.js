@@ -69,6 +69,17 @@ timerSvc = {
   getNumFromKeycode: function (keycode) {
     console.log("keycode =", keycode);
     switch (keycode) {
+      case 32:
+        document.getElementById('hidden').focus();
+        timer.startOrStop();
+        return false;
+        break;
+      case 13:
+        document.getElementById('hidden').focus();
+        timer.startOrStop();
+        return false;
+        break;
+
       case 37:
         return 'left';
         break;
@@ -138,120 +149,5 @@ timerSvc = {
         return false;
         break;
     }
-  },
-  setTimeFromKey: function (fieldName, num, pos) {
-    var posEnd, shortFieldName = fieldName.charAt(0);
-    console.log("fieldName =", fieldName);
-    console.log("num =", num);
-    console.log("pos =", pos);
-    switch (pos) {
-      case 0:
-        switch (num) {
-          case 'left':
-          case 'blackspace':
-            switch (shortFieldName){
-                case 'm':
-                    document.getElementById('hour').focus();
-                    document.getElementById('hour').setSelectionRange(2,2);
-                break;
-
-                case 's':
-                    document.getElementById('min').focus();
-                    document.getElementById('min').setSelectionRange(2,2);
-                break;
-            }
-            return false;
-            break;
-
-          case 'right':
-            posEnd = 1;
-            break;
-
-          case 'delete':
-            data.time[shortFieldName] = '0' + data.time[shortFieldName].charAt(1);
-            posEnd = 1;
-            break;
-
-          default:
-            data.time[shortFieldName] = num + data.time[shortFieldName].charAt(1);
-            posEnd = 1;
-            break;
-        }
-        break;
-
-      case 1:
-        switch (num) {
-          case 'left':
-            posEnd = 0;
-            break;
-
-          case 'right':
-            posEnd = 2;
-            break;
-
-          case 'delete':
-            data.time[shortFieldName] = data.time[shortFieldName].charAt(0) + '0';
-            posEnd = 2;
-            break;
-
-          case 'blackspace':
-            data.time[shortFieldName] = '0' + data.time[shortFieldName].charAt(1);
-            posEnd = 0;
-            break;
-
-          default:
-            data.time[shortFieldName] = data.time[shortFieldName].charAt(0) + num;
-            view.renewClockFace();
-            switch (shortFieldName){
-                case 'h':
-                    document.getElementById('min').focus();
-                    document.getElementById('min').setSelectionRange(0,0);
-                break;
-
-                case 'm':
-                    document.getElementById('sec').focus();
-                    document.getElementById('sec').setSelectionRange(0,0);
-                break;
-            }
-            return false;
-            break;
-        }
-        break;
-
-      case 2:
-        switch (num) {
-          case 'left':
-            posEnd = 1;
-            break;
-
-          case 'right':
-          case 'delete':
-            switch (shortFieldName){
-                case 'h':
-                    document.getElementById('min').focus();
-                    document.getElementById('min').setSelectionRange(0,0);
-                break;
-
-                case 'm':
-                    document.getElementById('sec').focus();
-                    document.getElementById('sec').setSelectionRange(0,0);
-                break;
-            }
-            return false;
-            break;
-
-          case 'blackspace':
-            data.time[shortFieldName] = data.time[shortFieldName].charAt(0) + '0';
-            posEnd = 1;
-            break;
-
-          default:
-            return 2;
-            break;
-        }
-        break;
-    }
-    view.renewClockFace();
-    return posEnd;
   }
 }

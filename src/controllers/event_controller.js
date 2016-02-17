@@ -18,7 +18,7 @@ events = {
           var pos = e.target.selectionStart;
           var num = timerSvc.getNumFromKeycode(e.keyCode);
           if (num !== false) {
-            var positionEnd = timerSvc.setTimeFromKey(fieldName,num,pos);
+            var positionEnd = view.setTimeFromKey(fieldName,num,pos);
             if (positionEnd !== false) e.target.selectionEnd = positionEnd;
           }
         }
