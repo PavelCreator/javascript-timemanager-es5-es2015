@@ -4,16 +4,21 @@ const rename = require('gulp-rename');
 const autoprefixer = require('gulp-autoprefixer');
 const notify = require('gulp-notify');
 const del = require('del');
+
 const sass = require('gulp-sass');
 const cssnano = require('gulp-cssnano');
+
 const imagemin = require('gulp-imagemin');
 const cache = require('gulp-cache');
+
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
-const htmlmin = require('gulp-htmlmin');
-const removeHtmlComments = require('gulp-remove-html-comments');
+const stripDebug = require('gulp-strip-debug');
 const sourcemaps = require('gulp-sourcemaps');
 const babel = require('gulp-babel');
+
+const htmlmin = require('gulp-htmlmin');
+const removeHtmlComments = require('gulp-remove-html-comments');
 
 const config = {
   src: {
@@ -66,6 +71,7 @@ gulp.task('build-js-es5', () => {
   return gulp.src(config.src.jsES5)
     .pipe(concat('main.min.js'))
     .pipe(uglify())
+    .pipe(stripDebug())
     .pipe(gulp.dest(config.build.jsES5))
     .pipe(notify({message: 'Build ES5 task complete'}));
 });
@@ -78,6 +84,7 @@ gulp.task('build-js-es6', () =>
       }))
       .pipe(concat('main.min.js'))
       .pipe(uglify())
+      //.pipe(stripDebug())
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(config.build.jsES6))
       .pipe(notify({message: 'Build ES6 task complete'}))
