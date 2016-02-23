@@ -9,16 +9,12 @@ import sass from 'gulp-sass';
 import cssnano from 'gulp-cssnano';
 import imagemin from 'gulp-imagemin';
 import cache from 'gulp-cache';
-import jshint from 'gulp-jshint';
 import concat from 'gulp-concat';
 import uglify from 'gulp-uglify';
 import htmlmin from 'gulp-htmlmin';
 import removeHtmlComments from 'gulp-remove-html-comments';
-import browserify from 'browserify';
-import source from 'vinyl-source-stream';
-import buffer from 'vinyl-buffer';
-import gutil from 'gulp-util';
 import sourcemaps from 'gulp-sourcemaps';
+import babel from 'gulp-babel';
 
 const config = {
   src: {
@@ -73,26 +69,24 @@ gulp.task('build-img', () => {
 
 gulp.task('build-js-es5', () => {
   return gulp.src(config.src.es5)
-    .pipe(concat('main.js'))
-    .pipe(rename({suffix: '.min'}))
+    .pipe(concat('main.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest(config.build.es5))
     .pipe(notify({message: 'Build ES5 task complete'}));
 });
 
-gulp.task("build-js-es6", () => {
-  return browserify(config.src.es6)
-    .transform("babelify", {presets: ["es2015"], sourceMaps: true})
-    .bundle()
-    .pipe(source("main.min.js"))
-    .pipe(buffer())
-    .pipe(sourcemaps.init({loadMaps: true}))
-/*    .pipe(uglify())*/
-    .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest(config.build.es6))
-    .pipe(notify({message: 'Build ES6 task complete'}))
-    .pipe(gutil.noop());
-});
+gulp.task('build-js-es6', () =>
+    gulp.src(config.src.es6)
+      .pipe(sourcemaps.init())
+      .pipe(babel({
+        presets: ['es2015']
+      }))
+      .pipe(concat('main.min.js'))
+      .pipe(uglify())
+      .pipe(sourcemaps.write('.'))
+      .pipe(gulp.dest(config.build.es6))
+      .pipe(notify({message: 'Build ES6 task complete'}))
+);
 
 gulp.task('build-html-es5', () => {
   return gulp.src(config.src.htmlES5)
