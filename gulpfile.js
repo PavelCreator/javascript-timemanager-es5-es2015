@@ -78,16 +78,16 @@ gulp.task('build-js-es5', () => {
 
 gulp.task('build-js-es6', () =>
     gulp.src(config.src.jsES6)
-      .pipe(sourcemaps.init())
+      //.pipe(sourcemaps.init())
       .pipe(babel({
         presets: ['es2015']
       }))
       .pipe(concat('main.min.js'))
-      .pipe(uglify())
+      //.pipe(uglify())
       //.pipe(stripDebug())
-      .pipe(sourcemaps.write('.'))
+      //.pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(config.build.jsES6))
-      .pipe(notify({message: 'Build ES6 task complete'}))
+      //.pipe(notify({message: 'Build ES6 task complete'}))
 );
 
 gulp.task('build-html-es5', () => {
@@ -135,5 +135,5 @@ gulp.task('watch-es5', ['watch-css', 'watch-js-es5', 'watch-img', 'watch-html-es
 gulp.task('build-es5', ['build-css', 'build-js-es5', 'build-img', 'build-html-es5'])
 gulp.task('watch-es6', ['watch-css', 'watch-js-es6', 'watch-img', 'watch-html-es6'])
 gulp.task('build-es6', ['build-css', 'build-js-es6', 'build-img', 'build-html-es6'])
-gulp.task('default', ['build-js-es6'])
+gulp.task('default', ['watch-js-es6'])
 /*npm install --save-dev packName*/

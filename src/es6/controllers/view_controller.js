@@ -1,5 +1,5 @@
 view = {
-  startOrStop: function (startOrStop) {
+  startOrStop(startOrStop) {
     if (startOrStop === 'start') {
       classFnc.remove(document.getElementById('run'), 'active');
       classFnc.add(document.getElementById('stop'), 'active');
@@ -8,47 +8,47 @@ view = {
       classFnc.add(document.getElementById('run'), 'active');
     }
   },
-  renewClockFace: function () {
+  renewClockFace() {
     document.getElementById('hour').value = data.time.h;
     document.getElementById('min').value = data.time.m;
     document.getElementById('sec').value = data.time.s;
     document.getElementById('title').innerHTML = data.time.h + ':' + data.time.m + ':' + data.time.s;
   },
   reverse: {
-    set: function () {
+    set() {
       data.flag.reverse = true;
       classFnc.add(document.getElementById('clock-face'), 'reverse');
     },
-    unset: function () {
+    unset() {
       data.flag.reverse = false;
       classFnc.remove(document.getElementById('clock-face'), 'reverse');
     }
   },
   ending: {
-    set: function () {
+    set() {
       classFnc.add(document.getElementById('clock-face'), 'ending');
     },
-    unset: function () {
+    unset() {
       classFnc.remove(document.getElementById('clock-face'), 'ending');
     }
   },
-  playSound: function () {
+  playSound() {
     data.audio.volume = data.audioSettings.volume;
     data.audio.src = '/timer/src/audio/' + data.audioSettings.url;
     data.audio.autoplay = true;
   },
-  stopSound: function () {
+  stopSound() {
     if (!data.audio.ended) {
       data.audio.pause();
     }
   },
-  reset: function () {
+  reset() {
     this.stopSound();
     this.reverse.unset();
     this.ending.unset();
     classFnc.remove(document.getElementById('set0'), 'warning');
   },
-  setSoundMode: function () {
+  setSoundMode() {
     if (data.flag.sound) {
       data.flag.sound = false;
       localStorage.setItem("sound-play", "0");
@@ -67,7 +67,7 @@ view = {
       classFnc.remove(document.getElementById('settings-alarm-off'), 'active');
     }
   },
-  setFinishMode: function () {
+  setFinishMode() {
     if (data.flag.finish) {
       data.flag.finish = false;
       localStorage.setItem("finish", "0");
@@ -84,7 +84,7 @@ view = {
       classFnc.add(document.getElementById('settings-end-stop'), 'active');
     }
   },
-  setMarginTop: function () {
+  setMarginTop() {
     var body = document.body,
       html = document.documentElement;
 
@@ -96,7 +96,7 @@ view = {
       document.getElementById('app-wrapper').style.marginTop = marginTop + 'px';
     }
   },
-  setMelodyPlay: function (melodyPlay) {
+  setMelodyPlay(melodyPlay) {
     if (melodyPlay) {
       classFnc.remove(document.getElementById('settings-melody-stop'), 'hide');
       classFnc.add(document.getElementById('settings-melody-play'), 'hide');
@@ -110,7 +110,7 @@ view = {
       this.stopSound();
     }
   },
-  buildMelodiesList: function () {
+  buildMelodiesList() {
     var melodiesList = '',
       volumeList = '';
 
@@ -135,7 +135,7 @@ view = {
     document.getElementById('melodies-list').innerHTML = melodiesList;
     document.getElementById('volume-list').innerHTML = volumeList;
   },
-  setSettingsFromStorage: function () {
+  setSettingsFromStorage() {
     var
       soundMelodyId = localStorage.getItem("sound-melody"),
       soundVolume = localStorage.getItem("sound-volume"),
@@ -160,7 +160,7 @@ view = {
       this.toggleWatch();
     }
   },
-  setTimeFromKey: function (fieldName, num, pos) {
+  setTimeFromKey(fieldName, num, pos) {
     var posEnd, shortFieldName = fieldName.charAt(0);
     /*    console.log("fieldName =", fieldName);
      console.log("num =", num);
@@ -276,17 +276,17 @@ view = {
     return posEnd;
   },
   warning: {
-    finishOff: function () {
+    finishOff() {
       classFnc.add(document.getElementById('finish-off'), 'warning');
       setTimeout(function () {
         classFnc.remove(document.getElementById('finish-off'), 'warning');
       }, 1000);
     },
-    reset: function () {
+    reset() {
       classFnc.add(document.getElementById('set0'), 'warning');
     }
   },
-  toggleWatch: function () {
+  toggleWatch() {
     if (data.flag.showWatch) {
       data.flag.showWatch = false;
       localStorage.setItem("show-watch", "0");

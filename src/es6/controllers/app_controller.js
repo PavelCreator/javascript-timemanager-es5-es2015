@@ -1,5 +1,5 @@
 timer = {
-  startOrStop: function () {
+  startOrStop() {
     if (data.flag.stop) {
       this.start();
     } else {
@@ -7,7 +7,7 @@ timer = {
       this.stop();
     }
   },
-  set: function (timeInMin) {
+  set(timeInMin) {
     if (timeInMin == 0) view.startOrStop('stop');
     view.reset();
     data.timeInSec = timeInMin * 60;
@@ -18,7 +18,7 @@ timer = {
     timerSvc.fromSecToTime();
     view.renewClockFace();
   },
-  start: function () {
+  start() {
     view.startOrStop('start');
     timerSvc.getValuesFromHTML();
     timerSvc.fromTimeToSec();
@@ -58,14 +58,14 @@ timer = {
       timer.start();
     }, 1000);
   },
-  stop: function () {
+  stop() {
     view.startOrStop('stop');
     clearTimeout(oneSec);
     data.flag.stop = true;
   },
 }
 watch = {
-  start: function () {
+  start() {
     var d = new Date();
     var h = addZero(d.getHours());
     var m = addZero(d.getMinutes());
