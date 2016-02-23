@@ -5,13 +5,7 @@ data = {
     s: '00'
   },
   timeInSec: 0,
-  flag: {
-    stop: true,
-    reverse: false,
-    sound: true,
-    finish: false,
-    showWatch: true
-  },
+  flag: new Map(),
   audio: new Audio(),
   audioSettings:{
     url: 'alarm_clock_1.mp3',
@@ -64,3 +58,8 @@ data = {
     }
   ]
 }
+data.flag.set('stop', true);
+data.flag.set('reverse', false);
+data.flag.set('sound', true);
+data.flag.set('finish', false);
+data.flag.set('showWatch', true);

@@ -1,7 +1,7 @@
 events = {
   fieldFocusStopTimer() {
     var field = ['hour', 'min', 'sec'];
-    for (var i = 0; i <= field.length - 1; i++) {
+    for (let i = 0; i <= field.length - 1; i++) {
       document.getElementById(field[i]).onfocus = () => {
         view.ending.unset();
         timer.stop();

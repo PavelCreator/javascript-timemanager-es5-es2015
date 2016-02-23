@@ -16,11 +16,11 @@ view = {
   },
   reverse: {
     set() {
-      data.flag.reverse = true;
+      data.flag.set('reverse', true);
       classFnc.add(document.getElementById('clock-face'), 'reverse');
     },
     unset() {
-      data.flag.reverse = false;
+      data.flag.set('reverse', false);
       classFnc.remove(document.getElementById('clock-face'), 'reverse');
     }
   },
@@ -49,8 +49,8 @@ view = {
     classFnc.remove(document.getElementById('set0'), 'warning');
   },
   setSoundMode() {
-    if (data.flag.sound) {
-      data.flag.sound = false;
+    if (data.flag.get('sound')) {
+      data.flag.set('sound', false);
       localStorage.setItem("sound-play", "0");
       classFnc.add(document.getElementById('sound-off'), 'hide');
       classFnc.remove(document.getElementById('sound-on'), 'hide');
@@ -58,7 +58,7 @@ view = {
       classFnc.remove(document.getElementById('settings-alarm-on'), 'active');
       classFnc.add(document.getElementById('settings-alarm-off'), 'active');
     } else {
-      data.flag.sound = true;
+      data.flag.set('sound', true);
       localStorage.setItem("sound-play", "1");
       classFnc.remove(document.getElementById('sound-off'), 'hide');
       classFnc.add(document.getElementById('sound-on'), 'hide');
@@ -68,15 +68,15 @@ view = {
     }
   },
   setFinishMode() {
-    if (data.flag.finish) {
-      data.flag.finish = false;
+    if (data.flag.get('finish')) {
+      data.flag.set('finish', false);
       localStorage.setItem("finish", "0");
       classFnc.remove(document.getElementById('finish-on'), 'hide');
       classFnc.add(document.getElementById('finish-off'), 'hide');
       classFnc.add(document.getElementById('settings-end-continue'), 'active');
       classFnc.remove(document.getElementById('settings-end-stop'), 'active');
     } else {
-      data.flag.finish = true;
+      data.flag.set('finish', true);
       localStorage.setItem("finish", "1");
       classFnc.add(document.getElementById('finish-on'), 'hide');
       classFnc.remove(document.getElementById('finish-off'), 'hide');
@@ -117,7 +117,7 @@ view = {
     var defaultMelody = localStorage.getItem("sound-melody")
       ? localStorage.getItem("sound-melody")
       : 0;
-    for (var i = 0; i < data.audios.length; i++) {
+    for (let i = 0; i < data.audios.length; i++) {
       melodiesList += (i == defaultMelody)
         ? '<option value="' + i + '" selected>' + data.audios[i].name + '</option>'
         : '<option value="' + i + '">' + data.audios[i].name + '</option>';
@@ -126,7 +126,7 @@ view = {
     var defaultVolume = localStorage.getItem("sound-volume")
       ? localStorage.getItem("sound-volume") * 10
       : 7;
-    for (var i = 10; i > 0; i--) {
+    for (let i = 10; i > 0; i--) {
       volumeList += (i == defaultVolume)
         ? '<option value="' + i / 10 + '" selected>' + i * 10 + '%</option>'
         : '<option value="' + i / 10 + '">' + i * 10 + '%</option>';
@@ -287,8 +287,8 @@ view = {
     }
   },
   toggleWatch() {
-    if (data.flag.showWatch) {
-      data.flag.showWatch = false;
+    if (data.flag.get('showWatch')) {
+      data.flag.set('showWatch', false);
       localStorage.setItem("show-watch", "0");
       classFnc.add(document.getElementById('watch-clock-face'), 'transparent');
       classFnc.remove(document.getElementById('toggle-watch-icon-show'), 'hide');
@@ -296,7 +296,7 @@ view = {
       classFnc.remove(document.getElementById('settings-watch-show'), 'active');
       classFnc.add(document.getElementById('settings-watch-hide'), 'active');
     } else {
-      data.flag.showWatch = true;
+      data.flag.set('showWatch', true);
       localStorage.setItem("show-watch", "1");
       classFnc.remove(document.getElementById('watch-clock-face'), 'transparent');
       classFnc.add(document.getElementById('toggle-watch-icon-show'), 'hide');
