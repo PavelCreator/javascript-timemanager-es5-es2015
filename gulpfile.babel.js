@@ -20,13 +20,13 @@ const config = {
   src: {
     css: 'src/scss/*.scss',
     img: 'src/img/*',
-    es5: [
+    jsES5: [
       'src/es5/hoisting.js',
       'src/es5/services/*.js',
       'src/es5/controllers/*.js',
       'src/es5/start.js'
     ],
-    es6: [
+    jsES6: [
       'src/es6/hoisting.js',
       'src/es6/services/app_service.js',
       'src/es6/services/auxiliary_service.js',
@@ -42,8 +42,8 @@ const config = {
   build: {
     css: 'build/css',
     img: 'build/img',
-    es5: 'build/es5',
-    es6: 'build/es6',
+    jsES5: 'build/es5',
+    jsES6: 'build/es6',
     html: './'
   }
 }
@@ -68,15 +68,15 @@ gulp.task('build-img', () => {
 });
 
 gulp.task('build-js-es5', () => {
-  return gulp.src(config.src.es5)
+  return gulp.src(config.src.jsES5)
     .pipe(concat('main.min.js'))
     .pipe(uglify())
-    .pipe(gulp.dest(config.build.es5))
+    .pipe(gulp.dest(config.build.jsES5))
     .pipe(notify({message: 'Build ES5 task complete'}));
 });
 
 gulp.task('build-js-es6', () =>
-    gulp.src(config.src.es6)
+    gulp.src(config.src.jsES6)
       .pipe(sourcemaps.init())
       .pipe(babel({
         presets: ['es2015']
@@ -84,7 +84,7 @@ gulp.task('build-js-es6', () =>
       .pipe(concat('main.min.js'))
       .pipe(uglify())
       .pipe(sourcemaps.write('.'))
-      .pipe(gulp.dest(config.build.es6))
+      .pipe(gulp.dest(config.build.jsES6))
       .pipe(notify({message: 'Build ES6 task complete'}))
 );
 
@@ -106,15 +106,6 @@ gulp.task('build-html-es6', () => {
     .pipe(notify({message: 'Build HTML-ES6 task complete'}));
 });
 
-gulp.task('build-es6', () => {
-  return gulp.src(config.src.html)
-    .pipe(removeHtmlComments())
-    .pipe(htmlmin({collapseWhitespace: true}))
-    .pipe(rename('index.html'))
-    .pipe(gulp.dest(config.build.html))
-    .pipe(notify({message: 'Build HTML task complete'}));
-});
-
 gulp.task('clean', () => {
   return del(['build/css', 'build/es5', 'build/es6', 'build/img', 'index.html']);
 });
@@ -123,10 +114,10 @@ gulp.task('watch-css', () => {
   gulp.watch(config.src.css, ['build-css'])
 })
 gulp.task('watch-js-es5', () => {
-  gulp.watch(config.src.es5, ['build-js-es5'])
+  gulp.watch(config.src.jsES5, ['build-js-es5'])
 })
 gulp.task('watch-js-es6', () => {
-  gulp.watch(config.src.es6, ['build-js-es6'])
+  gulp.watch(config.src.jsES6, ['build-js-es6'])
 })
 gulp.task('watch-img', () => {
   gulp.watch(config.src.img, ['build-img'])
