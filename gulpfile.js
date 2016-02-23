@@ -48,6 +48,11 @@ const config = {
   }
 }
 
+function swallowError (error) {
+  console.log(error.toString());
+  this.emit('end');
+}
+
 gulp.task('build-css', () => {
   gulp.src(config.src.css)
     .pipe(sass({
@@ -81,7 +86,7 @@ gulp.task('build-js-es6', () =>
       //.pipe(sourcemaps.init())
       .pipe(babel({
         presets: ['es2015']
-      }))
+      }).on('error', swallowError))
       .pipe(concat('main.min.js'))
       //.pipe(uglify())
       //.pipe(stripDebug())
