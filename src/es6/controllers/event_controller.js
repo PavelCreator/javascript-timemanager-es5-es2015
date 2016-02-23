@@ -1,4 +1,4 @@
-events = {
+class Events {
   fieldFocusStopTimer() {
     var field = ['hour', 'min', 'sec'];
     for (let i = 0; i <= field.length - 1; i++) {
@@ -7,7 +7,8 @@ events = {
         timer.stop();
       };
     }
-  },
+  }
+
   fieldInput() {
     var field = ['hour', 'min', 'sec'];
     for (let i = 0; i < field.length; i++) {
@@ -22,7 +23,7 @@ events = {
         }
       }
     }
-  },
+  }
 
   keypress() {
     window.captureEvents(Event.KEYPRESS);
@@ -47,7 +48,8 @@ events = {
       }
       /*console.log(e.which);*/
     }
-  },
+  }
+
   buttonPress() {
     var nums = ['0', '1', '2', '3', '5', '10', '15', '20', '30', '45', '60', '90', '120'];
     for (let i = 0; i <= nums.length - 1; i++) {
@@ -73,12 +75,14 @@ events = {
     document.getElementById("toggle-watch").onclick = () => {
       view.toggleWatch();
     }
-  },
+  }
+
   resizeEvent() {
     addEvent(window, "resize", function (event) {
       view.setMarginTop();
     });
-  },
+  }
+
   changeMelodiesListEvent() {
     document.getElementById('melodies-list').onchange = () => {
       view.setMelodyPlay(false);

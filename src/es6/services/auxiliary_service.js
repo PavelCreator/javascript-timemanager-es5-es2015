@@ -1,4 +1,4 @@
-logger = function () {
+var logger = function () {
   console.log("time.h = ");
   console.log(data.time.h);
   console.log("time.m = ");
@@ -8,7 +8,7 @@ logger = function () {
   console.log("timeInSec = ");
   console.log(data.timeInSec);
 };
-classFnc = {
+var classFnc = {
   add(o, c) {
     var re = new RegExp("(^|\\s)" + c + "(\\s|$)", "g")
     if (re.test(o.className)) return
@@ -19,7 +19,7 @@ classFnc = {
     o.className = o.className.replace(re, "$1").replace(/\s+/g, " ").replace(/(^ | $)/g, "")
   }
 };
-addEvent = function (object, type, callback) {
+function addEvent (object, type, callback) {
   if (object == null || typeof(object) == 'undefined') return;
   if (object.addEventListener) {
     object.addEventListener(type, callback, false);
@@ -29,7 +29,7 @@ addEvent = function (object, type, callback) {
     object["on" + type] = callback;
   }
 };
-addZero = function (i) {
+function addZero (i) {
   if (i < 10) {
     i = "0" + i;
   }

@@ -1,4 +1,36 @@
-view = {
+class View {
+  constructor() {
+    this.reverse = {
+      set() {
+        data.flag.set('reverse', true);
+        classFnc.add(document.getElementById('clock-face'), 'reverse');
+      },
+      unset() {
+        data.flag.set('reverse', false);
+        classFnc.remove(document.getElementById('clock-face'), 'reverse');
+      }
+    }
+    this.ending = {
+      set() {
+        classFnc.add(document.getElementById('clock-face'), 'ending');
+      },
+      unset() {
+        classFnc.remove(document.getElementById('clock-face'), 'ending');
+      }
+    }
+    this.warning = {
+      finishOff() {
+        classFnc.add(document.getElementById('finish-off'), 'warning');
+        setTimeout(function () {
+          classFnc.remove(document.getElementById('finish-off'), 'warning');
+        }, 1000);
+      },
+      reset() {
+        classFnc.add(document.getElementById('set0'), 'warning');
+      }
+    }
+  }
+
   startOrStop(startOrStop) {
     if (startOrStop === 'start') {
       classFnc.remove(document.getElementById('run'), 'active');
@@ -7,47 +39,34 @@ view = {
       classFnc.remove(document.getElementById('stop'), 'active');
       classFnc.add(document.getElementById('run'), 'active');
     }
-  },
+  }
+
   renewClockFace() {
     document.getElementById('hour').value = data.time.h;
     document.getElementById('min').value = data.time.m;
     document.getElementById('sec').value = data.time.s;
     document.getElementById('title').innerHTML = data.time.h + ':' + data.time.m + ':' + data.time.s;
-  },
-  reverse: {
-    set() {
-      data.flag.set('reverse', true);
-      classFnc.add(document.getElementById('clock-face'), 'reverse');
-    },
-    unset() {
-      data.flag.set('reverse', false);
-      classFnc.remove(document.getElementById('clock-face'), 'reverse');
-    }
-  },
-  ending: {
-    set() {
-      classFnc.add(document.getElementById('clock-face'), 'ending');
-    },
-    unset() {
-      classFnc.remove(document.getElementById('clock-face'), 'ending');
-    }
-  },
+  }
+
   playSound() {
     data.audio.volume = data.audioSettings.volume;
     data.audio.src = '/timer/src/audio/' + data.audioSettings.url;
     data.audio.autoplay = true;
-  },
+  }
+
   stopSound() {
     if (!data.audio.ended) {
       data.audio.pause();
     }
-  },
+  }
+
   reset() {
     this.stopSound();
     this.reverse.unset();
     this.ending.unset();
     classFnc.remove(document.getElementById('set0'), 'warning');
-  },
+  }
+
   setSoundMode() {
     if (data.flag.get('sound')) {
       data.flag.set('sound', false);
@@ -66,7 +85,8 @@ view = {
       classFnc.add(document.getElementById('settings-alarm-on'), 'active');
       classFnc.remove(document.getElementById('settings-alarm-off'), 'active');
     }
-  },
+  }
+
   setFinishMode() {
     if (data.flag.get('finish')) {
       data.flag.set('finish', false);
@@ -83,7 +103,8 @@ view = {
       classFnc.remove(document.getElementById('settings-end-continue'), 'active');
       classFnc.add(document.getElementById('settings-end-stop'), 'active');
     }
-  },
+  }
+
   setMarginTop() {
     var body = document.body,
       html = document.documentElement;
@@ -95,7 +116,8 @@ view = {
       var marginTop = (height - 600) * 0.37;
       document.getElementById('app-wrapper').style.marginTop = marginTop + 'px';
     }
-  },
+  }
+
   setMelodyPlay(melodyPlay) {
     if (melodyPlay) {
       classFnc.remove(document.getElementById('settings-melody-stop'), 'hide');
@@ -109,7 +131,8 @@ view = {
       classFnc.add(document.getElementById('settings-melody-stop'), 'hide');
       this.stopSound();
     }
-  },
+  }
+
   buildMelodiesList() {
     var melodiesList = '',
       volumeList = '';
@@ -134,7 +157,8 @@ view = {
 
     document.getElementById('melodies-list').innerHTML = melodiesList;
     document.getElementById('volume-list').innerHTML = volumeList;
-  },
+  }
+
   setSettingsFromStorage() {
     var
       soundMelodyId = localStorage.getItem("sound-melody"),
@@ -159,7 +183,8 @@ view = {
     if (showWatch === '0') {
       this.toggleWatch();
     }
-  },
+  }
+
   setTimeFromKey(fieldName, num, pos) {
     var posEnd, shortFieldName = fieldName.charAt(0);
     /*    console.log("fieldName =", fieldName);
@@ -274,18 +299,8 @@ view = {
     }
     view.renewClockFace();
     return posEnd;
-  },
-  warning: {
-    finishOff() {
-      classFnc.add(document.getElementById('finish-off'), 'warning');
-      setTimeout(function () {
-        classFnc.remove(document.getElementById('finish-off'), 'warning');
-      }, 1000);
-    },
-    reset() {
-      classFnc.add(document.getElementById('set0'), 'warning');
-    }
-  },
+  }
+
   toggleWatch() {
     if (data.flag.get('showWatch')) {
       data.flag.set('showWatch', false);

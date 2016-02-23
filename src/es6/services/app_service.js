@@ -1,4 +1,4 @@
-timerSvc = {
+class TimerSvc {
   fromTimeToSec() {
     if (data.time.s > 59) {
       data.time.s = 60;
@@ -16,7 +16,7 @@ timerSvc = {
       parseFloat(data.time.h) * 3600 +
       parseFloat(data.time.m) * 60 +
       parseFloat(data.time.s);
-  },
+  }
   fromSecToTime() {
     var timeInSec = data.timeInSec;
     //HOUR
@@ -47,12 +47,12 @@ timerSvc = {
     } else {
       data.time.s = sec.toString();
     }
-  },
+  }
   getValuesFromHTML() {
     this.getTimeParameterFromHTML('h', 'hour');
     this.getTimeParameterFromHTML('m', 'min');
     this.getTimeParameterFromHTML('s', 'sec');
-  },
+  }
   getTimeParameterFromHTML(hms, elId) {
     switch (data.time[hms].length) {
       case 2:
@@ -65,7 +65,7 @@ timerSvc = {
         data.time[hms] = '00';
         break;
     }
-  },
+  }
   getNumFromKeycode(keycode) {
     console.log("keycode =", keycode);
     switch (keycode) {

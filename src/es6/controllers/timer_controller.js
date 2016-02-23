@@ -1,4 +1,4 @@
-timer = {
+class Timer {
   startOrStop() {
     if (data.flag.get('stop')) {
       this.start();
@@ -6,7 +6,7 @@ timer = {
       view.stopSound();
       this.stop();
     }
-  },
+  }
   set(timeInMin) {
     if (timeInMin == 0) view.startOrStop('stop');
     view.reset();
@@ -17,7 +17,7 @@ timer = {
     }
     timerSvc.fromSecToTime();
     view.renewClockFace();
-  },
+  }
   start() {
     view.startOrStop('start');
     timerSvc.getValuesFromHTML();
@@ -57,12 +57,12 @@ timer = {
       view.renewClockFace();
       timer.start();
     }, 1000);
-  },
+  }
   stop() {
     view.startOrStop('stop');
     clearTimeout(oneSec);
     data.flag.set('stop', true);
-  },
+  }
 }
 watch = {
   start() {
