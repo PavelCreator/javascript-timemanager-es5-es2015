@@ -1,4 +1,20 @@
-/*import browserify from 'browserify';
+//gulpfile.babel.js
+import gulp from "gulp";
+import rename from 'gulp-rename';
+import autoprefixer from 'gulp-autoprefixer';
+import notify from 'gulp-notify';
+import del from 'del';
+import sass from 'gulp-sass';
+import cssnano from 'gulp-cssnano';
+import imagemin from 'gulp-imagemin';
+import cache from 'gulp-cache';
+import concat from 'gulp-concat';
+import uglify from 'gulp-uglify';
+import htmlmin from 'gulp-htmlmin';
+import removeHtmlComments from 'gulp-remove-html-comments';
+import sourcemaps from 'gulp-sourcemaps';
+import babel from 'gulp-babel';
+import browserify from 'browserify';
 import source from 'vinyl-source-stream';
 import gutil from 'gulp-util';
 import buffer from 'vinyl-buffer';
@@ -14,8 +30,10 @@ gulp.task("build-js-es6", () => {
     .pipe(gulp.dest(config.build.es6))
     .pipe(notify({message: 'Build ES6 task complete'}))
     .pipe(gutil.noop());
-});*/
+});
 
+
+//package.json
 {
   "name": "PavelCreator",
   "version": "0.0.1",
@@ -53,4 +71,10 @@ gulp.task("build-js-es6", () => {
   "dependencies": {
     "babel-core": "^6.1.21"
   }
+}
+
+
+//.babelrc
+{
+  presets: ["es2015"]
 }

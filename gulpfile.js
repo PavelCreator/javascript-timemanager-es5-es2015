@@ -1,20 +1,19 @@
 'use strict';
-
-import gulp from "gulp";
-import rename from 'gulp-rename';
-import autoprefixer from 'gulp-autoprefixer';
-import notify from 'gulp-notify';
-import del from 'del';
-import sass from 'gulp-sass';
-import cssnano from 'gulp-cssnano';
-import imagemin from 'gulp-imagemin';
-import cache from 'gulp-cache';
-import concat from 'gulp-concat';
-import uglify from 'gulp-uglify';
-import htmlmin from 'gulp-htmlmin';
-import removeHtmlComments from 'gulp-remove-html-comments';
-import sourcemaps from 'gulp-sourcemaps';
-import babel from 'gulp-babel';
+const gulp = require('gulp');
+const rename = require('gulp-rename');
+const autoprefixer = require('gulp-autoprefixer');
+const notify = require('gulp-notify');
+const del = require('del');
+const sass = require('gulp-sass');
+const cssnano = require('gulp-cssnano');
+const imagemin = require('gulp-imagemin');
+const cache = require('gulp-cache');
+const concat = require('gulp-concat');
+const uglify = require('gulp-uglify');
+const htmlmin = require('gulp-htmlmin');
+const removeHtmlComments = require('gulp-remove-html-comments');
+const sourcemaps = require('gulp-sourcemaps');
+const babel = require('gulp-babel');
 
 const config = {
   src: {
@@ -28,12 +27,8 @@ const config = {
     ],
     jsES6: [
       'src/es6/hoisting.js',
-      'src/es6/services/app_service.js',
-      'src/es6/services/auxiliary_service.js',
-      'src/es6/services/data_service.js',
-      'src/es6/controllers/app_controller.js',
-      'src/es6/controllers/event_controller.js',
-      'src/es6/controllers/view_controller.js',
+      'src/es6/services/*.js',
+      'src/es6/controllers/*.js',
       'src/es6/start.js'
     ],
     htmlES5: 'index-src-es5.html',
