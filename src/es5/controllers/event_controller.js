@@ -18,7 +18,7 @@ events = {
           var pos = e.target.selectionStart;
           var num = timerSvc.getNumFromKeycode(e.keyCode);
           if (num !== false) {
-            var positionEnd = view.setTimeFromKey(fieldName,num,pos);
+            var positionEnd = view.setTimeFromKey(fieldName, num, pos);
             if (positionEnd !== false) e.target.selectionEnd = positionEnd;
           }
         }
@@ -36,23 +36,15 @@ events = {
       switch (e.which) {
         //Stop or Stop - Enter, Space
         case 32:
-          document.getElementById('hidden').focus();
-          timer.startOrStop();
-          break;
         case 13:
           document.getElementById('hidden').focus();
           timer.startOrStop();
           break;
+
         //Reset - `,r,¸,ê
         case 96:
-          timer.set(0);
-          break;
         case 1105:
-          timer.set(0);
-          break;
         case 114:
-          timer.set(0);
-          break;
         case 1082:
           timer.set(0);
           break;
