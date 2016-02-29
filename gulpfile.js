@@ -37,7 +37,9 @@ const config = {
       'src/es6/start.js'
     ],
     htmlES5: 'index-src-es5.html',
-    htmlES6: 'index-src-es6.html'
+    htmlES5T: 'index-src-es5-tests.html',
+    htmlES6: 'index-src-es6.html',
+    jsES5T: 'tests/es5/*.js',
   },
   build: {
     css: 'build/css',
@@ -81,6 +83,13 @@ gulp.task('build-js-es5', () => {
     .pipe(notify({message: 'Build ES5 task complete'}));
 });
 
+gulp.task('build-js-es5-tests', () => {
+  return gulp.src(config.src.jsES5T)
+    .pipe(concat('tests.min.js'))
+    .pipe(gulp.dest(config.build.jsES5))
+    .pipe(notify({message: 'Build Tests ES5 task complete'}));
+});
+
 gulp.task('build-js-es6', () =>
     gulp.src(config.src.jsES6)
       //.pipe(sourcemaps.init())
@@ -97,6 +106,15 @@ gulp.task('build-js-es6', () =>
 
 gulp.task('build-html-es5', () => {
   return gulp.src(config.src.htmlES5)
+    .pipe(removeHtmlComments())
+    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(rename('index.html'))
+    .pipe(gulp.dest(config.build.html))
+    .pipe(notify({message: 'Build HTML-ES5 task complete'}));
+});
+
+gulp.task('build-html-es5-tests', () => {
+  return gulp.src(config.src.htmlES5T)
     .pipe(removeHtmlComments())
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(rename('index.html'))
@@ -123,6 +141,9 @@ gulp.task('watch-css', () => {
 gulp.task('watch-js-es5', () => {
   gulp.watch(config.src.jsES5, ['build-js-es5'])
 })
+gulp.task('watch-js-es5-tests', () => {
+  gulp.watch(config.src.jsES5T, ['build-js-es5-tests'])
+})
 gulp.task('watch-js-es6', () => {
   gulp.watch(config.src.jsES6, ['build-js-es6'])
 })
@@ -130,15 +151,22 @@ gulp.task('watch-img', () => {
   gulp.watch(config.src.img, ['build-img'])
 })
 gulp.task('watch-html-es5', () => {
-  gulp.watch(config.src.html, ['build-html-es5'])
+  gulp.watch(config.src.htmlES5, ['build-html-es5'])
+})
+gulp.task('watch-html-es5-tests', () => {
+  gulp.watch(config.src.htmlES5T, ['build-html-es5-tests'])
 })
 gulp.task('watch-html-es6', () => {
-  gulp.watch(config.src.html, ['build-html-es6'])
+  gulp.watch(config.src.htmlES6, ['build-html-es6'])
 })
 
-gulp.task('watch-es5', ['watch-css', 'watch-js-es5', 'watch-img', 'watch-html-es5'])
-gulp.task('build-es5', ['build-css', 'build-js-es5', 'build-img', 'build-html-es5'])
-gulp.task('watch-es6', ['watch-css', 'watch-js-es6', 'watch-img', 'watch-html-es6'])
-gulp.task('build-es6', ['build-css', 'build-js-es6', 'build-img', 'build-html-es6'])
-gulp.task('default', ['watch-js-es6'])
+gulp.task('w5', ['watch-css', 'watch-js-es5', 'watch-img', 'watch-html-es5'])
+gulp.task('b5', ['build-css', 'build-js-es5', 'build-img', 'build-html-es5'])
+
+gulp.task('w5t', ['watch-css', 'watch-js-es5', 'watch-img', 'watch-html-es5-tests', 'watch-js-es5-tests'])
+gulp.task('b5t', ['build-css', 'build-js-es5', 'build-img', 'build-html-es5-tests', 'build-js-es5-tests'])
+
+gulp.task('w6', ['watch-css', 'watch-js-es6', 'watch-img', 'watch-html-es6'])
+gulp.task('b6', ['build-css', 'build-js-es6', 'build-img', 'build-html-es6'])
+gulp.task('default', ['w5t'])
 /*npm install --save-dev packName*/

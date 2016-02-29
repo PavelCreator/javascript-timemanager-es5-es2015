@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title id="title">ES6 Time Manager</title>
+  <title id="title">ES5 Time Manager</title>
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" type="text/css" media="screen"/>
   <link rel="stylesheet" href="build/css/pavelcreatorLib.min.css" type="text/css" media="screen"/>
   <link rel="stylesheet" href="build/css/style.min.css" type="text/css" media="screen"/>
@@ -15,7 +15,7 @@
 <div class="parent" id="app-wrapper">
   <div class="timer-wrapper">
     <div class="header">
-      <h2 class="title">ES6 Time Manager</h2>
+      <h2 class="title">ES5 Time Manager</h2>
       <p class="author">by <a href="http://pavelcreator.com" target='_blank'>PavelCreator</a></p>
     </div>
     <table>
@@ -27,21 +27,21 @@
                    class="time-field"
                    maxlength="2"
                    value="11"
-                />
+            />
             <div type='text' class="colon">:</div>
             <input type="text" name="min"
                    id="min"
                    class="time-field"
                    maxlength="2"
                    value="22"
-                />
+            />
             <div type='text' class="colon">:</div>
             <input type="text" name="sec"
                    id="sec"
                    class="time-field"
                    maxlength="2"
                    value="33"
-                />
+            />
           </div>
         </td>
       </tr>
@@ -87,14 +87,14 @@
           <button class="btn btn-default simple-button btn-color2" id="set90">1.5 hour</button>
         </td>
         <td>
-          <button  class="btn btn-default simple-button btn-color2" id="set120">2 hour</button>
+          <button class="btn btn-default simple-button btn-color2" id="set120">2 hour</button>
         </td>
       </tr>
       <tr>
         <td colspan="2">
           <button class="btn btn-default simple-button btn-color2 colspan2" id="sound">
             <span id="sound-on" class="hide">
-              Enable alarm - <i class="fa fa-bell" ></i>
+              Enable alarm - <i class="fa fa-bell"></i>
             </span>
             <span id="sound-off">
               Disable alarm - <i class="fa fa-bell-slash"></i>
@@ -112,11 +112,13 @@
           </button>
         </td>
         <td colspan="2">
-          <button class="btn btn-default simple-button btn-color2 colspan2" id="set0">Reset - <i class="fa fa-refresh"></i></button>
+          <button class="btn btn-default simple-button btn-color2 colspan2" id="set0">Reset -
+            <i class="fa fa-refresh"></i></button>
         </td>
         <td>
           <button class="btn btn-default simple-button btn-color2" id="toggle-watch">
-            <i class="fa fa-times-circle" id="toggle-watch-icon-hide"></i> <i class="fa fa-plus-circle hide" id="toggle-watch-icon-show"></i> <i class="fa fa-clock-o"></i>
+            <i class="fa fa-times-circle" id="toggle-watch-icon-hide"></i>
+            <i class="fa fa-plus-circle hide" id="toggle-watch-icon-show"></i> <i class="fa fa-clock-o"></i>
           </button>
         </td>
       </tr>
@@ -126,7 +128,8 @@
         <p class="watch-label">Watch:</p>
         <div class="watch-clock-face-field" id="watch">00<span>:</span>00</div>
       </div>
-      <p><span class="legend">Alarm:</span> <span id="settings-alarm-on" class="active">On</span> / <span id="settings-alarm-off">Off</span></p>
+      <p><span class="legend">Alarm:</span> <span id="settings-alarm-on" class="active">On</span> /
+        <span id="settings-alarm-off">Off</span></p>
       <p><span class="legend">In the end:</span>
         <span id="settings-end-continue" class="active">Continue</span> / <span id="settings-end-stop">Stop</span>
       </p>
@@ -154,7 +157,6 @@
     <button class="transparent" id="hidden"></button>
   </div>
 </div>
-
 <!--<script src="src/hoisting.js"></script>
 <script src="src/services/app_service.js"></script>
 <script src="src/services/data_service.js"></script>
@@ -163,6 +165,26 @@
 <script src="src/controllers/event_controller.js"></script>
 <script src="src/controllers/view_controller.js"></script>
 <script src="src/start.js"></script>-->
-<script type="text/javascript" src="build/es6/main.min.js"></script>
+<script type="text/javascript" src="build/es5/main.min.js"></script>
+
+
+<!--tests-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.js"></script>
+<script>
+  mocha.setup('bdd');
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chai/2.0.0/chai.js"></script>
+<!--/tests-->
+<script>
+  var assert = chai.assert;
+  var expect = chai.expect;
+</script>
+<script type="text/javascript" src="build/es5/tests.min.js"></script>
+<div id="mocha"></div>
+<script>
+  mocha.run();
+</script>
 </body>
 </html>
