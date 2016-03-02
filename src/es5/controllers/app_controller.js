@@ -9,7 +9,9 @@ timer = {
   },
   set: function (timeInMin) {
     if (timeInMin == 0) view.startOrStop('stop');
-    view.reset();
+    if (data.flag.mode === 'timer') {
+      view.reset();
+    }
     data.timeInSec = timeInMin * 60;
     if (!data.flag.stop) {
       this.stop();
@@ -64,7 +66,6 @@ timer = {
     data.flag.stop = true;
   },
   changeMode: function (mode) {
-    this.set(0);
     if (mode === undefined) {
       switch (data.flag.mode) {
         case 'timer':
@@ -79,9 +80,10 @@ timer = {
           data.flag.mode = 'timer';
           break;
       }
-    }else{
+    } else {
       data.flag.mode = mode;
     }
+    this.set(0);
   }
 }
 watch = {
