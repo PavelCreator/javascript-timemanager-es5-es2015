@@ -37,6 +37,9 @@ select{
   &.ending{
     color:#d10009;
   }
+  &.watch-color{
+    color:#5d5e61;
+  }
   height:215px;
   font-size:170px;
   font-weight:500;
@@ -100,6 +103,7 @@ select{
 }
 .settings{
   margin:10px;
+  min-height: 170px;
   #settings-melody{
     position:relative;
     z-index:2;

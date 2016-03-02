@@ -80,7 +80,8 @@ gulp.task('build-js-es5', () => {
     .pipe(uglify())
     .pipe(stripDebug())
     .pipe(gulp.dest(config.build.jsES5))
-    .pipe(notify({message: 'Build ES5 task complete'}));
+    .pipe(notify({message: 'Build ES5 task complete'}))
+    .on('error', swallowError);
 });
 
 gulp.task('build-js-es5-tests', () => {
@@ -168,5 +169,5 @@ gulp.task('b5t', ['build-css', 'build-js-es5', 'build-img', 'build-html-es5-test
 
 gulp.task('w6', ['watch-css', 'watch-js-es6', 'watch-img', 'watch-html-es6'])
 gulp.task('b6', ['build-css', 'build-js-es6', 'build-img', 'build-html-es6'])
-gulp.task('default', ['w5t'])
+gulp.task('default', ['w5'])
 /*npm install --save-dev packName*/

@@ -39,6 +39,8 @@ select {
     color: #337ab7; }
   .clock-face.ending {
     color: #d10009; }
+  .clock-face.watch-color {
+    color: #5d5e61; }
   .clock-face .time-field {
     border: 1px solid transparent;
     background: transparent;
@@ -92,7 +94,8 @@ select {
   opacity: 0; }
 
 .settings {
-  margin: 10px; }
+  margin: 10px;
+  min-height: 170px; }
   .settings #settings-melody {
     position: relative;
     z-index: 2; }

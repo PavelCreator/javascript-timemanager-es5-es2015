@@ -43,6 +43,28 @@
                    value="33"
                 />
           </div>
+          <div class="field-wrapper clock-face watch-color hide" id="w-clock-face">
+            <input type="text" name="hour"
+                   id="w-hour"
+                   class="time-field"
+                   maxlength="2"
+                   value="11"
+            />
+            <div type='text' class="colon">:</div>
+            <input type="text" name="min"
+                   id="w-min"
+                   class="time-field"
+                   maxlength="2"
+                   value="22"
+            />
+            <div type='text' class="colon">:</div>
+            <input type="text" name="sec"
+                   id="w-sec"
+                   class="time-field"
+                   maxlength="2"
+                   value="33"
+            />
+          </div>
         </td>
       </tr>
       <tr>
@@ -115,8 +137,11 @@
           <button class="btn btn-default simple-button btn-color2 colspan2" id="set0">Reset - <i class="fa fa-refresh"></i></button>
         </td>
         <td>
-          <button class="btn btn-default simple-button btn-color2" id="toggle-watch">
+<!--          <button class="btn btn-default simple-button btn-color2" id="toggle-watch">
             <i class="fa fa-times-circle" id="toggle-watch-icon-hide"></i> <i class="fa fa-plus-circle hide" id="toggle-watch-icon-show"></i> <i class="fa fa-clock-o"></i>
+          </button>-->
+          <button class="btn btn-default simple-button btn-color2" id="change-mode">
+            Mode
           </button>
         </td>
       </tr>
@@ -126,13 +151,18 @@
         <p class="watch-label">Watch:</p>
         <div class="watch-clock-face-field" id="watch">00<span>:</span>00</div>
       </div>
-      <p><span class="legend">Alarm:</span> <span id="settings-alarm-on" class="active">On</span> / <span id="settings-alarm-off">Off</span></p>
-      <p><span class="legend">In the end:</span>
+      <p><span class="legend">Current mode:</span>
+        <span id="settings-mode-timer" class="active">Timer</span> /
+        <span id="settings-mode-stopwatch">Stop Watch</span> /
+        <span id="settings-mode-watch">Watch</span>
+      </p>
+      <p id="settings-alarm-wrapper"><span class="legend">Alarm:</span> <span id="settings-alarm-on" class="active">On</span> / <span id="settings-alarm-off">Off</span></p>
+      <p id="settings-end-continue-wrapper"><span class="legend">In the end:</span>
         <span id="settings-end-continue" class="active">Continue</span> / <span id="settings-end-stop">Stop</span>
       </p>
-      <p><span class="legend">Watch:</span>
+<!--      <p><span class="legend">Watch:</span>
         <span id="settings-watch-show" class="active">Show</span> / <span id="settings-watch-hide">Hide</span>
-      </p>
+      </p>-->
       <div id="settings-melody" class="">
         <p>
           <span class="legend">Current melody:</span>

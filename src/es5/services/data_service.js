@@ -10,7 +10,8 @@ data = {
     reverse: false,
     sound: true,
     finish: false,
-    showWatch: true
+    showWatch: true,
+    mode: 'timer'
   },
   audio: new Audio(),
   audioSettings:{
@@ -62,5 +63,6 @@ data = {
       name: "Message",
       url: "message.mp3"
     }
-  ]
+  ],
+  timeButtonArr: ['0', '1', '2', '3', '5', '10', '15', '20', '30', '45', '60', '90', '120']
 }
