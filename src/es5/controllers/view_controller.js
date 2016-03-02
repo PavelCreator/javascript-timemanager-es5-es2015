@@ -51,10 +51,16 @@ view = {
     }
   },
   reset: function () {
-    this.stopSound();
-    this.reverse.unset();
-    this.ending.unset();
-    classFnc.remove(document.getElementById('set0'), 'warning');
+    if (data.flag.mode === 'timer') {
+      this.stopSound();
+      this.reverse.unset();
+      this.ending.unset();
+      classFnc.remove(document.getElementById('set0'), 'stopwatch');
+    } else {
+      this.stopSound();
+      this.reverse.unset();
+      this.ending.unset();
+    }
   },
   setSoundMode: function () {
     if (data.flag.sound) {
@@ -296,7 +302,7 @@ view = {
       }, 1000);
     },
     reset: function () {
-      classFnc.add(document.getElementById('set0'), 'warning');
+      classFnc.add(document.getElementById('set0'), 'stopwatch');
     }
   },
   toggleWatch: function () {
@@ -326,6 +332,7 @@ view = {
         classFnc.remove(document.getElementById('settings-mode-stopwatch'), 'active');
         classFnc.remove(document.getElementById('settings-mode-watch'), 'active');
         this.modeView.watch(false);
+        this.modeView.sropwatch(false);
         this.modeView.timer(true);
         break;
 
@@ -336,6 +343,7 @@ view = {
         classFnc.add(document.getElementById('settings-mode-stopwatch'), 'active');
         classFnc.remove(document.getElementById('settings-mode-watch'), 'active');
         this.modeView.watch(false);
+        this.modeView.sropwatch(true);
         this.modeView.timer(false);
         break;
 
@@ -345,6 +353,7 @@ view = {
         classFnc.remove(document.getElementById('settings-mode-stopwatch'), 'active');
         classFnc.add(document.getElementById('settings-mode-watch'), 'active');
         this.modeView.watch(true);
+        this.modeView.sropwatch(false);
         this.modeView.timer(false);
         break;
     }
@@ -356,7 +365,7 @@ view = {
         document.getElementById('finish').disabled = false;
         classFnc.remove(document.getElementById('settings-alarm-wrapper'), 'hide');
         classFnc.remove(document.getElementById('settings-end-continue-wrapper'), 'hide');
-        if (data.flag.sound){
+        if (data.flag.sound) {
           classFnc.remove(document.getElementById('settings-melody'), 'hide');
         }
       } else {
@@ -365,6 +374,15 @@ view = {
         classFnc.add(document.getElementById('settings-alarm-wrapper'), 'hide');
         classFnc.add(document.getElementById('settings-end-continue-wrapper'), 'hide');
         classFnc.add(document.getElementById('settings-melody'), 'hide');
+      }
+    },
+    sropwatch: function (bool) {
+      for (var i = 0; i <= data.timeButtonArr.length - 1; i++) {
+        if (bool) {
+          classFnc.add(document.getElementById("set" + data.timeButtonArr[i]), 'stopwatch');
+        } else {
+          classFnc.remove(document.getElementById("set" + data.timeButtonArr[i]), 'stopwatch');
+        }
       }
     },
     watch: function (bool) {

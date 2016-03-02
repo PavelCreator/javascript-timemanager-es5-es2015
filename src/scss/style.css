@@ -150,11 +150,11 @@ select {
 #run.active {
   color: #007313; }
 
+.stopwatch, .stopwatch:hover, .stopwatch:active, .stopwatch:focus {
+  color: #337ab7; }
+
 #stop.active, #finish-off.warning {
   color: #d10009; }
-
-#set0.warning {
-  color: #337ab7; }
 
 .field-wrapper {
   position: relative; }

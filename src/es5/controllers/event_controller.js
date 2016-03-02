@@ -41,7 +41,7 @@ events = {
           timer.startOrStop();
           break;
 
-        //Reset - `,r,�,�
+        //Reset - `,r
         case 96:
         case 1105:
         case 114:
