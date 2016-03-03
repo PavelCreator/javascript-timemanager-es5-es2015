@@ -29,7 +29,7 @@ timer = {
         if ((!data.flag.stop) && (data.timeInSec == 0)) {
           view.playSound();
         } else {
-          if (data.flag.finish) {
+          if ((data.flag.finish)) {
             view.warning.finishOff();
           }
         }
@@ -40,7 +40,7 @@ timer = {
         view.ending.set();
       }
       if (data.timeInSec == 0) {
-        if (data.flag.finish) {
+        if ((data.flag.finish) && (data.flag.mode === 'timer')) {
           clearTimeout(oneSec);
           view.startOrStop('stop');
           return false;

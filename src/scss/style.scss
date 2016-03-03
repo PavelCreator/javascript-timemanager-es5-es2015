@@ -1,3 +1,7 @@
+$red:#d10009;
+$blue:#337ab7;
+$green:#007313;
+$clockColor:#5d5e61;
 body{
   /*  background:url(http://www.caronfence.com/wp-content/uploads/2014/05/background-light-caron-fence.png) no-repeat center center fixed;*/
   /*  background:url(http://creabuild.com/wp-content/uploads/2015/09/BACKGROUND-LIGHT-GRAY-copy-compressed.png) no-repeat center center fixed;*/
@@ -31,14 +35,13 @@ select{
 }
 .clock-face{
   &.reverse{
-    /*    color:#007313;*/
-    color:#337ab7;
+    color:$blue;
   }
   &.ending{
-    color:#d10009;
+    color:$red;
   }
   &.watch-color{
-    color:#5d5e61;
+    color:$clockColor;
   }
   height:215px;
   font-size:170px;
@@ -65,7 +68,7 @@ select{
     position:relative;
   }
   &.watch-clock-face{
-    margin:-12px 0 -121px 0;
+    margin:-12px -8px -121px 0;
     text-align:right;
     height:auto;
     font-size:80px;
@@ -100,6 +103,9 @@ select{
 }
 .transparent{
   opacity:0;
+}
+.warning{
+  color:$red;
 }
 .settings{
   .settings-block-wrapper{
@@ -194,13 +200,13 @@ select{
   margin:3px 2px 3px 3px;
 }
 #run.active{
-  color:#007313;
+  color:$green;
 }
 .stopwatch, .stopwatch:hover, .stopwatch:active, .stopwatch:focus{
-  color:#337ab7;
+  color:$blue;
 }
 #stop.active, #finish-off.warning{
-  color:#d10009;
+  color:$red;
 }
 .field-wrapper{
   position:relative;

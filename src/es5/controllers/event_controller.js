@@ -53,7 +53,7 @@ events = {
     }
   },
   buttonPress: function () {
-    var nums = ['0', '1', '2', '3', '5', '10', '15', '20', '30', '45', '60', '90', '120'];
+    var nums = data.timeButtonArr;
     for (var i = 0; i <= nums.length - 1; i++) {
       document.getElementById("set" + nums[i]).onclick = (function (x) {
         return function () {
@@ -74,10 +74,6 @@ events = {
         view.setSoundMode();
       }
     }
-    document.getElementById("finish").onclick = function () {
-      view.setFinishMode();
-    }
-
     document.getElementById("settings-end-continue").onclick = function () {
       if (data.flag.finish === true) {
         view.setFinishMode();
@@ -94,10 +90,6 @@ events = {
     }
     document.getElementById("settings-melody-stop").onclick = function () {
       view.setMelodyPlay(false);
-    }
-    document.getElementById("change-mode").onclick = function () {
-      timer.changeMode();
-      view.changeMode();
     }
     var modes = ['timer', 'stopwatch', 'watch'];
     for (var i = 0; i < modes.length; i++) {

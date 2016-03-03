@@ -66,16 +66,12 @@ view = {
     if (data.flag.sound) {
       data.flag.sound = false;
       localStorage.setItem("sound-play", "0");
-      classFnc.add(document.getElementById('sound-off'), 'hide');
-      classFnc.remove(document.getElementById('sound-on'), 'hide');
       classFnc.add(document.getElementById('settings-melody'), 'hide');
       classFnc.remove(document.getElementById('settings-alarm-on'), 'active');
       classFnc.add(document.getElementById('settings-alarm-off'), 'active');
     } else {
       data.flag.sound = true;
       localStorage.setItem("sound-play", "1");
-      classFnc.remove(document.getElementById('sound-off'), 'hide');
-      classFnc.add(document.getElementById('sound-on'), 'hide');
       classFnc.remove(document.getElementById('settings-melody'), 'hide');
       classFnc.add(document.getElementById('settings-alarm-on'), 'active');
       classFnc.remove(document.getElementById('settings-alarm-off'), 'active');
@@ -85,15 +81,11 @@ view = {
     if (data.flag.finish) {
       data.flag.finish = false;
       localStorage.setItem("finish", "0");
-      classFnc.remove(document.getElementById('finish-on'), 'hide');
-      classFnc.add(document.getElementById('finish-off'), 'hide');
       classFnc.add(document.getElementById('settings-end-continue'), 'active');
       classFnc.remove(document.getElementById('settings-end-stop'), 'active');
     } else {
       data.flag.finish = true;
       localStorage.setItem("finish", "1");
-      classFnc.add(document.getElementById('finish-on'), 'hide');
-      classFnc.remove(document.getElementById('finish-off'), 'hide');
       classFnc.remove(document.getElementById('settings-end-continue'), 'active');
       classFnc.add(document.getElementById('settings-end-stop'), 'active');
     }
@@ -301,9 +293,9 @@ view = {
   },
   warning: {
     finishOff: function () {
-      classFnc.add(document.getElementById('finish-off'), 'warning');
+      classFnc.add(document.getElementById('settings-end-continue'), 'warning');
       setTimeout(function () {
-        classFnc.remove(document.getElementById('finish-off'), 'warning');
+        classFnc.remove(document.getElementById('settings-end-continue'), 'warning');
       }, 1000);
     },
     reset: function () {
@@ -347,16 +339,12 @@ view = {
   modeView: {
     timer: function (bool) {
       if (bool) {
-        document.getElementById('sound').disabled = false;
-        document.getElementById('finish').disabled = false;
         classFnc.remove(document.getElementById('settings-alarm-wrapper'), 'hide');
         classFnc.remove(document.getElementById('settings-end-continue-wrapper'), 'hide');
         if (data.flag.sound) {
           classFnc.remove(document.getElementById('settings-melody'), 'hide');
         }
       } else {
-        document.getElementById('sound').disabled = true;
-        document.getElementById('finish').disabled = true;
         classFnc.add(document.getElementById('settings-alarm-wrapper'), 'hide');
         classFnc.add(document.getElementById('settings-end-continue-wrapper'), 'hide');
         classFnc.add(document.getElementById('settings-melody'), 'hide');

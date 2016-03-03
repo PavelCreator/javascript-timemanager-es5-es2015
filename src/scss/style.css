@@ -35,7 +35,6 @@ select {
   font-weight: 500;
   text-align: center; }
   .clock-face.reverse {
-    /*    color:#007313;*/
     color: #337ab7; }
   .clock-face.ending {
     color: #d10009; }
@@ -60,7 +59,7 @@ select {
     z-index: 1;
     position: relative; }
   .clock-face.watch-clock-face {
-    margin: -12px 0 -121px 0;
+    margin: -12px -8px -121px 0;
     text-align: right;
     height: auto;
     font-size: 80px; }
@@ -92,6 +91,9 @@ select {
 
 .transparent {
   opacity: 0; }
+
+.warning {
+  color: #d10009; }
 
 .settings {
   margin: 10px;
