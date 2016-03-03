@@ -310,7 +310,7 @@ view = {
         classFnc.remove(document.getElementById('settings-mode-stopwatch'), 'active');
         classFnc.remove(document.getElementById('settings-mode-watch'), 'active');
         this.modeView.watch(false);
-        this.modeView.sropwatch(false);
+        this.modeView.stopwatch(false);
         this.modeView.timer(true);
         break;
 
@@ -321,7 +321,7 @@ view = {
         classFnc.add(document.getElementById('settings-mode-stopwatch'), 'active');
         classFnc.remove(document.getElementById('settings-mode-watch'), 'active');
         this.modeView.watch(false);
-        this.modeView.sropwatch(true);
+        this.modeView.stopwatch(true);
         this.modeView.timer(false);
         break;
 
@@ -331,7 +331,7 @@ view = {
         classFnc.remove(document.getElementById('settings-mode-stopwatch'), 'active');
         classFnc.add(document.getElementById('settings-mode-watch'), 'active');
         this.modeView.watch(true);
-        this.modeView.sropwatch(false);
+        this.modeView.stopwatch(false);
         this.modeView.timer(false);
         break;
     }
@@ -350,7 +350,7 @@ view = {
         classFnc.add(document.getElementById('settings-melody'), 'hide');
       }
     },
-    sropwatch: function (bool) {
+    stopwatch: function (bool) {
       for (var i = 0; i <= data.timeButtonArr.length - 1; i++) {
         if (bool) {
           classFnc.add(document.getElementById("set" + data.timeButtonArr[i]), 'stopwatch');
