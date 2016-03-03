@@ -1,9 +1,9 @@
 body{
-/*  background:url(http://www.caronfence.com/wp-content/uploads/2014/05/background-light-caron-fence.png) no-repeat center center fixed;*/
-/*  background:url(http://creabuild.com/wp-content/uploads/2015/09/BACKGROUND-LIGHT-GRAY-copy-compressed.png) no-repeat center center fixed;*/
-/*  background:url(http://www.vdgh.ca/wp-content/uploads/2015/09/Silver-Blur-Background.jpg) no-repeat center center fixed;*/
-/*  background:url(http://www.freebiesgallery.com/wp-content/uploads/2013/08/light-blue-background-3.jpg) no-repeat center center fixed;*/
-/*  background:url(https://i.ytimg.com/vi/hPCotoawhk0/maxresdefault.jpg) no-repeat center center fixed;*/
+  /*  background:url(http://www.caronfence.com/wp-content/uploads/2014/05/background-light-caron-fence.png) no-repeat center center fixed;*/
+  /*  background:url(http://creabuild.com/wp-content/uploads/2015/09/BACKGROUND-LIGHT-GRAY-copy-compressed.png) no-repeat center center fixed;*/
+  /*  background:url(http://www.vdgh.ca/wp-content/uploads/2015/09/Silver-Blur-Background.jpg) no-repeat center center fixed;*/
+  /*  background:url(http://www.freebiesgallery.com/wp-content/uploads/2013/08/light-blue-background-3.jpg) no-repeat center center fixed;*/
+  /*  background:url(https://i.ytimg.com/vi/hPCotoawhk0/maxresdefault.jpg) no-repeat center center fixed;*/
   background:url(../img/bg.jpg) no-repeat center center fixed;
   -webkit-background-size:cover;
   -moz-background-size:cover;
@@ -11,7 +11,7 @@ body{
   background-size:cover;
 }
 select{
-  background: rgba(255, 255, 255, 0.8) !important;
+  background:rgba(255, 255, 255, 0.8) !important;
 }
 .timer-wrapper *{
   outline:none !important;
@@ -90,7 +90,7 @@ select{
 }
 .header{
   text-align:center;
-  color:#555555;
+  color:#555;
   z-index:3;
   position:relative;
 }
@@ -102,8 +102,34 @@ select{
   opacity:0;
 }
 .settings{
+  .settings-block-wrapper{
+    position:relative;
+    z-index:7;
+    button{
+      font-size:20px;
+      position:relative;
+      bottom:2px;
+      padding-bottom:4px;
+      i{
+        margin-left:2px;
+      }
+      &.active{
+        font-weight:bold;
+        cursor:auto;
+        &:hover, &:focus, &:active{
+          color:#333;
+          background-color:#e6e6e6;
+          border-color:#adadad;
+        }
+      }
+    }
+  }
+  .watch-clock-face{
+    position:relative;
+    z-index:6;
+  }
   margin:10px;
-  min-height: 170px;
+  min-height:170px;
   #settings-melody{
     position:relative;
     z-index:2;
@@ -113,7 +139,8 @@ select{
     font-size:20px;
     span{
       &.legend{
-        color:#555555;
+        color:#000;
+        font-weight:bold;
       }
       &.active{
         font-weight:bold;

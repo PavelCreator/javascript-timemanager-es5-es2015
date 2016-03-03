@@ -64,12 +64,31 @@ events = {
     document.getElementById("push").onclick = function () {
       timer.startOrStop();
     }
-    document.getElementById("sound").onclick = function () {
-      view.setSoundMode();
+    document.getElementById('settings-alarm-on').onclick = function () {
+      if (data.flag.sound === false) {
+        view.setSoundMode();
+      }
+    }
+    document.getElementById('settings-alarm-off').onclick = function () {
+      if (data.flag.sound === true) {
+        view.setSoundMode();
+      }
     }
     document.getElementById("finish").onclick = function () {
       view.setFinishMode();
     }
+
+    document.getElementById("settings-end-continue").onclick = function () {
+      if (data.flag.finish === true) {
+        view.setFinishMode();
+      }
+    }
+    document.getElementById("settings-end-stop").onclick = function () {
+      if (data.flag.finish === false) {
+        view.setFinishMode();
+      }
+    }
+
     document.getElementById("settings-melody-play").onclick = function () {
       view.setMelodyPlay(true);
     }
@@ -80,9 +99,17 @@ events = {
       timer.changeMode();
       view.changeMode();
     }
-/*    document.getElementById("toggle-watch").onclick = function () {
-      view.toggleWatch();
-    }*/
+    var modes = ['timer', 'stopwatch', 'watch'];
+    for (var i = 0; i < modes.length; i++) {
+      document.getElementById("settings-mode-" + modes[i]).onclick = (function (x) {
+        return function () {
+          if (data.flag.mode !== modes[x]) {
+            timer.changeMode(modes[x]);
+            view.changeMode();
+          }
+        }
+      })(i);
+    }
   },
   resizeEvent: function () {
     addEvent(window, "resize", function (event) {

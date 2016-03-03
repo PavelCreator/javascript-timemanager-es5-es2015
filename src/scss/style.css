@@ -82,7 +82,7 @@ select {
 
 .header {
   text-align: center;
-  color: #555555;
+  color: #555;
   z-index: 3;
   position: relative; }
 
@@ -96,6 +96,26 @@ select {
 .settings {
   margin: 10px;
   min-height: 170px; }
+  .settings .settings-block-wrapper {
+    position: relative;
+    z-index: 7; }
+    .settings .settings-block-wrapper button {
+      font-size: 20px;
+      position: relative;
+      bottom: 2px;
+      padding-bottom: 4px; }
+      .settings .settings-block-wrapper button i {
+        margin-left: 2px; }
+      .settings .settings-block-wrapper button.active {
+        font-weight: bold;
+        cursor: auto; }
+        .settings .settings-block-wrapper button.active:hover, .settings .settings-block-wrapper button.active:focus, .settings .settings-block-wrapper button.active:active {
+          color: #333;
+          background-color: #e6e6e6;
+          border-color: #adadad; }
+  .settings .watch-clock-face {
+    position: relative;
+    z-index: 6; }
   .settings #settings-melody {
     position: relative;
     z-index: 2; }
@@ -103,7 +123,8 @@ select {
     color: #000;
     font-size: 20px; }
     .settings p span.legend {
-      color: #555555; }
+      color: #000;
+      font-weight: bold; }
     .settings p span.active {
       font-weight: bold; }
     .settings p a:hover, .settings p a:focus {

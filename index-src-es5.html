@@ -140,9 +140,6 @@
           <button class="btn btn-default simple-button btn-color2 colspan2" id="set0">Reset - <i class="fa fa-refresh"></i></button>
         </td>
         <td>
-<!--          <button class="btn btn-default simple-button btn-color2" id="toggle-watch">
-            <i class="fa fa-times-circle" id="toggle-watch-icon-hide"></i> <i class="fa fa-plus-circle hide" id="toggle-watch-icon-show"></i> <i class="fa fa-clock-o"></i>
-          </button>-->
           <button class="btn btn-default simple-button btn-color2" id="change-mode">
             Mode
           </button>
@@ -154,19 +151,25 @@
         <p class="watch-label">Watch:</p>
         <div class="watch-clock-face-field" id="watch">00<span>:</span>00</div>
       </div>
-      <p><span class="legend">Current mode:</span>
-        <span id="settings-mode-timer" class="active">Timer</span> /
-        <span id="settings-mode-stopwatch">Stop Watch</span> /
-        <span id="settings-mode-watch">Watch</span>
+      <p class="settings-block-wrapper"><span class="legend">Mode:</span>
+        <button class="btn btn-default btn-color2" id="settings-mode-timer" class="active">Timer
+          <i class="fa fa-arrow-circle-down"></i>
+        </button> /
+        <button class="btn btn-default btn-color2" id="settings-mode-stopwatch">Stop Watch
+          <i class="fa fa-arrow-circle-up"></i>
+        </button> /
+        <button class="btn btn-default btn-color2" id="settings-mode-watch">Watch
+        <i class="fa fa-clock-o"></i></button>
       </p>
-      <p id="settings-alarm-wrapper"><span class="legend">Alarm:</span> <span id="settings-alarm-on" class="active">On</span> / <span id="settings-alarm-off">Off</span></p>
-      <p id="settings-end-continue-wrapper"><span class="legend">In the end:</span>
-        <span id="settings-end-continue" class="active">Continue</span> / <span id="settings-end-stop">Stop</span>
+      <p class="settings-block-wrapper" id="settings-alarm-wrapper">
+        <span class="legend">Alarm:</span>
+        <button class="btn btn-default btn-color2" id="settings-alarm-on" class="active">On <i class="fa fa-bell" ></i></button> /
+        <button class="btn btn-default btn-color2" id="settings-alarm-off">Off <i class="fa fa-bell-slash"></i></button></p>
+      <p class="settings-block-wrapper" id="settings-end-continue-wrapper"><span class="legend">In the end:</span>
+        <button class="btn btn-default btn-color2" id="settings-end-continue">Continue <i class="fa fa-play-circle"></i></button> /
+        <button class="btn btn-default btn-color2" id="settings-end-stop">Stop <i class="fa fa-stop-circle"></i></button>
       </p>
-<!--      <p><span class="legend">Watch:</span>
-        <span id="settings-watch-show" class="active">Show</span> / <span id="settings-watch-hide">Hide</span>
-      </p>-->
-      <div id="settings-melody" class="">
+      <div id="settings-melody" class="settings-block-wrapper">
         <p>
           <span class="legend">Current melody:</span>
           <span id="settings-melody-name" class="active">Alarm Clock 1</span>

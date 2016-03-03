@@ -155,7 +155,6 @@ view = {
       soundVolume = localStorage.getItem("sound-volume"),
       finish = localStorage.getItem("finish"),
       soundPlay = localStorage.getItem("sound-play"),
-      showWatch = localStorage.getItem("show-watch"),
       mode = localStorage.getItem("mode");
 
     if (soundMelodyId) {
@@ -167,15 +166,21 @@ view = {
     }
     if (finish === '1') {
       this.setFinishMode();
+    } else {
+      data.flag.finish = true;
+      this.setFinishMode();
     }
     if (soundPlay === '0') {
       this.setSoundMode();
-    }
-    if (showWatch === '0') {
-      this.toggleWatch();
+    } else {
+      data.flag.sound = false;
+      this.setSoundMode();
     }
     if (mode) {
       timer.changeMode(mode);
+      view.changeMode();
+    } else {
+      timer.changeMode('timer');
       view.changeMode();
     }
   },
@@ -303,25 +308,6 @@ view = {
     },
     reset: function () {
       classFnc.add(document.getElementById('set0'), 'stopwatch');
-    }
-  },
-  toggleWatch: function () {
-    if (data.flag.showWatch) {
-      data.flag.showWatch = false;
-      localStorage.setItem("show-watch", "0");
-      classFnc.add(document.getElementById('watch-clock-face'), 'transparent');
-      classFnc.remove(document.getElementById('toggle-watch-icon-show'), 'hide');
-      classFnc.add(document.getElementById('toggle-watch-icon-hide'), 'hide');
-      classFnc.remove(document.getElementById('settings-watch-show'), 'active');
-      classFnc.add(document.getElementById('settings-watch-hide'), 'active');
-    } else {
-      data.flag.showWatch = true;
-      localStorage.setItem("show-watch", "1");
-      classFnc.remove(document.getElementById('watch-clock-face'), 'transparent');
-      classFnc.add(document.getElementById('toggle-watch-icon-show'), 'hide');
-      classFnc.remove(document.getElementById('toggle-watch-icon-hide'), 'hide');
-      classFnc.add(document.getElementById('settings-watch-show'), 'active');
-      classFnc.remove(document.getElementById('settings-watch-hide'), 'active');
     }
   },
   changeMode: function () {
