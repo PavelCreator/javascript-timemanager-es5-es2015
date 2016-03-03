@@ -17,6 +17,12 @@ select {
   outline: none !important;
   font-family: 'Coda', cursive; }
 
+.timer-name {
+  display: inline-block;
+  width: 243px;
+  position: relative;
+  bottom: 2px; }
+
 .parent {
   align-items: center;
   display: flex;

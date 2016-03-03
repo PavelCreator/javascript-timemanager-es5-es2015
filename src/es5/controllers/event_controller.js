@@ -8,6 +8,18 @@ events = {
       };
     }
   },
+  fieldInsertTimerName: function () {
+    document.getElementById('timer-name').onfocus = function () {
+      data.flag.disableKeyEvents = true;
+    };
+    document.getElementById('timer-name').onblur = function () {
+      data.flag.disableKeyEvents = false;
+    };
+    document.getElementById('timer-name').oninput = function () {
+      console.log("qazwsx");
+      view.renewTitle.timer();
+    };
+  },
   fieldInput: function () {
     var field = ['hour', 'min', 'sec'];
     for (var i = 0; i < field.length; i++) {
@@ -36,9 +48,18 @@ events = {
       switch (e.which) {
         //Stop or Stop - Enter, Space
         case 32:
+          if (!data.flag.disableKeyEvents) {
+            document.getElementById('hidden').focus();
+            timer.startOrStop();
+          }
+          break;
         case 13:
-          document.getElementById('hidden').focus();
-          timer.startOrStop();
+          if (!data.flag.disableKeyEvents) {
+            document.getElementById('hidden').focus();
+            timer.startOrStop();
+          }else{
+            document.getElementById('hidden').focus();
+          }
           break;
 
         //Reset - `,r
@@ -46,7 +67,9 @@ events = {
         case 1105:
         case 114:
         case 1082:
-          timer.set(0);
+          if (!data.flag.disableKeyEvents) {
+            timer.set(0);
+          }
           break;
       }
       /*console.log(e.which);*/

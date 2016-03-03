@@ -16,7 +16,7 @@ view = {
   },
   renewTitle: {
     timer: function () {
-      document.getElementById('title').innerHTML = data.time.h + ':' + data.time.m + ':' + data.time.s;
+      document.getElementById('title').innerHTML = data.time.h + ':' + data.time.m + ':' + data.time.s + ' ' + document.getElementById('timer-name').value;
     },
     watch: function (h, m, s) {
       document.getElementById('title').innerHTML = h + ':' + m + ':' + s;
@@ -362,12 +362,14 @@ view = {
     watch: function (bool) {
       if (bool) {
         classFnc.add(document.getElementById('clock-face'), 'hide');
+        classFnc.add(document.getElementById('settings-name-wrapper'), 'hide');
         classFnc.remove(document.getElementById('w-clock-face'), 'hide');
         classFnc.add(document.getElementById('watch-clock-face'), 'transparent');
         document.getElementById('push').disabled = true;
         view.state.timeButtons('disable');
       } else {
         classFnc.remove(document.getElementById('clock-face'), 'hide');
+        classFnc.remove(document.getElementById('settings-name-wrapper'), 'hide');
         classFnc.add(document.getElementById('w-clock-face'), 'hide');
         classFnc.remove(document.getElementById('watch-clock-face'), 'transparent');
         document.getElementById('push').disabled = false;

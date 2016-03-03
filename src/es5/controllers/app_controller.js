@@ -35,6 +35,7 @@ timer = {
         }
       }
     }
+    data.flag.stop = false;
     oneSec = setTimeout(function () {
       if ((data.timeInSec !== 0) && (data.timeInSec <= 6) && (!data.flag.reverse)) {
         view.ending.set();
@@ -54,7 +55,7 @@ timer = {
       } else {
         data.timeInSec--;
       }
-      data.flag.stop = false;
+
       timerSvc.fromSecToTime();
       view.renewClockFace();
       timer.start();

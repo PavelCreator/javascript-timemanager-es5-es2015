@@ -2,6 +2,7 @@
 events.keypress();
 events.buttonPress();
 events.fieldFocusStopTimer();
+events.fieldInsertTimerName();
 events.resizeEvent();
 events.fieldInput();
 view.renewClockFace();
