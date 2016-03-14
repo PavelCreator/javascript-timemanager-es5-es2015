@@ -1,26 +1,5 @@
-function Timer(){
-  this.startOrStop = function () {
-    if (data.flag.stop) {
-      this.start();
-    } else {
-      view.stopSound();
-      this.stop();
-    }
-  };
-  this.set = function (timeInMin) {
-    if (timeInMin == 0) view.startOrStop('stop');
-    if (data.flag.mode === 'timer') {
-      view.reset();
-    }
-    data.timeInSec = timeInMin * 60;
-    if (!data.flag.stop) {
-      this.stop();
-      data.flag.stop = true;
-    }
-    timerSvc.fromSecToTime();
-    view.renewClockFace();
-  };
-  this.start = function () {
+function Timer() {
+  var start = function () {
     view.startOrStop('start');
     timerSvc.getValuesFromHTML();
     timerSvc.fromTimeToSec();
@@ -58,13 +37,34 @@ function Timer(){
 
       timerSvc.fromSecToTime();
       view.renewClockFace();
-      timer.start();
+      start();
     }, 1000);
   };
   this.stop = function () {
     view.startOrStop('stop');
     clearTimeout(oneSec);
     data.flag.stop = true;
+  };
+  this.startOrStop = function () {
+    if (data.flag.stop) {
+      start();
+    } else {
+      view.stopSound();
+      this.stop();
+    }
+  };
+  this.set = function (timeInMin) {
+    if (timeInMin == 0) view.startOrStop('stop');
+    if (data.flag.mode === 'timer') {
+      view.reset();
+    }
+    data.timeInSec = timeInMin * 60;
+    if (!data.flag.stop) {
+      this.stop();
+      data.flag.stop = true;
+    }
+    timerSvc.fromSecToTime();
+    view.renewClockFace();
   };
   this.changeMode = function (mode) {
     if (mode === undefined) {

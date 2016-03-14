@@ -1,4 +1,17 @@
 function TimerSvc() {
+  var getTimeParameterFromHTML = function (hms, elId) {
+    switch (data.time[hms].length) {
+      case 2:
+        data.time[hms] = document.getElementById(elId).value;
+        break;
+      case 1:
+        data.time[hms] = '0' + document.getElementById(elId).value;
+        break;
+      default:
+        data.time[hms] = '00';
+        break;
+    }
+  };
   this.fromTimeToSec = function () {
     if (data.time.s > 59) {
       data.time.s = 60;
@@ -49,22 +62,9 @@ function TimerSvc() {
     }
   };
   this.getValuesFromHTML = function () {
-    this.getTimeParameterFromHTML('h', 'hour');
-    this.getTimeParameterFromHTML('m', 'min');
-    this.getTimeParameterFromHTML('s', 'sec');
-  };
-  this.getTimeParameterFromHTML = function (hms, elId) {
-    switch (data.time[hms].length) {
-      case 2:
-        data.time[hms] = document.getElementById(elId).value;
-        break;
-      case 1:
-        data.time[hms] = '0' + document.getElementById(elId).value;
-        break;
-      default:
-        data.time[hms] = '00';
-        break;
-    }
+    getTimeParameterFromHTML('h', 'hour');
+    getTimeParameterFromHTML('m', 'min');
+    getTimeParameterFromHTML('s', 'sec');
   };
   this.getNumFromKeycode = function (keycode) {
     console.log("keycode =", keycode);
