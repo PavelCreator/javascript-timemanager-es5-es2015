@@ -1,13 +1,4 @@
 /*Begin*/
-events.keypress();
-events.buttonPress();
-events.fieldFocusStopTimer();
-events.fieldInsertTimerName();
-events.resizeEvent();
-events.fieldInput();
-view.renewClockFace();
-view.setMarginTop();
-view.buildMelodiesList();
-events.changeMelodiesListEvent();
-view.setSettingsFromStorage();
+view.onStart();
+events.onStart();
 watch.start();

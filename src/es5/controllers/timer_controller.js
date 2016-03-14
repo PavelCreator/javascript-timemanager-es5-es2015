@@ -1,13 +1,13 @@
-timer = {
-  startOrStop: function () {
+function Timer(){
+  this.startOrStop = function () {
     if (data.flag.stop) {
       this.start();
     } else {
       view.stopSound();
       this.stop();
     }
-  },
-  set: function (timeInMin) {
+  };
+  this.set = function (timeInMin) {
     if (timeInMin == 0) view.startOrStop('stop');
     if (data.flag.mode === 'timer') {
       view.reset();
@@ -19,8 +19,8 @@ timer = {
     }
     timerSvc.fromSecToTime();
     view.renewClockFace();
-  },
-  start: function () {
+  };
+  this.start = function () {
     view.startOrStop('start');
     timerSvc.getValuesFromHTML();
     timerSvc.fromTimeToSec();
@@ -60,13 +60,13 @@ timer = {
       view.renewClockFace();
       timer.start();
     }, 1000);
-  },
-  stop: function () {
+  };
+  this.stop = function () {
     view.startOrStop('stop');
     clearTimeout(oneSec);
     data.flag.stop = true;
-  },
-  changeMode: function (mode) {
+  };
+  this.changeMode = function (mode) {
     if (mode === undefined) {
       switch (data.flag.mode) {
         case 'timer':
@@ -85,35 +85,6 @@ timer = {
       data.flag.mode = mode;
     }
     this.set(0);
-  }
+  };
 }
-watch = {
-  start: function () {
-    var startWatch = function () {
-      var d = new Date();
-      var h = addZero(d.getHours());
-      var m = addZero(d.getMinutes());
-      var s = addZero(d.getSeconds());
-      var currentTime = h + '<span>:</span>' + m
-      if (document.getElementById('w-hour').value != h) {
-        document.getElementById('w-hour').value = h;
-      }
-      if (document.getElementById('w-min').value != m) {
-        document.getElementById('w-min').value = m;
-      }
-      if (document.getElementById('w-sec').value != s) {
-        document.getElementById('w-sec').value = s;
-        if (data.flag.mode === 'watch') {
-          view.renewTitle.watch(h, m, s);
-        }
-      }
-      if (document.getElementById('watch').innerHTML != currentTime) {
-        document.getElementById('watch').innerHTML = currentTime;
-      }
-    }
-    startWatch();
-    setInterval(function () {
-      startWatch();
-    }, 1000);
-  }
-}
+timer = new Timer();

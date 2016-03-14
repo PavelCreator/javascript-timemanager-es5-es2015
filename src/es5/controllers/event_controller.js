@@ -1,5 +1,5 @@
-events = {
-  fieldFocusStopTimer: function () {
+function Events(){
+  var fieldFocusStopTimer = function () {
     var field = ['hour', 'min', 'sec'];
     for (var i = 0; i <= field.length - 1; i++) {
       document.getElementById(field[i]).onfocus = function () {
@@ -7,8 +7,8 @@ events = {
         timer.stop();
       };
     }
-  },
-  fieldInsertTimerName: function () {
+  };
+  var fieldInsertTimerName = function () {
     document.getElementById('timer-name').onfocus = function () {
       data.flag.disableKeyEvents = true;
     };
@@ -19,8 +19,8 @@ events = {
       console.log("qazwsx");
       view.renewTitle.timer();
     };
-  },
-  fieldInput: function () {
+  };
+  var fieldInput = function () {
     var field = ['hour', 'min', 'sec'];
     for (var i = 0; i < field.length; i++) {
       document.getElementById(field[i]).onkeydown = (function (fieldName) {
@@ -36,11 +36,8 @@ events = {
         }
       })(field[i]);
     }
-  },
-
-  /*getCursorPosition(document.getElementById('min')*/
-
-  keypress: function () {
+  };
+  var keypress = function () {
     window.captureEvents(Event.KEYPRESS);
     window.onkeypress = pressed;
     function pressed(e) {
@@ -74,8 +71,8 @@ events = {
       }
       /*console.log(e.which);*/
     }
-  },
-  buttonPress: function () {
+  };
+  var buttonPress = function () {
     var nums = data.timeButtonArr;
     for (var i = 0; i <= nums.length - 1; i++) {
       document.getElementById("set" + nums[i]).onclick = (function (x) {
@@ -125,13 +122,13 @@ events = {
         }
       })(i);
     }
-  },
-  resizeEvent: function () {
+  };
+  var resizeEvent = function () {
     addEvent(window, "resize", function (event) {
       view.setMarginTop();
     });
-  },
-  changeMelodiesListEvent: function () {
+  };
+  var changeMelodiesListEvent = function () {
     document.getElementById('melodies-list').onchange = function () {
       view.setMelodyPlay(false);
       var value = document.getElementById('melodies-list').value;
@@ -147,5 +144,15 @@ events = {
       localStorage.setItem("sound-volume", volume);
       view.setMelodyPlay(true);
     };
-  }
+  };
+  this.onStart = function(){
+    keypress();
+    buttonPress();
+    fieldFocusStopTimer();
+    fieldInsertTimerName();
+    resizeEvent();
+    fieldInput();
+    changeMelodiesListEvent();
+  };
 }
+events = new Events();

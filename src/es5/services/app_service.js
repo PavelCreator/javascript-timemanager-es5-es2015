@@ -1,5 +1,5 @@
-timerSvc = {
-  fromTimeToSec: function () {
+function TimerSvc() {
+  this.fromTimeToSec = function () {
     if (data.time.s > 59) {
       data.time.s = 60;
     }
@@ -16,8 +16,8 @@ timerSvc = {
       parseFloat(data.time.h) * 3600 +
       parseFloat(data.time.m) * 60 +
       parseFloat(data.time.s);
-  },
-  fromSecToTime: function () {
+  };
+  this.fromSecToTime = function () {
     var timeInSec = data.timeInSec;
     //HOUR
     if (timeInSec >= 90000) {
@@ -47,13 +47,13 @@ timerSvc = {
     } else {
       data.time.s = sec.toString();
     }
-  },
-  getValuesFromHTML: function () {
+  };
+  this.getValuesFromHTML = function () {
     this.getTimeParameterFromHTML('h', 'hour');
     this.getTimeParameterFromHTML('m', 'min');
     this.getTimeParameterFromHTML('s', 'sec');
-  },
-  getTimeParameterFromHTML: function (hms, elId) {
+  };
+  this.getTimeParameterFromHTML = function (hms, elId) {
     switch (data.time[hms].length) {
       case 2:
         data.time[hms] = document.getElementById(elId).value;
@@ -65,8 +65,8 @@ timerSvc = {
         data.time[hms] = '00';
         break;
     }
-  },
-  getNumFromKeycode: function (keycode) {
+  };
+  this.getNumFromKeycode = function (keycode) {
     console.log("keycode =", keycode);
     switch (keycode) {
       case 32:
@@ -149,5 +149,6 @@ timerSvc = {
         return false;
         break;
     }
-  }
+  };
 }
+timerSvc = new TimerSvc();
