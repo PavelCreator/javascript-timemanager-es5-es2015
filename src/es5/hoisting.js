@@ -17,6 +17,5 @@ var
   logger,
   classFnc,
   addEvent,
-  getCursorPosition,
   addZero
   ;
