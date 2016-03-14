@@ -26,15 +26,15 @@ const config = {
     img: 'src/img/*',
     jsES5: [
       'src/es5/hoisting.js',
-      'src/es5/services/*.js',
       'src/es5/storage/*.js',
+      'src/es5/services/*.js',
       'src/es5/controllers/*.js',
       'src/es5/start.js'
     ],
     jsES6: [
       'src/es6/hoisting.js',
-      'src/es6/services/*.js',
       'src/es6/storage/*.js',
+      'src/es6/services/*.js',
       'src/es6/controllers/*.js',
       'src/es6/start.js'
     ],
@@ -79,8 +79,8 @@ gulp.task('build-img', () => {
 gulp.task('build-js-es5', () => {
   return gulp.src(config.src.jsES5)
     .pipe(concat('main.min.js'))
-    //.pipe(uglify())
-    //.pipe(stripDebug())
+    .pipe(uglify())
+    .pipe(stripDebug())
     .pipe(gulp.dest(config.build.jsES5))
     .pipe(notify({message: 'Build ES5 task complete'}))
     .on('error', swallowError);

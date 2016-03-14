@@ -20,11 +20,11 @@ function TimerSvc() {
       data.time.m = 59;
       data.time.s = 60;
     }
-    if (data.time.h > 23) {
+/*    if (data.time.h > 23) {
       data.time.h = 23;
       data.time.m = 59;
       data.time.s = 60;
-    }
+    }*/
     data.timeInSec =
       parseFloat(data.time.h) * 3600 +
       parseFloat(data.time.m) * 60 +
@@ -33,9 +33,9 @@ function TimerSvc() {
   this.fromSecToTime = function () {
     var timeInSec = data.timeInSec;
     //HOUR
-    if (timeInSec >= 90000) {
+/*    if (timeInSec >= 90000) {
       data.time.h = '24';
-    } else {
+    } else {*/
       if (timeInSec >= 36000) {
         data.time.h = '' + Math.floor(timeInSec / 3600);
       } else {
@@ -45,7 +45,7 @@ function TimerSvc() {
           data.time.h = '00';
         }
       }
-    }
+/*    }*/
     //MIN
     var min = Math.floor((timeInSec - parseFloat(data.time.h) * 3600) / 60);
     if (min < 10) {

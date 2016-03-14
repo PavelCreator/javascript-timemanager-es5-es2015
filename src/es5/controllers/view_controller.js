@@ -250,9 +250,6 @@ function View() {
   };
   this.setTimeFromKey = function (fieldName, num, pos) {
     var posEnd, shortFieldName = fieldName.charAt(0);
-    /*    console.log("fieldName =", fieldName);
-     console.log("num =", num);
-     console.log("pos =", pos);*/
     switch (pos) {
       case 0:
         switch (num) {
@@ -279,6 +276,24 @@ function View() {
           case 'delete':
             data.time[shortFieldName] = '0' + data.time[shortFieldName].charAt(1);
             posEnd = 1;
+            break;
+
+          case 6:
+          case 7:
+          case 8:
+          case 9:
+            if (shortFieldName !== 'h') {
+              data.time[shortFieldName] = '5' + data.time[shortFieldName].charAt(1);
+              view.ending.set();
+              setTimeout(function () {
+                  view.ending.unset();
+              }, 300);
+              posEnd = 1;
+            }
+            else {
+              data.time[shortFieldName] = num + data.time[shortFieldName].charAt(1);
+              posEnd = 1;
+            }
             break;
 
           default:
