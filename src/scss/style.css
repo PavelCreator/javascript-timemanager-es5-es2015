@@ -177,6 +177,187 @@ select {
   width: 307px;
   margin: 3px 2px 3px 3px; }
 
+.grid-time-values-wrapper {
+  width: 545px;
+  display: inline-block; }
+  .grid-time-values-wrapper > div {
+    display: inline-block; }
+
+.grid-control-buttons-wrapper {
+  width: 220px;
+  margin: 0 0 -23px 0;
+  position: relative;
+  top: -25px;
+  display: inline-block; }
+  .grid-control-buttons-wrapper > div {
+    display: inline-block; }
+
+.desktop {
+  display: inline; }
+
+.mobile {
+  display: none; }
+
+@media screen and (max-width: 800px) {
+  .desktop {
+    display: none; }
+
+  .mobile {
+    display: inline; }
+
+  .clock-face {
+    font-size: 150px;
+    height: 195px; }
+    .clock-face .time-field {
+      width: 180px;
+      height: 205px; }
+    .clock-face .colon {
+      width: 38px;
+      height: 195px; }
+
+  .grid-level {
+    width: 100%;
+    display: block;
+    text-align: center; }
+    .grid-level > div {
+      display: inline-block; }
+      .grid-level > div button {
+        width: 100%; }
+
+  .grid-time-values-wrapper > div {
+    width: 19%;
+    margin-right: 3px; }
+
+  .grid-control-buttons-wrapper {
+    top: 0; }
+    .grid-control-buttons-wrapper > div {
+      width: 48.1%;
+      margin-right: 3px; }
+      .grid-control-buttons-wrapper > div button {
+        height: 60px;
+        font-size: 29px;
+        padding: 0; }
+
+  .settings {
+    margin-left: 2%;
+    margin-right: 2.3%; } }
+@media screen and (max-width: 700px) {
+  .clock-face {
+    font-size: 128px;
+    height: 180px; }
+    .clock-face .time-field {
+      width: 158px;
+      height: 190px; }
+    .clock-face .colon {
+      width: 30px;
+      height: 180px; }
+
+  .grid-level {
+    width: 97%;
+    margin: 0 auto; }
+
+  .watch-clock-face {
+    display: none; }
+
+  .settings {
+    margin-top: 9px;
+    text-align: center; } }
+@media screen and (max-width: 610px) {
+  .clock-face {
+    font-size: 108px;
+    height: 155px; }
+    .clock-face .time-field {
+      width: 133px;
+      height: 165px; }
+    .clock-face .colon {
+      width: 26px;
+      height: 155px;
+      margin: 0px 5px; }
+
+  .grid-level {
+    width: 95%; } }
+@media screen and (max-width: 530px) {
+  .clock-face {
+    font-size: 88px;
+    height: 135px; }
+    .clock-face .time-field {
+      width: 113px;
+      height: 145px; }
+    .clock-face .colon {
+      width: 20px;
+      height: 135px; }
+
+  .grid-level {
+    width: 93%; }
+
+  .simple-button {
+    font-size: 18px;
+    margin: 2px; }
+
+  .settings p,
+  .settings .settings-block-wrapper button {
+    font-size: 17px; }
+
+  .settings p select.melodies-list {
+    width: 138px; }
+
+  .settings p select.melodies-list.volume-list {
+    width: 87px; }
+
+  .mobile-br {
+    display: block;
+    margin-bottom: 5px; }
+
+  .timer-name {
+    width: 193px; }
+
+  .btn {
+    padding: 5px 8px; } }
+.m437 {
+  display: inline; }
+
+.l437 {
+  display: none; }
+
+@media screen and (max-width: 437px) {
+  .m437 {
+    display: none; }
+
+  .l437 {
+    display: inline; }
+
+  .settings .settings-block-wrapper button {
+    margin-bottom: 4px; }
+
+  #settings-name-wrapper {
+    margin-top: -4px; }
+
+  .clock-face {
+    font-size: 68px;
+    height: 115px; }
+    .clock-face .time-field {
+      width: 93px;
+      height: 125px; }
+    .clock-face .colon {
+      width: 16px;
+      height: 115px; } }
+@media screen and (max-width: 360px) {
+  .clock-face {
+    font-size: 58px;
+    height: 95px; }
+    .clock-face .time-field {
+      width: 80px;
+      height: 105px; }
+    .clock-face .colon {
+      width: 14px;
+      height: 95px; }
+
+  .title {
+    font-size: 32px; }
+
+  .grid-control-buttons-wrapper > div button {
+    height: 45px;
+    font-size: 24px; } }
 #run.active {
   color: #007313; }
 
