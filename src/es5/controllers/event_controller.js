@@ -16,7 +16,6 @@ function Events(){
       data.flag.disableKeyEvents = false;
     };
     document.getElementById('timer-name').oninput = function () {
-      console.log("qazwsx");
       view.renewTitle.timer();
     };
   };

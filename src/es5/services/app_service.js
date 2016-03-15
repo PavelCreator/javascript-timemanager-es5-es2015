@@ -30,8 +30,16 @@ function TimerSvc() {
       parseFloat(data.time.m) * 60 +
       parseFloat(data.time.s);
   };
+  var setTimeLocalStorage = function(){
+    if ((data.flag.reverse === true) && (data.flag.mode === 'timer')) {
+      localStorage.setItem("time", 0);
+    } else {
+      localStorage.setItem("time", data.timeInSec);
+    }
+  };
   this.fromSecToTime = function () {
     var timeInSec = data.timeInSec;
+    setTimeLocalStorage();
     //HOUR
 /*    if (timeInSec >= 90000) {
       data.time.h = '24';

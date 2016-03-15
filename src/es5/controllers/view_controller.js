@@ -89,7 +89,8 @@ function View() {
       soundVolume = localStorage.getItem("sound-volume"),
       finish = localStorage.getItem("finish"),
       soundPlay = localStorage.getItem("sound-play"),
-      mode = localStorage.getItem("mode");
+      mode = localStorage.getItem("mode"),
+      time = localStorage.getItem("time");
 
     if (soundMelodyId) {
       document.getElementById('settings-melody-name').innerHTML = data.audios[soundMelodyId].name;
@@ -116,6 +117,14 @@ function View() {
     } else {
       timer.changeMode('timer');
       view.changeMode();
+    }
+    if (time) {
+      
+      console.log(time);
+      data.timeInSec = time;
+      timerSvc.fromSecToTime();
+      _this.renewClockFace();
+      logger();
     }
   };
 
