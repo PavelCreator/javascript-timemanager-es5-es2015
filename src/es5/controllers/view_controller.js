@@ -119,7 +119,7 @@ function View() {
       view.changeMode();
     }
     if (time) {
-      
+
       console.log(time);
       data.timeInSec = time;
       timerSvc.fromSecToTime();
@@ -130,7 +130,11 @@ function View() {
 
   this.renewTitle = {
     timer: function () {
-      document.getElementById('title').innerHTML = data.time.h + ':' + data.time.m + ':' + data.time.s + ' ' + document.getElementById('timer-name').value;
+      if (data.time.h == '00') {
+        document.getElementById('title').innerHTML = data.time.m + ':' + data.time.s + ' ' + document.getElementById('timer-name').value;
+      } else {
+        document.getElementById('title').innerHTML = data.time.h + ':' + data.time.m + ':' + data.time.s + ' ' + document.getElementById('timer-name').value;
+      }
     },
     watch: function (h, m, s) {
       document.getElementById('title').innerHTML = h + ':' + m + ':' + s;
@@ -295,8 +299,8 @@ function View() {
               data.time[shortFieldName] = '5' + data.time[shortFieldName].charAt(1);
               view.ending.set();
               setTimeout(function () {
-                  view.ending.unset();
-              }, 300);
+                view.ending.unset();
+              }, 1000);
               posEnd = 1;
             }
             else {

@@ -1,0 +1,8 @@
+To deploy project enter in terminal command:
+npm install
+
+To create ES5 project enter in terminal command:
+gulp b5
+
+To run End-to-End tests enter in terminal command:
+node nightwatch.js
