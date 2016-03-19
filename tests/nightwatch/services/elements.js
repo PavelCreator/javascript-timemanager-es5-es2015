@@ -63,6 +63,8 @@ module.exports = {
     Run_Stop:{
       Run:'#run',
       Stop:'#stop'
-    }
+    },
+    Big_Timer_Wrapper:'#clock-face',
+    Big_Watch_Wrapper:'#w-clock-face'
   }
 };
