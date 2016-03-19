@@ -89,19 +89,129 @@ module.exports = {
     browser.keys([
       browser.Keys.LEFT_ARROW,
       browser.Keys.LEFT_ARROW,
-      '1','2','3','4','5','6'
+      '1', '2', '3', '4', '5', '6'
     ])
     browser.assert.value(el.Fields.Timer.Hour, "12");
     browser.assert.value(el.Fields.Timer.Min, "34");
     browser.assert.value(el.Fields.Timer.Sec, "56");
     browser.assert.title("12:34:56");
 
-    browser.click(el.Buttons.Run_Stop);
+    browser.keys(browser.Keys.ENTER);
+    /*Start*/
     browser.pause(1000);
-    browser.assert.value(el.Fields.Timer.Hour, "12");
-    browser.assert.value(el.Fields.Timer.Min, "34");
-    browser.assert.value(el.Fields.Timer.Sec, "55");
     browser.assert.title("12:34:55");
 
+    browser.keys(browser.Keys.SPACE);
+    /*Stop*/
+    browser.pause(1000);
+    browser.assert.title("12:34:55");
+
+    browser.click(el.Fields.Timer.Sec);
+    browser.keys([
+      browser.Keys.LEFT_ARROW,
+      browser.Keys.LEFT_ARROW,
+      browser.Keys.DELETE,
+      browser.Keys.DELETE,
+      browser.Keys.BACK_SPACE,
+      browser.Keys.BACK_SPACE,
+      browser.Keys.BACK_SPACE,
+      browser.Keys.BACK_SPACE,
+      browser.Keys.BACK_SPACE,
+      browser.Keys.BACK_SPACE,
+      browser.Keys.BACK_SPACE,
+      browser.Keys.BACK_SPACE
+    ]);
+    browser.assert.value(el.Fields.Timer.Hour, "00");
+    browser.assert.value(el.Fields.Timer.Min, "00");
+    browser.assert.value(el.Fields.Timer.Sec, "00");
+    browser.assert.title("00:00");
+  },
+  'Ending and Reverse': function (browser) {
+    browser.click(el.Buttons.Reset);
+    browser.click(el.Settings.In_The_End.Continue);
+
+    browser.click(el.Fields.Timer.Sec);
+    browser.keys([
+      browser.Keys.LEFT_ARROW,
+      '7',
+    ])
+    browser.assert.title("00:07");
+
+    browser.keys(browser.Keys.SPACE);
+    browser.pause(1000);
+    browser.assert.title("00:06");
+    browser.assert.cssClassNotPresent(el.State.Big_Timer_Wrapper, "ending");
+    browser.assert.cssClassNotPresent(el.State.Big_Timer_Wrapper, "reverse");
+
+    browser.pause(1000);
+    browser.assert.title("00:05");
+    browser.assert.cssClassPresent(el.State.Big_Timer_Wrapper, "ending");
+    browser.assert.cssClassNotPresent(el.State.Big_Timer_Wrapper, "reverse");
+
+    browser.click(el.Fields.Timer.Sec);
+    browser.keys([
+      browser.Keys.LEFT_ARROW,
+      '1',
+    ])
+
+    browser.keys(browser.Keys.SPACE);
+    browser.pause(1000);
+    browser.assert.title("00:00");
+    browser.assert.cssClassPresent(el.State.Big_Timer_Wrapper, "ending");
+    browser.assert.cssClassNotPresent(el.State.Big_Timer_Wrapper, "reverse");
+
+    browser.pause(1000);
+    browser.assert.title("00:01");
+    browser.assert.cssClassNotPresent(el.State.Big_Timer_Wrapper, "ending");
+    browser.assert.cssClassPresent(el.State.Big_Timer_Wrapper, "reverse");
+
+    browser.click(el.Buttons.Reset);
+    browser.click(el.Settings.In_The_End.Stop);
+
+    browser.click(el.Fields.Timer.Sec);
+    browser.keys([
+      browser.Keys.LEFT_ARROW,
+      '1',
+    ])
+
+    browser.keys(browser.Keys.SPACE);
+    browser.pause(1000);
+    browser.assert.title("00:00");
+    browser.assert.cssClassPresent(el.State.Big_Timer_Wrapper, "ending");
+    browser.assert.cssClassNotPresent(el.State.Big_Timer_Wrapper, "reverse");
+    browser.assert.cssClassNotPresent(el.State.Run_Stop.Run, "active");
+    browser.assert.cssClassPresent(el.State.Run_Stop.Stop, "active");
+
+    browser.pause(1000);
+    browser.assert.title("00:00");
+    browser.assert.cssClassPresent(el.State.Big_Timer_Wrapper, "ending");
+    browser.assert.cssClassNotPresent(el.State.Big_Timer_Wrapper, "reverse");
+    browser.assert.cssClassPresent(el.State.Run_Stop.Run, "active");
+    browser.assert.cssClassNotPresent(el.State.Run_Stop.Stop, "active");
+
+    browser.click(el.Buttons.Reset);
+    browser.keys(browser.Keys.SPACE);
+    browser.pause(500);
+    browser.assert.cssClassPresent(el.Settings.In_The_End.Continue, "warning");
+    browser.pause(1000);
+    browser.assert.cssClassNotPresent(el.Settings.In_The_End.Continue, "warning");
+  },
+  'Name': function (browser) {
+    browser
+      .click(el.Buttons.Reset)
+      .assert.title("00:00")
+
+      .setValue(el.Settings.Name.Field, 'JS')
+      .assert.title("00:00 JS")
+
+      .click(el.Buttons.Min_1)
+      .assert.title("01:00 JS")
+
+      .click(el.Settings.Name.Field)
+      .keys([
+        browser.Keys.BACK_SPACE,
+        browser.Keys.BACK_SPACE
+      ])
+      .assert.title("01:00");
   },
 };

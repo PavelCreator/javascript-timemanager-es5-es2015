@@ -20,9 +20,15 @@ module.exports = {
   },
   'Timer Mode: Timer Counting Down': function (browser){
     _02_timer_mode['Timer Counting Down'](browser)
-  },*/
+  },
   'Timer Mode: Enter value from keyboard': function (browser){
     _02_timer_mode['Enter value from keyboard'](browser)
+  },
+  'Timer Mode: Ending and Reverse': function (browser){
+    _02_timer_mode['Ending and Reverse'](browser)
+  },*/
+  'Timer Mode: Name': function (browser){
+    _02_timer_mode['Name'](browser)
   },
   'Close Browser': function (browser) {
     _99_close["Close Browser"](browser);
