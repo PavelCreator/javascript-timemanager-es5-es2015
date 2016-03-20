@@ -91,7 +91,8 @@ function View() {
       soundPlay = localStorage.getItem("sound-play"),
       mode = localStorage.getItem("mode"),
       time = localStorage.getItem("time"),
-      reverse = localStorage.getItem("reverse");
+      reverse = localStorage.getItem("reverse"),
+      name = localStorage.getItem("name");
 
     if (soundMelodyId) {
       document.getElementById('settings-melody-name').innerHTML = data.audios[soundMelodyId].name;
@@ -120,23 +121,34 @@ function View() {
       view.changeMode();
     }
     if (time) {
-      console.log(time);
-      data.timeInSec = time;
-      timerSvc.fromSecToTime();
-      _this.renewClockFace();
+      if (!localStorage.getItem('singleton')) {
+        data.timeInSec = time;
+        timerSvc.fromSecToTime();
+        _this.renewClockFace();
+      }
     }
-    if (reverse === 'true'){
+    if (reverse === 'true') {
       view.reverse.set();
       view.warning.reset();
     }
+    if (name) {
+      document.getElementById('timer-name').value = name;
+      if (data.flag.mode !== 'watch') view.renewTitle.timer();
+    }
   };
-
   this.renewTitle = {
     timer: function () {
       if (data.time.h == '00') {
         document.getElementById('title').innerHTML = data.time.m + ':' + data.time.s + ' ' + document.getElementById('timer-name').value;
       } else {
         document.getElementById('title').innerHTML = data.time.h + ':' + data.time.m + ':' + data.time.s + ' ' + document.getElementById('timer-name').value;
+      }
+      if (document.getElementById('timer-name').value !== '') {
+        localStorage.setItem('name', document.getElementById('timer-name').value)
+      } else {
+        if (localStorage.getItem('name')) {
+          localStorage.setItem('name', localStorage.getItem('name'));
+        }
       }
     },
     watch: function (h, m, s) {
@@ -164,10 +176,8 @@ function View() {
   this.warning = {
     finishOff: function () {
       classFnc.add(document.getElementById('settings-end-continue'), 'warning');
-      classFnc.add(document.getElementById('settings-mode-stopwatch'), 'warning');
       setTimeout(function () {
         classFnc.remove(document.getElementById('settings-end-continue'), 'warning');
-        classFnc.remove(document.getElementById('settings-mode-stopwatch'), 'warning');
       }, 1000);
     },
     reset: function () {
@@ -248,7 +258,7 @@ function View() {
       html.clientHeight, html.scrollHeight, html.offsetHeight);
 
     if (height > 600) {
-      var marginTop = (height - 600) * 0.37;
+      var marginTop = (height - 600) * 0.25;
       document.getElementById('app-wrapper').style.marginTop = marginTop + 'px';
     }
   };

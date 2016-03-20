@@ -1,4 +1,4 @@
-function Events(){
+function Events() {
   var fieldFocusStopTimer = function () {
     var field = ['hour', 'min', 'sec'];
     for (var i = 0; i <= field.length - 1; i++) {
@@ -17,6 +17,7 @@ function Events(){
     };
     document.getElementById('timer-name').oninput = function () {
       view.renewTitle.timer();
+      localStorage.setItem('name', document.getElementById('timer-name').value)
     };
   };
   var fieldInput = function () {
@@ -53,7 +54,7 @@ function Events(){
           if (!data.flag.disableKeyEvents) {
             document.getElementById('hidden').focus();
             timer.startOrStop();
-          }else{
+          } else {
             document.getElementById('hidden').focus();
           }
           break;
@@ -100,7 +101,7 @@ function Events(){
     }
     document.getElementById("settings-end-stop").onclick = function () {
       if (data.flag.finish === false) {
-        if (data.flag.reverse){
+        if (data.flag.reverse) {
           timer.set('0');
         }
         view.setFinishMode();
@@ -130,6 +131,29 @@ function Events(){
       view.setMarginTop();
     });
   };
+  this.modalLogic = {
+    watchers: function () {
+      document.getElementById("openModal").onclick = function () {
+        events.modalLogic.openModal();
+      }
+      document.getElementById("closeModal").onclick = function () {
+        events.modalLogic.closeModal();
+      }
+      window.onclick = function (event) {
+        if (event.target == document.getElementById('modalWrapper')) {
+          events.modalLogic.closeModal();
+        }
+      }
+    },
+    openModal: function (){
+      document.getElementById('modalWrapper').style.display = "block";
+      document.getElementsByTagName("html")[0].style.overflow = "hidden";
+    },
+    closeModal: function(){
+      document.getElementById('modalWrapper').style.display = "none";
+      document.getElementsByTagName("html")[0].style.overflow = "auto";
+    }
+  }
   var changeMelodiesListEvent = function () {
     document.getElementById('melodies-list').onchange = function () {
       view.setMelodyPlay(false);
@@ -147,7 +171,7 @@ function Events(){
       view.setMelodyPlay(true);
     };
   };
-  this.onStart = function(){
+  this.onStart = function () {
     keypress();
     buttonPress();
     fieldFocusStopTimer();
@@ -155,6 +179,7 @@ function Events(){
     resizeEvent();
     fieldInput();
     changeMelodiesListEvent();
+    this.modalLogic.watchers();
   };
 }
 events = new Events();
