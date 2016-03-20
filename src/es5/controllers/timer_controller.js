@@ -8,9 +8,11 @@ function Timer() {
         if ((!data.flag.stop) && (data.timeInSec == 0)) {
           view.setMelodyPlay(true);
         } else {
-          if ((data.flag.finish)) {
+          if ((data.flag.finish) && (data.flag.mode === 'timer')) {
             view.warning.finishOff();
-            view.startOrStop('stop');
+            setTimeout(function () {
+              view.startOrStop('stop');
+            }, 1000);
             return;
           }
         }

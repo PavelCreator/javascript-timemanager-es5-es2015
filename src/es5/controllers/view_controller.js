@@ -161,8 +161,10 @@ function View() {
   this.warning = {
     finishOff: function () {
       classFnc.add(document.getElementById('settings-end-continue'), 'warning');
+      classFnc.add(document.getElementById('settings-mode-stopwatch'), 'warning');
       setTimeout(function () {
         classFnc.remove(document.getElementById('settings-end-continue'), 'warning');
+        classFnc.remove(document.getElementById('settings-mode-stopwatch'), 'warning');
       }, 1000);
     },
     reset: function () {
