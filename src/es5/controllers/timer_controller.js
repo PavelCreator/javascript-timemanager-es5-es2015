@@ -10,6 +10,8 @@ function Timer() {
         } else {
           if ((data.flag.finish)) {
             view.warning.finishOff();
+            view.startOrStop('stop');
+            return;
           }
         }
       }
