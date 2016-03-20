@@ -92,7 +92,8 @@ function View() {
       mode = localStorage.getItem("mode"),
       time = localStorage.getItem("time"),
       reverse = localStorage.getItem("reverse"),
-      name = localStorage.getItem("name");
+      name = localStorage.getItem("name"),
+      firstTime = localStorage.getItem("firstTime");
 
     if (soundMelodyId) {
       document.getElementById('settings-melody-name').innerHTML = data.audios[soundMelodyId].name;
@@ -134,6 +135,10 @@ function View() {
     if (name) {
       document.getElementById('timer-name').value = name;
       if (data.flag.mode !== 'watch') view.renewTitle.timer();
+    }
+    if (!firstTime){
+      events.modalLogic.openModal();
+      localStorage.setItem('firstTime','true');
     }
   };
   this.renewTitle = {
