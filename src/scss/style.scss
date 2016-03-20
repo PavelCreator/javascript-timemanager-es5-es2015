@@ -1,4 +1,5 @@
 $red:#d10009;
+$red_dark:#950009;
 $blue:#337ab7;
 $green:#007313;
 $clockColor:#5d5e61;
@@ -13,6 +14,12 @@ body{
   -moz-background-size:cover;
   -o-background-size:cover;
   background-size:cover;
+}
+.red{
+  color:$red;
+  &:hover,.red:focus{
+    color:$red_dark;
+  }
 }
 select{
   background:rgba(255, 255, 255, 0.8) !important;

@@ -10,6 +10,11 @@ body {
   -o-background-size: cover;
   background-size: cover; }
 
+.red {
+  color: #d10009; }
+  .red:hover, .red .red:focus {
+    color: #950009; }
+
 select {
   background: rgba(255, 255, 255, 0.8) !important; }
 

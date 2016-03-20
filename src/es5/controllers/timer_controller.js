@@ -6,7 +6,7 @@ function Timer() {
     if (data.timeInSec == 0) {
       if (data.flag.sound) {
         if ((!data.flag.stop) && (data.timeInSec == 0)) {
-          view.playSound();
+          view.setMelodyPlay(true);
         } else {
           if ((data.flag.finish)) {
             view.warning.finishOff();
