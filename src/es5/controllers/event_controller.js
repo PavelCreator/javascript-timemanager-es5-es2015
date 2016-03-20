@@ -125,6 +125,9 @@ function Events() {
         }
       })(i);
     }
+    document.getElementById("copyToClipboard").onclick = function () {
+      view.copyToClipboard();
+    }
   };
   var resizeEvent = function () {
     addEvent(window, "resize", function (event) {
@@ -145,11 +148,11 @@ function Events() {
         }
       }
     },
-    openModal: function (){
+    openModal: function () {
       document.getElementById('modalWrapper').style.display = "block";
       document.getElementsByTagName("html")[0].style.overflow = "hidden";
     },
-    closeModal: function(){
+    closeModal: function () {
       document.getElementById('modalWrapper').style.display = "none";
       document.getElementsByTagName("html")[0].style.overflow = "auto";
     }

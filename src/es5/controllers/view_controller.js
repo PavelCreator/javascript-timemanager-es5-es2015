@@ -136,9 +136,9 @@ function View() {
       document.getElementById('timer-name').value = name;
       if (data.flag.mode !== 'watch') view.renewTitle.timer();
     }
-    if (!firstTime){
+    if (!firstTime) {
       events.modalLogic.openModal();
-      localStorage.setItem('firstTime','true');
+      localStorage.setItem('firstTime', 'true');
     }
   };
   this.renewTitle = {
@@ -444,6 +444,20 @@ function View() {
         modeView.timer(false);
         break;
     }
+  };
+  this.copyToClipboard = function () {
+    var textArea = document.createElement("textarea");
+    textArea.value = data.time.h + ':' + data.time.m + ':' + data.time.s;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+    document.getElementById('copySuccess').style.opacity = '1';
+    classFnc.add(document.getElementById('copyToClipboard'), 'green');
+    setTimeout(function () {
+      document.getElementById('copySuccess').style.opacity = '0';
+      classFnc.remove(document.getElementById('copyToClipboard'), 'green');
+    }, 1000);
   };
   this.onStart = function () {
     this.renewClockFace();

@@ -511,6 +511,19 @@ a:hover, a:focus{
     margin-bottom:14px;
   }
 }
+.links{
+  position:relative;
+  left:10px;
+  top:26px;
+  font-size:19px;
+  margin-bottom:-1px;
+}
+#copySuccess{
+  opacity:0;
+}
+.green, .green:hover, .green:focus{
+  color:$green;
+}
 @media screen and (max-width:600px) {
   .modal-content{
     font-size:16px;
