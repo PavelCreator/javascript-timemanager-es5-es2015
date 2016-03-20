@@ -1,7 +1,7 @@
-var _00_start = require('./../tests/00-start');
-var _01_init = require('./../tests/01-init');
-var _02_timer_mode = require('./../tests/02-timer_mode');
-var _99_close = require('./../tests/99-close');
+var _00_start = require('./tests/00-start');
+var _01_init = require('./tests/01-init');
+var _02_timer_mode = require('./tests/02-timer_mode');
+var _99_close = require('./tests/99-close');
 module.exports = {
   'Open Browser': function (browser) {
     _00_start['Open Browser'](browser);
