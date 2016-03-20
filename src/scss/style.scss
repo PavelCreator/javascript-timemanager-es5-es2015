@@ -136,6 +136,9 @@ select{
       &.active{
         font-weight:bold;
         cursor:auto;
+        & i{
+          cursor:auto;
+        }
         &:hover, &:focus, &:active{
           color:#333;
           background-color:#e6e6e6;

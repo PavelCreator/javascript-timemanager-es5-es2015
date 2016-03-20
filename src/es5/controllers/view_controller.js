@@ -90,7 +90,8 @@ function View() {
       finish = localStorage.getItem("finish"),
       soundPlay = localStorage.getItem("sound-play"),
       mode = localStorage.getItem("mode"),
-      time = localStorage.getItem("time");
+      time = localStorage.getItem("time"),
+      reverse = localStorage.getItem("reverse");
 
     if (soundMelodyId) {
       document.getElementById('settings-melody-name').innerHTML = data.audios[soundMelodyId].name;
@@ -119,12 +120,14 @@ function View() {
       view.changeMode();
     }
     if (time) {
-
       console.log(time);
       data.timeInSec = time;
       timerSvc.fromSecToTime();
       _this.renewClockFace();
-      logger();
+    }
+    if (reverse === 'true'){
+      view.reverse.set();
+      view.warning.reset();
     }
   };
 

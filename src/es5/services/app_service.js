@@ -20,40 +20,41 @@ function TimerSvc() {
       data.time.m = 59;
       data.time.s = 60;
     }
-/*    if (data.time.h > 23) {
-      data.time.h = 23;
-      data.time.m = 59;
-      data.time.s = 60;
-    }*/
+    /*    if (data.time.h > 23) {
+     data.time.h = 23;
+     data.time.m = 59;
+     data.time.s = 60;
+     }*/
     data.timeInSec =
       parseFloat(data.time.h) * 3600 +
       parseFloat(data.time.m) * 60 +
       parseFloat(data.time.s);
   };
-  var setTimeLocalStorage = function(){
+  var setTimeLocalStorage = function () {
     if ((data.flag.reverse === true) && (data.flag.mode === 'timer')) {
-      localStorage.setItem("time", 0);
-    } else {
-      localStorage.setItem("time", data.timeInSec);
+      localStorage.setItem("reverse", true);
+    }else{
+      localStorage.setItem("reverse", false);
     }
+    localStorage.setItem("time", data.timeInSec);
   };
   this.fromSecToTime = function () {
     var timeInSec = data.timeInSec;
     setTimeLocalStorage();
     //HOUR
-/*    if (timeInSec >= 90000) {
-      data.time.h = '24';
-    } else {*/
-      if (timeInSec >= 36000) {
-        data.time.h = '' + Math.floor(timeInSec / 3600);
+    /*    if (timeInSec >= 90000) {
+     data.time.h = '24';
+     } else {*/
+    if (timeInSec >= 36000) {
+      data.time.h = '' + Math.floor(timeInSec / 3600);
+    } else {
+      if (timeInSec >= 3600) {
+        data.time.h = '0' + Math.floor(timeInSec / 3600);
       } else {
-        if (timeInSec >= 3600) {
-          data.time.h = '0' + Math.floor(timeInSec / 3600);
-        } else {
-          data.time.h = '00';
-        }
+        data.time.h = '00';
       }
-/*    }*/
+    }
+    /*    }*/
     //MIN
     var min = Math.floor((timeInSec - parseFloat(data.time.h) * 3600) / 60);
     if (min < 10) {
