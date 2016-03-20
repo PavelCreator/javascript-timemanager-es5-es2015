@@ -100,6 +100,9 @@ function Events(){
     }
     document.getElementById("settings-end-stop").onclick = function () {
       if (data.flag.finish === false) {
+        if (data.flag.reverse){
+          timer.set('0');
+        }
         view.setFinishMode();
       }
     }
