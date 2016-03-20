@@ -29,8 +29,13 @@ module.exports = {
     browser.expect.element(el.State.Big_Watch_Wrapper).to.not.be.visible;
 
     /*State and classes*/
-    browser.assert.cssClassPresent(el.State.Run_Stop.Run, "active");
-    browser.assert.cssClassNotPresent(el.State.Run_Stop.Stop, "active");
+    browser
+      .assert.cssClassPresent(el.State.Run_Stop.Run, "active")
+      .assert.cssClassNotPresent(el.State.Run_Stop.Stop, "active")
+
+      .assert.cssClassPresent(el.Settings.Mode.Timer, "active")
+      .assert.cssClassNotPresent(el.Settings.Mode.Stop_Watch, "active")
+      .assert.cssClassNotPresent(el.Settings.Mode.Watch, "active")
   },
   'Stop Watch Mode': function (browser) {
     browser.click(el.Settings.Mode.Stop_Watch);
@@ -60,7 +65,12 @@ module.exports = {
         browser.assert.cssClassPresent(el.Buttons[key], "stopwatch");
       }
     }
-    browser.assert.cssClassPresent(el.State.Big_Timer_Wrapper, "reverse");
+    browser
+      .assert.cssClassPresent(el.State.Big_Timer_Wrapper, "reverse")
+
+      .assert.cssClassNotPresent(el.Settings.Mode.Timer, "active")
+      .assert.cssClassPresent(el.Settings.Mode.Stop_Watch, "active")
+      .assert.cssClassNotPresent(el.Settings.Mode.Watch, "active")
   },
   'Watch Mode': function (browser) {
     browser.click(el.Settings.Mode.Watch);
@@ -88,5 +98,10 @@ module.exports = {
     for (var key in el.Buttons) {
       browser.assert.attributeEquals(el.Buttons[key], "disabled", "true");
     }
+
+     browser
+      .assert.cssClassNotPresent(el.Settings.Mode.Timer, "active")
+      .assert.cssClassNotPresent(el.Settings.Mode.Stop_Watch, "active")
+      .assert.cssClassPresent(el.Settings.Mode.Watch, "active")
   }
 };

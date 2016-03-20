@@ -6,7 +6,7 @@ module.exports = {
   'Open Browser': function (browser) {
     _00_start['Open Browser'](browser);
   },
-/*  'Init : Timer Mode': function (browser) {
+  'Init : Timer Mode': function (browser) {
     _01_init['Timer Mode'](browser)
   },
   'Init : Stop Watch Mode': function (browser) {
@@ -18,15 +18,18 @@ module.exports = {
   'Timer Mode: Time Buttons Click': function (browser){
     _02_timer_mode['Time Buttons Click'](browser)
   },
-  'Timer Mode: Timer Counting Down': function (browser){
-    _02_timer_mode['Timer Counting Down'](browser)
-  },
   'Timer Mode: Enter value from keyboard': function (browser){
     _02_timer_mode['Enter value from keyboard'](browser)
   },
+  'Timer Mode: Enter bad value from keyboard (99:99:99)': function (browser){
+    _02_timer_mode['Enter bad value from keyboard'](browser)
+  },
+  'Timer Mode: Timer Counting Down': function (browser){
+    _02_timer_mode['Timer Counting Down'](browser)
+  },
   'Timer Mode: Ending and Reverse': function (browser){
     _02_timer_mode['Ending and Reverse'](browser)
-  },*/
+  },
   'Timer Mode: Name': function (browser){
     _02_timer_mode['Name'](browser)
   },
