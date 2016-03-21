@@ -17,5 +17,11 @@ module.exports = {
         browser.expect.element(elements[i][key]).to.not.be.visible;
       }
     }
-  }
+  },
+  RefreshPage: function (browser) {
+    browser
+      .refresh()
+      .waitForElementVisible('body', 1000);
+  },
+
 };

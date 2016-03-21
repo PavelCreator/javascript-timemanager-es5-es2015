@@ -104,8 +104,17 @@ module.exports = {
       .keys(browser.Keys.SPACE)
       /*Stop*/
       .pause(1000)
-      .assert.title("12:34:55")
+      .assert.title("12:34:55");
 
+    /*LocalStorage - time*/
+    svc.RefreshPage(browser);
+    browser.assert.value(el.Fields.Timer.Hour, "12")
+      .assert.value(el.Fields.Timer.Min, "34")
+      .assert.value(el.Fields.Timer.Sec, "55")
+      .assert.title("12:34:55")
+      .assert.cssClassNotPresent(el.State.Big_Timer_Wrapper, "reverse");
+
+    browser
       .click(el.Fields.Timer.Sec)
       .keys([
         browser.Keys.LEFT_ARROW,
@@ -146,7 +155,10 @@ module.exports = {
   },
   'Ending and Reverse': function (browser) {
     browser.click(el.Buttons.Reset);
+
     browser.click(el.Settings.In_The_End.Continue);
+    browser.assert.cssClassPresent(el.Settings.In_The_End.Continue, "active");
+    browser.assert.cssClassNotPresent(el.Settings.In_The_End.Stop, "active");
 
     browser.click(el.Fields.Timer.Sec);
     browser.keys([
@@ -171,10 +183,15 @@ module.exports = {
       browser.Keys.LEFT_ARROW,
       '1',
     ])
-
     browser.keys(browser.Keys.SPACE);
+
+    browser.expect.element(el.Settings.Melody.Play).to.be.visible;
+    browser.expect.element(el.Settings.Melody.Stop).to.not.be.visible;
     browser.pause(1000);
     browser.assert.title("00:00");
+    browser.expect.element(el.Settings.Melody.Play).to.not.be.visible;
+    browser.expect.element(el.Settings.Melody.Stop).to.be.visible;
+
     browser.assert.cssClassPresent(el.State.Big_Timer_Wrapper, "ending");
     browser.assert.cssClassNotPresent(el.State.Big_Timer_Wrapper, "reverse");
 
@@ -183,8 +200,23 @@ module.exports = {
     browser.assert.cssClassNotPresent(el.State.Big_Timer_Wrapper, "ending");
     browser.assert.cssClassPresent(el.State.Big_Timer_Wrapper, "reverse");
 
-    browser.click(el.Buttons.Reset);
+    /*LocalStorage - reverse*/
+    svc.RefreshPage(browser);
+    browser
+      .assert.value(el.Fields.Timer.Hour, "00")
+      .assert.value(el.Fields.Timer.Min, "00")
+      .assert.value(el.Fields.Timer.Sec, "01")
+      .assert.title("00:01")
+      .assert.cssClassPresent(el.State.Big_Timer_Wrapper, "reverse");
+
     browser.click(el.Settings.In_The_End.Stop);
+    browser.assert.cssClassNotPresent(el.Settings.In_The_End.Continue, "active");
+    browser.assert.cssClassPresent(el.Settings.In_The_End.Stop, "active");
+
+    /*LocalStorage - finish*/
+    svc.RefreshPage(browser);
+    browser.assert.cssClassNotPresent(el.Settings.In_The_End.Continue, "active");
+    browser.assert.cssClassPresent(el.Settings.In_The_End.Stop, "active");
 
     browser.click(el.Fields.Timer.Sec);
     browser.keys([
@@ -223,13 +255,59 @@ module.exports = {
       .assert.title("00:00 JS")
 
       .click(el.Buttons.Min_1)
-      .assert.title("01:00 JS")
+      .assert.title("01:00 JS");
 
+    /*LocalStorage - name*/
+    svc.RefreshPage(browser);
+    browser.assert.title("01:00 JS");
+    browser
+      .assert.value(el.Settings.Name.Field, 'JS');
+
+    browser
       .click(el.Settings.Name.Field)
       .keys([
         browser.Keys.BACK_SPACE,
         browser.Keys.BACK_SPACE
       ])
       .assert.title("01:00");
+  },
+  'Alarm': function (browser) {
+    browser.expect.element(el.Settings.Melody._wrapper).to.be.visible;
+    browser.click(el.Settings.Alarm.Off);
+    browser.expect.element(el.Settings.Melody._wrapper).to.not.be.visible;
+
+    /*LocalStorage - sound-play*/
+    svc.RefreshPage(browser);
+    browser.expect.element(el.Settings.Melody._wrapper).to.not.be.visible;
+    browser.click(el.Settings.Alarm.On);
+  },
+  'Melody': function (browser) {
+    browser.expect.element(el.Settings.Melody.Play).to.be.visible;
+    browser.expect.element(el.Settings.Melody.Stop).to.not.be.visible;
+
+    browser.click(el.Settings.Melody.Change);
+    browser.click(el.Settings.Melody.Change + ' option:last-child');
+    browser.assert.containsText(el.Settings.Melody.Current_Melody, "Message");
+
+    browser.click(el.Settings.Melody.Volume);
+    browser.click(el.Settings.Melody.Volume + ' option:last-child');
+    browser.expect.element(el.Settings.Melody.Play).to.not.be.visible;
+    browser.expect.element(el.Settings.Melody.Stop).to.be.visible;
+
+    browser.click(el.Settings.Melody.Stop);
+    browser.expect.element(el.Settings.Melody.Play).to.be.visible;
+    browser.expect.element(el.Settings.Melody.Stop).to.not.be.visible;
+
+    /*LocalStorage - sound-melody, sound-volume*/
+    svc.RefreshPage(browser);
+    browser.assert.containsText(el.Settings.Melody.Current_Melody, "Message");
+    browser.assert.value(el.Settings.Melody.Change, '10');
+    browser.expect.element(el.Settings.Melody.Change + ' option:last-child')
+      .to.have.attribute('selected')
+      .equals('true');
+    browser.assert.value(el.Settings.Melody.Volume, '0.1');
+    browser.expect.element(el.Settings.Melody.Volume + ' option:last-child')
+      .to.have.attribute('selected')
+      .equals('true');
   },
 };

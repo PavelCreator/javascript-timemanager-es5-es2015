@@ -1,12 +1,12 @@
-var _00_start = require('./tests/00-start');
-var _01_init = require('./tests/01-init');
-var _02_timer_mode = require('./tests/02-timer_mode');
-var _99_close = require('./tests/99-close');
+var _00_start = require('./../tests/00-start');
+var _01_init = require('./../tests/01-init');
+var _02_timer_mode = require('./../tests/02-timer_mode');
+var _99_close = require('./../tests/99-close');
 module.exports = {
   'Open Browser': function (browser) {
     _00_start['Open Browser'](browser);
   },
-  'Init : Timer Mode': function (browser) {
+/*  'Init : Timer Mode': function (browser) {
     _01_init['Timer Mode'](browser)
   },
   'Init : Stop Watch Mode': function (browser) {
@@ -29,9 +29,15 @@ module.exports = {
   },
   'Timer Mode: Ending and Reverse': function (browser){
     _02_timer_mode['Ending and Reverse'](browser)
-  },
+  },*/
   'Timer Mode: Name': function (browser){
     _02_timer_mode['Name'](browser)
+  },
+  'Timer Mode: Alarm': function (browser){
+    _02_timer_mode['Alarm'](browser)
+  },
+  'Timer Mode: Melody': function (browser){
+    _02_timer_mode['Melody'](browser)
   },
   'Close Browser': function (browser) {
     _99_close["Close Browser"](browser);

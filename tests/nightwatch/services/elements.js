@@ -66,5 +66,10 @@ module.exports = {
     },
     Big_Timer_Wrapper:'#clock-face',
     Big_Watch_Wrapper:'#w-clock-face'
+  },
+  Modal:{
+    _wrapper: '#modalWrapper',
+    Close:'#closeModal',
+    Open:'#openModal'
   }
 };

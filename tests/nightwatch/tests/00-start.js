@@ -5,6 +5,7 @@ module.exports = {
     browser
       .url(el.URL)
       .waitForElementVisible('body', 1000)
-    svc.Clean_Local_Storage(browser);
+/*    svc.Clean_Local_Storage(browser);*/
+    browser.click(el.Modal.Close);
   }
 }

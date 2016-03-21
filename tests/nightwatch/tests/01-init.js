@@ -19,9 +19,9 @@ module.exports = {
     svc.Counting_Elements_Presented(browser, _timer_mode_el_presented);
     svc.Counting_Elements_Not_Presented(browser, _timer_mode_el_not_presented);
     for (var key in el.Settings.Melody) {
-      if (key == 'Stop'){
+      if (key == 'Stop') {
         browser.expect.element(el.Settings.Melody[key]).to.not.be.visible;
-      }else{
+      } else {
         browser.expect.element(el.Settings.Melody[key]).to.be.visible;
       }
     }
@@ -38,39 +38,46 @@ module.exports = {
       .assert.cssClassNotPresent(el.Settings.Mode.Watch, "active")
   },
   'Stop Watch Mode': function (browser) {
-    browser.click(el.Settings.Mode.Stop_Watch);
-    var _stop_watch_mode_el_presented = [
-      el.Buttons,
-      el.Fields.Timer,
-      el.Settings.Mode,
-      el.Settings.Name,
-      el.Settings.Mini_Watch
-    ];
-    var _stop_watch_mode_el_not_presented = [
-      el.Settings.Alarm,
-      el.Settings.In_The_End,
-      el.Fields.Big_Clock,
-      el.Settings.Melody
-    ];
+    function checkThisMode() {
+      browser.click(el.Settings.Mode.Stop_Watch);
+      var _stop_watch_mode_el_presented = [
+        el.Buttons,
+        el.Fields.Timer,
+        el.Settings.Mode,
+        el.Settings.Name,
+        el.Settings.Mini_Watch
+      ];
+      var _stop_watch_mode_el_not_presented = [
+        el.Settings.Alarm,
+        el.Settings.In_The_End,
+        el.Fields.Big_Clock,
+        el.Settings.Melody
+      ];
 
-    /*Presented or not*/
-    svc.Counting_Elements_Presented(browser, _stop_watch_mode_el_presented);
-    svc.Counting_Elements_Not_Presented(browser, _stop_watch_mode_el_not_presented);
-    browser.expect.element(el.State.Big_Timer_Wrapper).to.be.visible;
-    browser.expect.element(el.State.Big_Watch_Wrapper).to.not.be.visible;
+      /*Presented or not*/
+      svc.Counting_Elements_Presented(browser, _stop_watch_mode_el_presented);
+      svc.Counting_Elements_Not_Presented(browser, _stop_watch_mode_el_not_presented);
+      browser.expect.element(el.State.Big_Timer_Wrapper).to.be.visible;
+      browser.expect.element(el.State.Big_Watch_Wrapper).to.not.be.visible;
 
-    /*Reverse CSS check*/
-    for (var key in el.Buttons) {
-      if (key !== 'Run_Stop'){
-        browser.assert.cssClassPresent(el.Buttons[key], "stopwatch");
+      /*Reverse CSS check*/
+      for (var key in el.Buttons) {
+        if (key !== 'Run_Stop') {
+          browser.assert.cssClassPresent(el.Buttons[key], "stopwatch");
+        }
       }
-    }
-    browser
-      .assert.cssClassPresent(el.State.Big_Timer_Wrapper, "reverse")
+      browser
+        .assert.cssClassPresent(el.State.Big_Timer_Wrapper, "reverse")
 
-      .assert.cssClassNotPresent(el.Settings.Mode.Timer, "active")
-      .assert.cssClassPresent(el.Settings.Mode.Stop_Watch, "active")
-      .assert.cssClassNotPresent(el.Settings.Mode.Watch, "active")
+        .assert.cssClassNotPresent(el.Settings.Mode.Timer, "active")
+        .assert.cssClassPresent(el.Settings.Mode.Stop_Watch, "active")
+        .assert.cssClassNotPresent(el.Settings.Mode.Watch, "active")
+    }
+    checkThisMode();
+
+    /*LocalStorage - mode, firstTime*/
+    svc.RefreshPage(browser);
+    checkThisMode();
   },
   'Watch Mode': function (browser) {
     browser.click(el.Settings.Mode.Watch);
@@ -99,7 +106,7 @@ module.exports = {
       browser.assert.attributeEquals(el.Buttons[key], "disabled", "true");
     }
 
-     browser
+    browser
       .assert.cssClassNotPresent(el.Settings.Mode.Timer, "active")
       .assert.cssClassNotPresent(el.Settings.Mode.Stop_Watch, "active")
       .assert.cssClassPresent(el.Settings.Mode.Watch, "active")
