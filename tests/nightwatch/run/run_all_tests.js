@@ -2,12 +2,14 @@ var _start = require('./../tests/01-start');
 var _timer_mode = require('./../tests/02-timer_mode');
 var _stop_watch_mode = require('./../tests/03-stop_watch_mode');
 var _watch_mode = require('./../tests/04-watch_mode');
-var _close = require('./../tests/05-close');
+var _else = require('./../tests/05-else');
+var _close = require('./../tests/06-close');
+
 module.exports = {
   'Open Browser': function (browser) {
     _start['Open Browser'](browser);
   },
-  'Timer Mode: Init': function (browser) {
+/*  'Timer Mode: Init': function (browser) {
     _timer_mode['Init'](browser)
   },
   'Timer Mode: Time Buttons Click': function (browser){
@@ -42,6 +44,12 @@ module.exports = {
   },
   'Watch Mode: Init': function (browser) {
     _watch_mode['Init'](browser)
+  },*/
+  'Else: Modal': function (browser) {
+    _else['Modal'](browser)
+  },
+  'Else: Copy to clipboard': function (browser) {
+    _else['Copy to clipboard'](browser)
   },
   'Close Browser': function (browser) {
     _close["Close Browser"](browser);
