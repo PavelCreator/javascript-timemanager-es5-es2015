@@ -1,45 +1,49 @@
-var _00_start = require('./../tests/00-start');
-var _01_init = require('./../tests/01-init');
-var _02_timer_mode = require('./../tests/02-timer_mode');
-var _99_close = require('./../tests/99-close');
+var _start = require('./../tests/01-start');
+var _timer_mode = require('./../tests/02-timer_mode');
+var _stop_watch_mode = require('./../tests/03-stop_watch_mode');
+var _watch_mode = require('./../tests/04-watch_mode');
+var _close = require('./../tests/05-close');
 module.exports = {
   'Open Browser': function (browser) {
-    _00_start['Open Browser'](browser);
+    _start['Open Browser'](browser);
   },
-/*  'Init : Timer Mode': function (browser) {
-    _01_init['Timer Mode'](browser)
-  },
-  'Init : Stop Watch Mode': function (browser) {
-    _01_init['Stop Watch Mode'](browser)
-  },
-  'Init : Watch Mode': function (browser) {
-    _01_init['Watch Mode'](browser)
+  'Timer Mode: Init': function (browser) {
+    _timer_mode['Init'](browser)
   },
   'Timer Mode: Time Buttons Click': function (browser){
-    _02_timer_mode['Time Buttons Click'](browser)
+    _timer_mode['Time Buttons Click'](browser)
   },
   'Timer Mode: Enter value from keyboard': function (browser){
-    _02_timer_mode['Enter value from keyboard'](browser)
+    _timer_mode['Enter value from keyboard'](browser)
   },
   'Timer Mode: Enter bad value from keyboard (99:99:99)': function (browser){
-    _02_timer_mode['Enter bad value from keyboard'](browser)
+    _timer_mode['Enter bad value from keyboard'](browser)
   },
   'Timer Mode: Timer Counting Down': function (browser){
-    _02_timer_mode['Timer Counting Down'](browser)
+    _timer_mode['Timer Counting Down'](browser)
   },
   'Timer Mode: Ending and Reverse': function (browser){
-    _02_timer_mode['Ending and Reverse'](browser)
-  },*/
+    _timer_mode['Ending and Reverse'](browser)
+  },
   'Timer Mode: Name': function (browser){
-    _02_timer_mode['Name'](browser)
+    _timer_mode['Name'](browser)
   },
   'Timer Mode: Alarm': function (browser){
-    _02_timer_mode['Alarm'](browser)
+    _timer_mode['Alarm'](browser)
   },
   'Timer Mode: Melody': function (browser){
-    _02_timer_mode['Melody'](browser)
+    _timer_mode['Melody'](browser)
+  },
+  'Stop Watch Mode: Init': function (browser) {
+    _stop_watch_mode['Init'](browser)
+  },
+  'Stop Watch Mode: Timer Counting Up': function (browser) {
+    _stop_watch_mode['Timer Counting Up'](browser)
+  },
+  'Watch Mode: Init': function (browser) {
+    _watch_mode['Init'](browser)
   },
   'Close Browser': function (browser) {
-    _99_close["Close Browser"](browser);
+    _close["Close Browser"](browser);
   },
 }

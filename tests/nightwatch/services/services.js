@@ -1,4 +1,5 @@
 module.exports = {
+  _browser: null,
   Clean_Local_Storage: function (browser) {
     browser.execute('if (window.localStorage) { window.localStorage.clear(); return true; }', function (result) {
       browser.assert.equal('1', '1');
@@ -23,5 +24,12 @@ module.exports = {
       .refresh()
       .waitForElementVisible('body', 1000);
   },
-
+  Log: function (text) {
+    this._browser.session(function (result) {
+      console.log("\033[1m\033[5m\033[36m *** " + text + ' ***');
+    });
+  },
+  GetBrowser: function (browser){
+    this._browser = browser;
+  }
 };
