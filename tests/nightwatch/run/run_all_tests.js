@@ -9,7 +9,7 @@ module.exports = {
   'Open Browser': function (browser) {
     _start['Open Browser'](browser);
   },
-/*  'Timer Mode: Init': function (browser) {
+  'Timer Mode: Init': function (browser) {
     _timer_mode['Init'](browser)
   },
   'Timer Mode: Time Buttons Click': function (browser){
@@ -44,7 +44,7 @@ module.exports = {
   },
   'Watch Mode: Init': function (browser) {
     _watch_mode['Init'](browser)
-  },*/
+  },
   'Else: Modal': function (browser) {
     _else['Modal'](browser)
   },
