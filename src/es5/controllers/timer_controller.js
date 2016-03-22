@@ -1,5 +1,14 @@
 function Timer() {
   var start = function () {
+
+    data.flag.undouble++;
+    console.log(data.flag.undouble);
+    if (data.flag.undouble > 1) {
+      setTimeout(function () {
+        data.flag.undouble = 0;
+      }, 1000);
+    }
+
     view.startOrStop('start');
     timerSvc.getValuesFromHTML();
     timerSvc.fromTimeToSec();
@@ -13,19 +22,21 @@ function Timer() {
             setTimeout(function () {
               view.startOrStop('stop');
             }, 1000);
+            clearInterval(oneSec);
             return;
           }
         }
       }
     }
     data.flag.stop = false;
-    oneSec = setTimeout(function () {
+    oneSec = setInterval(function () {
+      data.flag.undouble = 0;
       if ((data.timeInSec !== 0) && (data.timeInSec <= 6) && (!data.flag.reverse)) {
         view.ending.set();
       }
       if (data.timeInSec == 0) {
         if ((data.flag.finish) && (data.flag.mode === 'timer')) {
-          clearTimeout(oneSec);
+          clearInterval(oneSec);
           view.startOrStop('stop');
           return false;
         }
@@ -41,12 +52,11 @@ function Timer() {
 
       timerSvc.fromSecToTime();
       view.renewClockFace();
-      start();
     }, 1000);
   };
   this.stop = function () {
     view.startOrStop('stop');
-    clearTimeout(oneSec);
+    clearInterval(oneSec);
     data.flag.stop = true;
   };
   this.startOrStop = function () {

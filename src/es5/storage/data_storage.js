@@ -12,7 +12,8 @@ data = {
     finish: false,
     showWatch: true,
     mode: 'timer',
-    disableKeyEvents: false
+    disableKeyEvents: false,
+    undouble: 0
   },
   audio: new Audio(),
   audioSettings:{
