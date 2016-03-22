@@ -1,33 +1,28 @@
 function Timer() {
   var start = function () {
 
+    view.startOrStop('start');
+    timerSvc.getValuesFromHTML();
+    timerSvc.fromTimeToSec();
+
+    if ((data.flag.finish) && (data.flag.mode === 'timer') && (data.timeInSec == 0)) {
+      view.warning.finishOff();
+      setTimeout(function () {
+        view.startOrStop('stop');
+      }, 1000);
+      return;
+    }
+
     data.flag.undouble++;
     console.log(data.flag.undouble);
     if (data.flag.undouble > 1) {
       return;
     }
 
-    view.startOrStop('start');
-    timerSvc.getValuesFromHTML();
-    timerSvc.fromTimeToSec();
-
     oneSec = setInterval(function () {
       data.flag.undouble = 0;
-      if (data.timeInSec == 0) {
-        if (data.flag.sound) {
-          if ((!data.flag.stop) && (data.timeInSec == 0)) {
-            view.setMelodyPlay(true);
-          } else {
-            if ((data.flag.finish) && (data.flag.mode === 'timer')) {
-              view.warning.finishOff();
-              setTimeout(function () {
-                view.startOrStop('stop');
-              }, 1000);
-              clearInterval(oneSec);
-              return;
-            }
-          }
-        }
+      if ((data.flag.sound) && (!data.flag.stop) && (data.timeInSec == 1) && (!data.flag.reverse)) {
+        view.setMelodyPlay(true);
       }
       data.flag.stop = false;
       if ((data.timeInSec !== 0) && (data.timeInSec <= 6) && (!data.flag.reverse)) {
