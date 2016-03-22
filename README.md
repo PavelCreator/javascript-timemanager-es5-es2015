@@ -38,10 +38,10 @@
 <li>1) install all node modules. Enter in console:
 <strong>npm install</strong></li>
 <li>2) make build
-<strong>gulp b5</strong> - to generate ES5 build
-<strong>gulp b6</strong> - to generate ES2015 build
-<strong>gulp b5t</strong> - to generate ES5 build with Chai/Mocha tests
-<strong>gulp b6t</strong> - to generate ES2015 build with Chai/Mocha tests</li>
+<br><strong>gulp b5</strong> - to generate ES5 build
+<br><strong>gulp b6</strong> - to generate ES2015 build
+<br><strong>gulp b5t</strong> - to generate ES5 build with Chai/Mocha tests
+<br><strong>gulp b6t</strong> - to generate ES2015 build with Chai/Mocha tests</li>
 </ul>
 
 <h4>Nightwatch.js End-to-End tests:</h4>
