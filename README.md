@@ -1,0 +1,34 @@
+<h1>JavaScript demo of skills (OOP, ES5, ES2015, Gulp, npm, Nightwatch.js, Mocha/Chai)</h1>
+<h3>Timemanager is a web-service for measure the time</h3>
+<h3><a href="http://melomance.net/timemanager/">Full demo</a></h3>
+<h3>Functionality:</h3>
+<ul>
+  <li>There are <strong>3 modes</strong> - 'TIMER' (count down), 'STOP WATCH' (count up), 'WATCH' (clock)</li>
+  <li>User can start/stop by <strong>ENTER</strong> or <strong>SPACE</strong> key</li>
+  <li>User can select a <strong>melody</strong>, <strong>volume</strong> or <strong>mute</strong> the ringer</li>
+  <li>User can <strong>manually</strong> enter the value in field. <strong>3 HTML inputs work as one field</strong>, and this is implemented without plugins</li>
+  <li>All user settings are <strong>stored</strong> in the browser via LocalStorage</li>
+  <li>The current value and the name of the counter is displayed in the <strong>title of the browser tab</strong></li>
+  <li>'TIMER' mode also <strong>can count up</strong> after the end of time (customizable)</li>
+  <li><strong>Responsive cross-browser</strong> custom design</li>
+</ul>
+
+<h3>Programming:</h3>
+<ul>
+  <li>Project have <strong>ES5</strong> and <strong>ES2015</strong> separate sources (both is full versions)</li>
+  <li>The system is collected automatically using <strong>npm</strong></li>
+  <li>Auto deploy using <strong>Gulp</strong></li>
+  <li>The project is completely covered by End-to-End tests using <strong>Nightwatch.js</strong></li>
+  <li>Also functional tests are written using <strong>Chai/Mocha</strong></li>
+</ul>
+
+<h3>Gulp processing:</h3>
+<ul>
+  <li><strong>ES5</strong> - collected from the files pack, minimized, unglifyed, console.log and comments deleted</li>
+  <li><strong>ES2015</strong> - like ES5 and also processed with Babel</li>
+  <li><strong>SCSS</strong> - conveted in CSS, minimized, comments deleted</li>
+  <li><strong>HTML</strong> - minimised, comments deleted</li>
+  <li><strong>Images</strong> - optimized</li>
+  <li>Written <strong>watchers</strong> for separate parts and "Packs"</li>
+  <li>Written <strong>error-stubs</strong> and <strong>notifications</strong> for all tasks</li>
+</ul>
