@@ -4,33 +4,32 @@ function Timer() {
     data.flag.undouble++;
     console.log(data.flag.undouble);
     if (data.flag.undouble > 1) {
-      setTimeout(function () {
-        data.flag.undouble = 0;
-      }, 1000);
+      return;
     }
 
     view.startOrStop('start');
     timerSvc.getValuesFromHTML();
     timerSvc.fromTimeToSec();
-    if (data.timeInSec == 0) {
-      if (data.flag.sound) {
-        if ((!data.flag.stop) && (data.timeInSec == 0)) {
-          view.setMelodyPlay(true);
-        } else {
-          if ((data.flag.finish) && (data.flag.mode === 'timer')) {
-            view.warning.finishOff();
-            setTimeout(function () {
-              view.startOrStop('stop');
-            }, 1000);
-            clearInterval(oneSec);
-            return;
+
+    oneSec = setInterval(function () {
+      data.flag.undouble = 0;
+      if (data.timeInSec == 0) {
+        if (data.flag.sound) {
+          if ((!data.flag.stop) && (data.timeInSec == 0)) {
+            view.setMelodyPlay(true);
+          } else {
+            if ((data.flag.finish) && (data.flag.mode === 'timer')) {
+              view.warning.finishOff();
+              setTimeout(function () {
+                view.startOrStop('stop');
+              }, 1000);
+              clearInterval(oneSec);
+              return;
+            }
           }
         }
       }
-    }
-    data.flag.stop = false;
-    oneSec = setInterval(function () {
-      data.flag.undouble = 0;
+      data.flag.stop = false;
       if ((data.timeInSec !== 0) && (data.timeInSec <= 6) && (!data.flag.reverse)) {
         view.ending.set();
       }
