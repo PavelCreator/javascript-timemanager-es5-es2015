@@ -22,7 +22,7 @@
   <li>Also functional tests are written using <strong>Chai/Mocha</strong></li>
 </ul>
 
-<h3>Gulp processing:</h3>
+<h4>Gulp processing:</h4>
 <ul>
   <li><strong>ES5</strong> - collected from the files pack, minimized, unglifyed, console.log and comments deleted</li>
   <li><strong>ES2015</strong> - like ES5 and also processed with Babel</li>
@@ -32,3 +32,23 @@
   <li>Written <strong>watchers</strong> for separate parts and "Packs"</li>
   <li>Written <strong>error-stubs</strong> and <strong>notifications</strong> for all tasks</li>
 </ul>
+
+<h4>Deploy:</h4>
+<ul>
+<li>1) install all node modules. Enter in console:
+<strong>npm install</strong></li>
+<li>2) make build
+<strong>gulp b5</strong> - to generate ES5 build
+<strong>gulp b6</strong> - to generate ES2015 build
+<strong>gulp b5t</strong> - to generate ES5 build with Chai/Mocha tests
+<strong>gulp b6t</strong> - to generate ES2015 build with Chai/Mocha tests</li>
+</ul>
+
+<h4>Nightwatch.js End-to-End tests:</h4>
+<ul>
+<li>1) Make all next steps only after deploy</li>
+<li>2) Init Selenium server: <strong>java -jar "tests\nightwatch\drivers\selenium-server-standalone-2.52.0.jar"</strong></li>
+<li>3) Run Tests: <strong>node nightwatch.js</strong></li>
+</ul>
+<p>For default tests work in Mozilla Firefox, for making tests in another browsers read <a href='http://nightwatchjs.org/guide'>Nightwatch.js Developer Guide</a>
+<br>I maked custom color logs for console to more understandable tests process</p>
