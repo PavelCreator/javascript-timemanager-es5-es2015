@@ -77,58 +77,6 @@ module.exports = {
       browser.assert.value(el.Fields.Timer[key], "00");
     }
   },
-  'Timer Counting Down': function (browser) {
-    /*1 min*/
-    svc.Log("1 min");
-    browser.click(el.Buttons.Min_1);
-    browser.assert.value(el.Fields.Timer.Min, "01");
-    browser.assert.value(el.Fields.Timer.Sec, "00");
-    browser.assert.cssClassPresent(el.State.Run_Stop.Run, "active");
-    browser.assert.cssClassNotPresent(el.State.Run_Stop.Stop, "active");
-    browser.assert.title("01:00");
-
-    browser.click(el.Buttons.Run_Stop);
-    browser.pause(1000);
-    browser.assert.value(el.Fields.Timer.Min, "00");
-    browser.assert.value(el.Fields.Timer.Sec, "59");
-    browser.assert.cssClassNotPresent(el.State.Run_Stop.Run, "active");
-    browser.assert.cssClassPresent(el.State.Run_Stop.Stop, "active");
-    browser.assert.title("00:59");
-
-    browser.pause(1000);
-    browser.assert.value(el.Fields.Timer.Sec, "58");
-    browser.assert.title("00:58");
-
-    /*1 hour*/
-    svc.Log("1 hour");
-    browser.click(el.Buttons.Hour_1);
-    browser.assert.value(el.Fields.Timer.Hour, "01");
-    browser.assert.value(el.Fields.Timer.Min, "00");
-    browser.assert.value(el.Fields.Timer.Sec, "00");
-    browser.assert.title("01:00:00");
-
-    browser.click(el.Buttons.Run_Stop);
-    browser.pause(1000);
-    browser.assert.value(el.Fields.Timer.Hour, "00");
-    browser.assert.value(el.Fields.Timer.Min, "59");
-    browser.assert.value(el.Fields.Timer.Sec, "59");
-    browser.assert.cssClassNotPresent(el.State.Run_Stop.Run, "active");
-    browser.assert.cssClassPresent(el.State.Run_Stop.Stop, "active");
-    browser.assert.title("59:59");
-
-    browser.pause(1000);
-    browser.assert.value(el.Fields.Timer.Hour, "00");
-    browser.assert.value(el.Fields.Timer.Min, "59");
-    browser.assert.value(el.Fields.Timer.Sec, "58");
-    browser.assert.title("59:58");
-
-    browser.click(el.Buttons.Run_Stop);
-    browser.pause(1000);
-    browser.assert.value(el.Fields.Timer.Hour, "00");
-    browser.assert.value(el.Fields.Timer.Min, "59");
-    browser.assert.value(el.Fields.Timer.Sec, "58");
-    browser.assert.title("59:58");
-  },
   'Enter value from keyboard': function (browser) {
     browser.click(el.Settings.In_The_End.Continue);
     /*Focus in hour input*/
@@ -213,7 +161,60 @@ module.exports = {
       .assert.title("99:59:59")
       .assert.cssClassPresent(el.State.Big_Timer_Wrapper, "ending")
       .pause(1000)
-      .assert.cssClassNotPresent(el.State.Big_Timer_Wrapper, "ending")
+      .assert.cssClassNotPresent(el.State.Big_Timer_Wrapper, "ending");
+    svc.RefreshPage(browser);
+  },
+  'Timer Counting Down': function (browser) {
+    /*1 min*/
+    svc.Log("1 min");
+    browser.click(el.Buttons.Min_1);
+    browser.assert.value(el.Fields.Timer.Min, "01");
+    browser.assert.value(el.Fields.Timer.Sec, "00");
+    browser.assert.cssClassPresent(el.State.Run_Stop.Run, "active");
+    browser.assert.cssClassNotPresent(el.State.Run_Stop.Stop, "active");
+    browser.assert.title("01:00");
+
+    browser.click(el.Buttons.Run_Stop);
+    browser.pause(1000);
+    browser.assert.value(el.Fields.Timer.Min, "00");
+    browser.assert.value(el.Fields.Timer.Sec, "59");
+    browser.assert.cssClassNotPresent(el.State.Run_Stop.Run, "active");
+    browser.assert.cssClassPresent(el.State.Run_Stop.Stop, "active");
+    browser.assert.title("00:59");
+
+    browser.pause(1000);
+    browser.assert.value(el.Fields.Timer.Sec, "58");
+    browser.assert.title("00:58");
+
+    /*1 hour*/
+    svc.Log("1 hour");
+    browser.click(el.Buttons.Hour_1);
+    browser.assert.value(el.Fields.Timer.Hour, "01");
+    browser.assert.value(el.Fields.Timer.Min, "00");
+    browser.assert.value(el.Fields.Timer.Sec, "00");
+    browser.assert.title("01:00:00");
+
+    browser.click(el.Buttons.Run_Stop);
+    browser.pause(1000);
+    browser.assert.value(el.Fields.Timer.Hour, "00");
+    browser.assert.value(el.Fields.Timer.Min, "59");
+    browser.assert.value(el.Fields.Timer.Sec, "59");
+    browser.assert.cssClassNotPresent(el.State.Run_Stop.Run, "active");
+    browser.assert.cssClassPresent(el.State.Run_Stop.Stop, "active");
+    browser.assert.title("59:59");
+
+    browser.pause(1000);
+    browser.assert.value(el.Fields.Timer.Hour, "00");
+    browser.assert.value(el.Fields.Timer.Min, "59");
+    browser.assert.value(el.Fields.Timer.Sec, "58");
+    browser.assert.title("59:58");
+
+    browser.click(el.Buttons.Run_Stop);
+    browser.pause(1000);
+    browser.assert.value(el.Fields.Timer.Hour, "00");
+    browser.assert.value(el.Fields.Timer.Min, "59");
+    browser.assert.value(el.Fields.Timer.Sec, "58");
+    browser.assert.title("59:58");
   },
   'Ending and Reverse': function (browser) {
     browser.click(el.Buttons.Reset);
@@ -247,13 +248,13 @@ module.exports = {
     browser.click(el.Fields.Timer.Sec);
     browser.keys([
       browser.Keys.LEFT_ARROW,
-      '1',
+      '2',
     ])
     browser.keys(browser.Keys.SPACE);
 
     browser.expect.element(el.Settings.Melody.Play).to.be.visible;
     browser.expect.element(el.Settings.Melody.Stop).to.not.be.visible;
-    browser.pause(1000);
+    browser.pause(2000);
 
     /*Play melody*/
     svc.Log("Play melody");
