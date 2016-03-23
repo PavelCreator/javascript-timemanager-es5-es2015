@@ -67,10 +67,11 @@ function Timer() {
       view.reset();
     }
     data.timeInSec = timeInMin * 60;
-    if (!data.flag.stop) {
-      this.stop();
-      data.flag.stop = true;
-    }
+
+    this.stop();
+    data.flag.stop = true;
+    data.flag.undouble = 0;
+
     timerSvc.fromSecToTime();
     view.renewClockFace();
   };

@@ -79,8 +79,8 @@ gulp.task('build-img', () => {
 gulp.task('build-js-es5', () => {
   return gulp.src(config.src.jsES5)
     .pipe(concat('main.min.js'))
-    //.pipe(uglify())
-    //.pipe(stripDebug())
+    .pipe(uglify())
+    .pipe(stripDebug())
     .pipe(gulp.dest(config.build.jsES5))
     .pipe(notify({message: 'Build ES5 task complete'}))
     .on('error', swallowError);
