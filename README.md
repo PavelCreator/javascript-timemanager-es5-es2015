@@ -52,3 +52,9 @@
 </ul>
 <p>For default tests work in Mozilla Firefox, for making tests in another browsers read <a href='http://nightwatchjs.org/guide'>Nightwatch.js Developer Guide</a>
 <br>I maked custom color logs for console to more understandable tests process</p>
+
+<h4>Chai/Mocha tests</h4>
+<p>
+<img src='http://melomance.net/timemanager/for_github/chai_mocha_1.jpg'>
+<img src='http://melomance.net/timemanager/for_github/chai_mocha_2.jpg'>
+</p>
