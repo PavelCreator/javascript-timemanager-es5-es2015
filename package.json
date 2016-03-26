@@ -25,6 +25,7 @@
     "nightwatch": "^0.8.18"
   },
   "dependencies": {
-    "babel-core": "^6.1.21"
+    "babel-core": "^6.1.21",
+    "chai-dom": "^1.4.0"
   }
 }

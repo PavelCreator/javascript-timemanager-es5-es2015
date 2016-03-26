@@ -234,11 +234,17 @@
   mocha.setup('bdd');
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/2.0.0/chai.js"></script>
+<script src="node_modules/chai-dom/chai-dom.js"></script>
 <!--/tests-->
 <script>
   var assert = chai.assert;
   var expect = chai.expect;
 </script>
+<style>
+    .progress {
+      height:auto !important;
+    }
+</style>
 <script type="text/javascript" src="build/es5/tests.min.js"></script>
 <script>
   mocha.run();

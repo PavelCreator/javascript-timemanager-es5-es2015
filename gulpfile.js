@@ -41,7 +41,7 @@ const config = {
     htmlES5: 'index-src-es5.html',
     htmlES5T: 'index-src-es5-tests.html',
     htmlES6: 'index-src-es6.html',
-    jsES5T: 'tests/es5/*.js',
+    jsES5T: 'tests/chai_mocha/es5/*.js',
   },
   build: {
     css: 'build/css',
