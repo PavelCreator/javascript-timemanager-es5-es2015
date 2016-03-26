@@ -153,24 +153,7 @@ describe("CONTROLLERS", function () {
       expect(document.querySelector('#settings-mode-stopwatch')).to.not.have.class('active');
       expect(document.querySelector('#settings-mode-watch')).to.not.have.class('active');
     });
-    /*it("startOrStop()", function () {
-
-     });
-     it("startOrStop()", function () {
-
-     });
-     it("startOrStop()", function () {
-
-     });
-     it("startOrStop()", function () {
-
-     });
-     it("startOrStop()", function () {
-
-     });*/
-
   });
-
 
   describe("timer_controller", function () {
     it("changeMode()", function () {
