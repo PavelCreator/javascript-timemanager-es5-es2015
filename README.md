@@ -62,12 +62,12 @@ alt="IMAGE ALT TEXT HERE" width="761" height="428" border="10" /></a>
 <a class='custom_youtube' href="http://www.youtube.com/watch?feature=player_embedded&v=khx1WiCrNDI
 " target="_blank"></a>
 <style>
-  a.custom_youtube{
+  .custom_youtube{
     width:761px;
     height:428px;
     background: url(http://melomance.net/timemanager/for_github/nightwatch_youtube_1.jpg);
   }
-  a.custom_youtube:hover, a.custom_youtube:focus{
+  .custom_youtube:hover, a.custom_youtube:focus{
     background: url(http://melomance.net/timemanager/for_github/nightwatch_youtube_2.jpg);
   }
 </style>
