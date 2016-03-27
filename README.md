@@ -1,4 +1,4 @@
-<h1>JavaScript demo of skills (OOP, ES5, ES2015, Gulp, npm, Nightwatch.js, Mocha/Chai)</h1>
+<h1>JavaScript demo of skills (ES5, ES2015, Gulp, npm, Nightwatch.js, Mocha/Chai)</h1>
 <h3>Timemanager is a web-service for measure the time</h3>
 <h3><a href="http://melomance.net/timemanager/">Full demo</a></h3>
 <h3>Functionality:</h3>
