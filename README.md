@@ -57,21 +57,6 @@
 alt="IMAGE ALT TEXT HERE" width="761" height="428" border="10" /></a>
 <p><img src='http://melomance.net/timemanager/for_github/nightwatch.jpg'></p>
 
-
-
-<a class='custom_youtube' href="http://www.youtube.com/watch?feature=player_embedded&v=khx1WiCrNDI
-" target="_blank"></a>
-<style>
-  .custom_youtube{
-    width:761px;
-    height:428px;
-    background: url(http://melomance.net/timemanager/for_github/nightwatch_youtube_1.jpg);
-  }
-  .custom_youtube:hover, a.custom_youtube:focus{
-    background: url(http://melomance.net/timemanager/for_github/nightwatch_youtube_2.jpg);
-  }
-</style>
-
 <h4>Chai/Mocha functional tests:</h4>
 <p>
 <img src='http://melomance.net/timemanager/for_github/chai_mocha_1.jpg'>
