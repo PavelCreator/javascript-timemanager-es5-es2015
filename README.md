@@ -53,7 +53,7 @@
 <p>For default tests work in Mozilla Firefox, for making tests in another browsers read <a href='http://nightwatchjs.org/guide'>Nightwatch.js Developer Guide</a>
 <br>I maked custom color logs for console to more understandable tests process</p>
 <p>
-[![Demo CountPages alpha](http://share.gifyoutube.com/KzB6Gb.gif)](https://www.youtube.com/watch?v=ek1j272iAmc)
+[![ScreenShot](https://raw.github.com/GabLeRoux/WebMole/master/ressources/WebMole_Youtube_Video.png)](http://youtu.be/vt5fpE0bzSY)
 </p>
 
 <p>[![Nightwatch.js End-to-End tests, Chai/Mocha functional tests](http://img.youtube.com/vi/khx1WiCrNDI/0.jpg)](https://www.youtube.com/watch?v=khx1WiCrNDI "Nightwatch.js End-to-End tests, Chai/Mocha functional tests")
