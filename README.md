@@ -15,7 +15,7 @@
 
 <h3>Programming:</h3>
 <ul>
-  <li>Project written on Vanilla JS without jQuery</li>
+  <li>Project written on Vanilla JS <strong>without jQuery</strong></li>
   <li>Project have <strong>ES5</strong> and <strong>ES2015</strong> separate sources (both is full versions)</li>
   <li>The system is collected automatically using <strong>npm</strong></li>
   <li>Auto deploy using <strong>Gulp</strong></li>
