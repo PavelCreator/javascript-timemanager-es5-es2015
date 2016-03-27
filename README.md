@@ -52,6 +52,10 @@
 </ul>
 <p>For default tests work in Mozilla Firefox, for making tests in another browsers read <a href='http://nightwatchjs.org/guide'>Nightwatch.js Developer Guide</a>
 <br>I maked custom color logs for console to more understandable tests process</p>
+<p>
+[![Everything Is AWESOME](http://img.youtube.com/vi/StTqXEQ2l-Y/0.jpg)](https://www.youtube.com/watch?v=StTqXEQ2l-Y "Everything Is AWESOME")
+</p>
+
 <p>[![Nightwatch.js End-to-End tests, Chai/Mocha functional tests](http://img.youtube.com/vi/khx1WiCrNDI/0.jpg)](https://www.youtube.com/watch?v=khx1WiCrNDI "Nightwatch.js End-to-End tests, Chai/Mocha functional tests")
 <iframe width="560" height="315" src="https://www.youtube.com/embed/khx1WiCrNDI" frameborder="0" allowfullscreen></iframe>
 </p>
