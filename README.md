@@ -63,6 +63,7 @@
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=khx1WiCrNDI
 " target="_blank"><img src="http://img.youtube.com/vi/khx1WiCrNDI/0.jpg" 
 alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/khx1WiCrNDI/0.jpg)](http://www.youtube.com/watch?v=khx1WiCrNDI)
 
 <p><img src='http://melomance.net/timemanager/for_github/nightwatch.jpg'></p>
 
