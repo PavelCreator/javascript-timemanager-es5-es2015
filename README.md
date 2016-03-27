@@ -52,10 +52,12 @@
 </ul>
 <p>For default tests work in Mozilla Firefox, for making tests in another browsers read <a href='http://nightwatchjs.org/guide'>Nightwatch.js Developer Guide</a>
 <br>I maked custom color logs for console to more understandable tests process</p>
-<p><iframe width="560" height="315" src="https://www.youtube.com/embed/khx1WiCrNDI" frameborder="0" allowfullscreen></iframe></p>
+<p>[![Nightwatch.js End-to-End tests, Chai/Mocha functional tests](http://img.youtube.com/vi/khx1WiCrNDI/0.jpg)](https://www.youtube.com/watch?v=khx1WiCrNDI "Nightwatch.js End-to-End tests, Chai/Mocha functional tests")
+<iframe width="560" height="315" src="https://www.youtube.com/embed/khx1WiCrNDI" frameborder="0" allowfullscreen></iframe>
+</p>
 <p><img src='http://melomance.net/timemanager/for_github/nightwatch.jpg'></p>
 
-<h4>Chai/Mocha tests:</h4>
+<h4>Chai/Mocha functional tests:</h4>
 <p>
 <img src='http://melomance.net/timemanager/for_github/chai_mocha_1.jpg'>
 <img src='http://melomance.net/timemanager/for_github/chai_mocha_2.jpg'>
