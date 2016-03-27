@@ -52,19 +52,9 @@
 </ul>
 <p>For default tests work in Mozilla Firefox, for making tests in another browsers read <a href='http://nightwatchjs.org/guide'>Nightwatch.js Developer Guide</a>
 <br>I maked custom color logs for console to more understandable tests process</p>
-<p>
-[![ScreenShot](https://raw.github.com/GabLeRoux/WebMole/master/ressources/WebMole_Youtube_Video.png) ](http://youtu.be/vt5fpE0bzSY)
-</p>
-
-<p>[![Nightwatch.js End-to-End tests, Chai/Mocha functional tests](http://img.youtube.com/vi/khx1WiCrNDI/0.jpg)](https://www.youtube.com/watch?v=khx1WiCrNDI "Nightwatch.js End-to-End tests, Chai/Mocha functional tests")
-<iframe width="560" height="315" src="https://www.youtube.com/embed/khx1WiCrNDI" frameborder="0" allowfullscreen></iframe>
-</p>
-
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=khx1WiCrNDI
-" target="_blank"><img src="http://img.youtube.com/vi/khx1WiCrNDI/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
-[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/khx1WiCrNDI/0.jpg)](http://www.youtube.com/watch?v=khx1WiCrNDI)
-
+" target="_blank"><img src="http://melomance.net/timemanager/for_github/nightwatch_youtube_1.jpg" 
+alt="IMAGE ALT TEXT HERE" width="761" height="428" border="10" /></a>
 <p><img src='http://melomance.net/timemanager/for_github/nightwatch.jpg'></p>
 
 <h4>Chai/Mocha functional tests:</h4>
