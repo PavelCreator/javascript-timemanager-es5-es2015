@@ -20,11 +20,11 @@ describe("CONTROLLERS", function () {
       var h = addZero(d.getHours());
       var m = addZero(d.getMinutes());
       var s = addZero(d.getSeconds());
-      assert.equal($(el.Settings.Mini_Watch.Clock_Face).text(), h + ':' + m);
+      expect(document.querySelector(el.Settings.Mini_Watch.Clock_Face)).to.have.text(h + ':' + m)
       timer.changeMode('watch');
-      assert.equal($(el.Fields.Big_Clock.Hour).val(), h);
-      assert.equal($(el.Fields.Big_Clock.Min).val(), m);
-      assert.equal($(el.Fields.Big_Clock.Sec).val(), s);
+      expect(document.querySelector(el.Fields.Big_Clock.Hour)).to.have.value(String(h));
+      expect(document.querySelector(el.Fields.Big_Clock.Min)).to.have.value(String(m));
+      expect(document.querySelector(el.Fields.Big_Clock.Sec)).to.have.value(String(s));
       timer.changeMode('timer');
     });
   });

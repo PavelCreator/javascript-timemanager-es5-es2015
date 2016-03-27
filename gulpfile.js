@@ -39,9 +39,9 @@ const config = {
       'src/es6/start.js'
     ],
     htmlES5: 'index-src-es5.html',
-    htmlES5T: 'index-src-es5-tests.html',
+    htmlES5T: 'index-src-tests.html',
     htmlES6: 'index-src-es6.html',
-    jsES5T: 'tests/chai_mocha/es5/*.js',
+    jsES5T: 'tests/chai_mocha/tests/*.js',
   },
   build: {
     css: 'build/css',
@@ -86,7 +86,7 @@ gulp.task('build-js-es5', () => {
     .on('error', swallowError);
 });
 
-gulp.task('build-js-es5-tests', () => {
+gulp.task('build-js-tests', () => {
   return gulp.src(config.src.jsES5T)
     .pipe(concat('tests.min.js'))
     .pipe(gulp.dest(config.build.jsES5))
@@ -116,7 +116,7 @@ gulp.task('build-html-es5', () => {
     .pipe(notify({message: 'Build HTML-ES5 task complete'}));
 });
 
-gulp.task('build-html-es5-tests', () => {
+gulp.task('build-html-tests', () => {
   return gulp.src(config.src.htmlES5T)
     .pipe(removeHtmlComments())
     .pipe(htmlmin({collapseWhitespace: true}))
@@ -144,8 +144,8 @@ gulp.task('watch-css', () => {
 gulp.task('watch-js-es5', () => {
   gulp.watch(config.src.jsES5, ['build-js-es5'])
 })
-gulp.task('watch-js-es5-tests', () => {
-  gulp.watch(config.src.jsES5T, ['build-js-es5-tests'])
+gulp.task('watch-js-tests', () => {
+  gulp.watch(config.src.jsES5T, ['build-js-tests'])
 })
 gulp.task('watch-js-es6', () => {
   gulp.watch(config.src.jsES6, ['build-js-es6'])
@@ -156,8 +156,8 @@ gulp.task('watch-img', () => {
 gulp.task('watch-html-es5', () => {
   gulp.watch(config.src.htmlES5, ['build-html-es5'])
 })
-gulp.task('watch-html-es5-tests', () => {
-  gulp.watch(config.src.htmlES5T, ['build-html-es5-tests'])
+gulp.task('watch-html-tests', () => {
+  gulp.watch(config.src.htmlES5T, ['build-html-tests'])
 })
 gulp.task('watch-html-es6', () => {
   gulp.watch(config.src.htmlES6, ['build-html-es6'])
@@ -166,8 +166,8 @@ gulp.task('watch-html-es6', () => {
 gulp.task('w5', ['watch-css', 'watch-js-es5', 'watch-img', 'watch-html-es5'])
 gulp.task('b5', ['build-css', 'build-js-es5', 'build-img', 'build-html-es5'])
 
-gulp.task('w5t', ['watch-css', 'watch-js-es5', 'watch-img', 'watch-html-es5-tests', 'watch-js-es5-tests'])
-gulp.task('b5t', ['build-css', 'build-js-es5', 'build-img', 'build-html-es5-tests', 'build-js-es5-tests'])
+gulp.task('wt', ['watch-css', 'watch-js-es5', 'watch-img', 'watch-html-tests', 'watch-js-tests'])
+gulp.task('bt', ['build-css', 'build-js-es5', 'build-img', 'build-html-tests', 'build-js-tests'])
 
 gulp.task('w6', ['watch-css', 'watch-js-es6', 'watch-img', 'watch-html-es6'])
 gulp.task('b6', ['build-css', 'build-js-es6', 'build-img', 'build-html-es6'])
