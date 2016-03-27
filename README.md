@@ -15,6 +15,7 @@
 
 <h3>Programming:</h3>
 <ul>
+  <li>Project written on Vanilla JS without jQuery</li>
   <li>Project have <strong>ES5</strong> and <strong>ES2015</strong> separate sources (both is full versions)</li>
   <li>The system is collected automatically using <strong>npm</strong></li>
   <li>Auto deploy using <strong>Gulp</strong></li>
@@ -40,8 +41,7 @@
 <li>2) make build
 <br><strong>gulp b5</strong> - to generate ES5 build
 <br><strong>gulp b6</strong> - to generate ES2015 build
-<br><strong>gulp b5t</strong> - to generate ES5 build with Chai/Mocha tests
-<br><strong>gulp b6t</strong> - to generate ES2015 build with Chai/Mocha tests</li>
+<br><strong>gulp bt</strong> - to generate build with Chai/Mocha tests
 </ul>
 
 <h4>Nightwatch.js End-to-End tests:</h4>
