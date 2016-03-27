@@ -21,6 +21,7 @@
   <li>Auto deploy using <strong>Gulp</strong></li>
   <li>The project is completely covered by End-to-End tests using <strong>Nightwatch.js</strong></li>
   <li>Also functional tests are written using <strong>Chai/Mocha</strong></li>
+  <li><strong>JS-OOP</strong> in functional style with strong security (real private methods)</li>
 </ul>
 
 <h4>Gulp processing:</h4>
