@@ -24,6 +24,9 @@ module.exports = {
   'Timer Mode: Timer Counting Down': function (browser){
     _timer_mode['Timer Counting Down'](browser)
   },
+  'Timer Mode: Play button and stop by input focus in first sec': function (browser) {
+    _timer_mode['Play button and stop by input focus in first sec'](browser)
+  },
   'Timer Mode: Ending and Reverse': function (browser){
     _timer_mode['Ending and Reverse'](browser)
   },

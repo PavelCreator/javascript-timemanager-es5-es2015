@@ -216,6 +216,24 @@ module.exports = {
     browser.assert.value(el.Fields.Timer.Sec, "58");
     browser.assert.title("59:58");
   },
+  'Play button and stop by input focus in first sec': function (browser) {
+    /*Start*/
+    svc.Log("Start");
+    browser.click(el.Settings.In_The_End.Continue);
+    browser.click(el.Buttons.Reset);
+    browser.click(el.Buttons.Run_Stop);
+    browser.pause(500);
+    /*Focus in timer field*/
+    svc.Log("Focus in timer field");
+    browser.click(el.Fields.Timer.Hour);
+    browser.pause(1500);
+    browser.assert.value(el.Fields.Timer.Sec, "00");
+    /*Start*/
+    svc.Log("Start");
+    browser.click(el.Buttons.Run_Stop);
+    browser.pause(1000);
+    browser.assert.value(el.Fields.Timer.Sec, "01");
+  },
   'Ending and Reverse': function (browser) {
     browser.click(el.Buttons.Reset);
 

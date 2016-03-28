@@ -1,5 +1,7 @@
 function Timer() {
   var start = function () {
+    console.log(data.flag.undouble);
+
 
     view.startOrStop('start');
     timerSvc.getValuesFromHTML();
@@ -49,6 +51,7 @@ function Timer() {
     }, 1000);
   };
   this.stop = function () {
+    data.flag.undouble = 0;
     view.startOrStop('stop');
     clearInterval(oneSec);
     data.flag.stop = true;
