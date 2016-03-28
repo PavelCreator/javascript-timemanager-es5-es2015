@@ -1,4 +1,4 @@
-data = Object.create(null);
+data = Object.create(null);//create storage without prototype
 data.time = {
   h: '00',
   m: '00',
