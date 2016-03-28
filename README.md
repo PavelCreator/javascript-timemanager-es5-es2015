@@ -1,4 +1,4 @@
-<h1>JavaScript demo of skills (OOP, ES5, ES2015, Gulp, npm, Nightwatch.js, Mocha/Chai)</h1>
+<h1>JavaScript demo of skills (ES5, ES2015, Gulp, npm, Nightwatch.js, Mocha/Chai)</h1>
 <h3>Timemanager is a web-service for measure the time</h3>
 <h3><a href="http://melomance.net/timemanager/">Full demo</a></h3>
 <h3>Functionality:</h3>
@@ -15,11 +15,13 @@
 
 <h3>Programming:</h3>
 <ul>
+  <li>Project written on Vanilla JS <strong>without jQuery</strong></li>
   <li>Project have <strong>ES5</strong> and <strong>ES2015</strong> separate sources (both is full versions)</li>
   <li>The system is collected automatically using <strong>npm</strong></li>
   <li>Auto deploy using <strong>Gulp</strong></li>
   <li>The project is completely covered by End-to-End tests using <strong>Nightwatch.js</strong></li>
   <li>Also functional tests are written using <strong>Chai/Mocha</strong></li>
+  <li><strong>JS-OOP</strong> in functional style with strong security (real private methods)</li>
 </ul>
 
 <h4>Gulp processing:</h4>
@@ -40,8 +42,7 @@
 <li>2) make build
 <br><strong>gulp b5</strong> - to generate ES5 build
 <br><strong>gulp b6</strong> - to generate ES2015 build
-<br><strong>gulp b5t</strong> - to generate ES5 build with Chai/Mocha tests
-<br><strong>gulp b6t</strong> - to generate ES2015 build with Chai/Mocha tests</li>
+<br><strong>gulp bt</strong> - to generate build with Chai/Mocha tests
 </ul>
 
 <h4>Nightwatch.js End-to-End tests:</h4>
