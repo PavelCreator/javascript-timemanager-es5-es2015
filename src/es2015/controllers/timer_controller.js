@@ -1,5 +1,5 @@
-function Timer() {
-  var start = function () {
+class Timer {
+  start () {
     view.startOrStop('start');
     timerSvc.getValuesFromHTML();
     timerSvc.fromTimeToSec();
@@ -47,13 +47,13 @@ function Timer() {
       view.renewClockFace();
     }, 1000);
   };
-  this.stop = function () {
+  stop () {
     data.flag.undouble = 0;
     view.startOrStop('stop');
     clearInterval(oneSec);
     data.flag.stop = true;
   };
-  this.startOrStop = function () {
+  startOrStop () {
     if (data.flag.stop) {
       start();
     } else {
@@ -61,7 +61,7 @@ function Timer() {
       this.stop();
     }
   };
-  this.set = function (timeInMin) {
+  set (timeInMin) {
     if (timeInMin == 0) view.startOrStop('stop');
     if (data.flag.mode === 'timer') {
       view.reset();
@@ -75,7 +75,7 @@ function Timer() {
     timerSvc.fromSecToTime();
     view.renewClockFace();
   };
-  this.changeMode = function (mode) {
+  changeMode (mode) {
     if (mode === undefined) {
       switch (data.flag.mode) {
         case 'timer':

@@ -31,23 +31,23 @@ const config = {
       'src/es5/controllers/*.js',
       'src/es5/start.js'
     ],
-    jsES6: [
-      'src/es6/hoisting.js',
-      'src/es6/storage/*.js',
-      'src/es6/services/*.js',
-      'src/es6/controllers/*.js',
-      'src/es6/start.js'
+    jsES2015: [
+      'src/es2015/hoisting.js',
+      'src/es2015/storage/*.js',
+      'src/es2015/services/*.js',
+      'src/es2015/controllers/*.js',
+      'src/es2015/start.js'
     ],
     htmlES5: 'index-src-es5.html',
     htmlES5T: 'index-src-tests.html',
-    htmlES6: 'index-src-es6.html',
+    htmlES2015: 'index-src-es2015.html',
     jsES5T: 'tests/chai_mocha/tests/*.js',
   },
   build: {
     css: 'build/css',
     img: 'build/img',
     jsES5: 'build/es5',
-    jsES6: 'build/es6',
+    jsES2015: 'build/es2015',
     html: './'
   }
 }
@@ -93,8 +93,8 @@ gulp.task('build-js-tests', () => {
     .pipe(notify({message: 'Build Tests ES5 task complete'}));
 });
 
-gulp.task('build-js-es6', () =>
-    gulp.src(config.src.jsES6)
+gulp.task('build-js-es2015', () =>
+    gulp.src(config.src.jsES2015)
       //.pipe(sourcemaps.init())
       .pipe(babel({
         presets: ['es2015']
@@ -103,8 +103,8 @@ gulp.task('build-js-es6', () =>
       //.pipe(uglify())
       //.pipe(stripDebug())
       //.pipe(sourcemaps.write('.'))
-      .pipe(gulp.dest(config.build.jsES6))
-      //.pipe(notify({message: 'Build ES6 task complete'}))
+      .pipe(gulp.dest(config.build.jsES2015))
+      //.pipe(notify({message: 'Build ES2015 task complete'}))
 );
 
 gulp.task('build-html-es5', () => {
@@ -125,17 +125,17 @@ gulp.task('build-html-tests', () => {
     .pipe(notify({message: 'Build HTML-ES5 task complete'}));
 });
 
-gulp.task('build-html-es6', () => {
-  return gulp.src(config.src.htmlES6)
+gulp.task('build-html-es2015', () => {
+  return gulp.src(config.src.htmlES2015)
     .pipe(removeHtmlComments())
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(rename('index.html'))
     .pipe(gulp.dest(config.build.html))
-    .pipe(notify({message: 'Build HTML-ES6 task complete'}));
+    .pipe(notify({message: 'Build HTML-ES2015 task complete'}));
 });
 
 gulp.task('clean', () => {
-  return del(['build/css', 'build/es5', 'build/es6', 'build/img', 'index.html']);
+  return del(['build/css', 'build/es5', 'build/es2015', 'build/img', 'index.html']);
 });
 
 gulp.task('watch-css', () => {
@@ -147,8 +147,8 @@ gulp.task('watch-js-es5', () => {
 gulp.task('watch-js-tests', () => {
   gulp.watch(config.src.jsES5T, ['build-js-tests'])
 })
-gulp.task('watch-js-es6', () => {
-  gulp.watch(config.src.jsES6, ['build-js-es6'])
+gulp.task('watch-js-es2015', () => {
+  gulp.watch(config.src.jsES2015, ['build-js-es2015'])
 })
 gulp.task('watch-img', () => {
   gulp.watch(config.src.img, ['build-img'])
@@ -159,8 +159,8 @@ gulp.task('watch-html-es5', () => {
 gulp.task('watch-html-tests', () => {
   gulp.watch(config.src.htmlES5T, ['build-html-tests'])
 })
-gulp.task('watch-html-es6', () => {
-  gulp.watch(config.src.htmlES6, ['build-html-es6'])
+gulp.task('watch-html-es2015', () => {
+  gulp.watch(config.src.htmlES2015, ['build-html-es2015'])
 })
 
 gulp.task('w5', ['watch-css', 'watch-js-es5', 'watch-img', 'watch-html-es5'])
@@ -169,7 +169,7 @@ gulp.task('b5', ['build-css', 'build-js-es5', 'build-img', 'build-html-es5'])
 gulp.task('wt', ['watch-css', 'watch-js-es5', 'watch-img', 'watch-html-tests', 'watch-js-tests'])
 gulp.task('bt', ['build-css', 'build-js-es5', 'build-img', 'build-html-tests', 'build-js-tests'])
 
-gulp.task('w6', ['watch-css', 'watch-js-es6', 'watch-img', 'watch-html-es6'])
-gulp.task('b6', ['build-css', 'build-js-es6', 'build-img', 'build-html-es6'])
+gulp.task('w2015', ['watch-css', 'watch-js-es2015', 'watch-img', 'watch-html-es2015'])
+gulp.task('b2015', ['build-css', 'build-js-es2015', 'build-img', 'build-html-es2015'])
 gulp.task('default', ['w5'])
 /*npm install --save-dev packName*/
