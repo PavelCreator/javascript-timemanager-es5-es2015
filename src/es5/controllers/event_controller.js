@@ -45,13 +45,13 @@ function Events() {
       switch (e.which) {
         //Stop or Stop - Enter, Space
         case 32:
-          if (!data.flag.disableKeyEvents) {
+          if (!data.flag.disableKeyEvents && data.flag.mode !== 'watch') {
             document.getElementById('hidden').focus();
             timer.startOrStop();
           }
           break;
         case 13:
-          if (!data.flag.disableKeyEvents) {
+          if (!data.flag.disableKeyEvents && data.flag.mode !== 'watch') {
             document.getElementById('hidden').focus();
             timer.startOrStop();
           } else {
