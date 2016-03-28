@@ -40,7 +40,7 @@ class TimerSvc {
   };
   fromSecToTime () {
     var timeInSec = data.timeInSec;
-    setTimeLocalStorage();
+    this.setTimeLocalStorage();
     //HOUR
     /*    if (timeInSec >= 90000) {
      data.time.h = '24';
@@ -71,9 +71,9 @@ class TimerSvc {
     }
   };
   getValuesFromHTML () {
-    getTimeParameterFromHTML('h', 'hour');
-    getTimeParameterFromHTML('m', 'min');
-    getTimeParameterFromHTML('s', 'sec');
+    this.getTimeParameterFromHTML('h', 'hour');
+    this.getTimeParameterFromHTML('m', 'min');
+    this.getTimeParameterFromHTML('s', 'sec');
   };
   getNumFromKeycode (keycode) {
     console.log("keycode =", keycode);

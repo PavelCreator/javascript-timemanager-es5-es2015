@@ -1,8 +1,9 @@
 class View {
-  constructor (){
-    this._this = this;
+  constructor() {
+    this.this = this;
   };
-  buildMelodiesList () {
+
+  buildMelodiesList() {
     var melodiesList = '',
       volumeList = '';
 
@@ -27,7 +28,8 @@ class View {
     document.getElementById('melodies-list').innerHTML = melodiesList;
     document.getElementById('volume-list').innerHTML = volumeList;
   };
-  setSettingsFromStorage () {
+
+  setSettingsFromStorage() {
     var
       soundMelodyId = localStorage.getItem("sound-melody"),
       soundVolume = localStorage.getItem("sound-volume"),
@@ -47,16 +49,16 @@ class View {
       data.audioSettings.volume = soundVolume;
     }
     if (finish === '1') {
-      _this.setFinishMode();
+      this.setFinishMode();
     } else {
       data.flag.finish = true;
-      _this.setFinishMode();
+      this.setFinishMode();
     }
     if (soundPlay === '0') {
-      _this.setSoundMode();
+      this.setSoundMode();
     } else {
       data.flag.sound = false;
-      _this.setSoundMode();
+      this.setSoundMode();
     }
     if (mode) {
       timer.changeMode(mode);
@@ -69,7 +71,7 @@ class View {
       if (!localStorage.getItem('singleton')) {
         data.timeInSec = time;
         timerSvc.fromSecToTime();
-        _this.renewClockFace();
+        this.renewClockFace();
       }
     }
     if (reverse === 'true') {
@@ -85,7 +87,8 @@ class View {
       localStorage.setItem('firstTime', 'true');
     }
   };
-  startOrStop (startOrStop) {
+
+  startOrStop(startOrStop) {
     if (startOrStop === 'start') {
       classFnc.remove(document.getElementById('run'), 'active');
       classFnc.add(document.getElementById('stop'), 'active');
@@ -94,23 +97,27 @@ class View {
       classFnc.add(document.getElementById('run'), 'active');
     }
   };
-  renewClockFace () {
+
+  renewClockFace() {
     document.getElementById('hour').value = data.time.h;
     document.getElementById('min').value = data.time.m;
     document.getElementById('sec').value = data.time.s;
     this.renewTitle.timer();
   };
-  playSound () {
+
+  playSound() {
     data.audio.volume = data.audioSettings.volume;
     data.audio.src = '/timemanager/src/audio/' + data.audioSettings.url;
     data.audio.autoplay = true;
   };
-  stopSound () {
+
+  stopSound() {
     if (!data.audio.ended) {
       data.audio.pause();
     }
   };
-  reset () {
+
+  reset() {
     if (data.flag.mode === 'timer') {
       this.stopSound();
       this.reverse.unset();
@@ -122,7 +129,8 @@ class View {
       this.ending.unset();
     }
   };
-  setSoundMode () {
+
+  setSoundMode() {
     if (data.flag.sound) {
       data.flag.sound = false;
       localStorage.setItem("sound-play", "0");
@@ -137,7 +145,8 @@ class View {
       classFnc.remove(document.getElementById('settings-alarm-off'), 'active');
     }
   };
-  setFinishMode () {
+
+  setFinishMode() {
     if (data.flag.finish) {
       data.flag.finish = false;
       localStorage.setItem("finish", "0");
@@ -150,7 +159,8 @@ class View {
       classFnc.add(document.getElementById('settings-end-stop'), 'active');
     }
   };
-  setMarginTop () {
+
+  setMarginTop() {
     var body = document.body,
       html = document.documentElement;
 
@@ -162,7 +172,8 @@ class View {
       document.getElementById('app-wrapper').style.marginTop = marginTop + 'px';
     }
   };
-  setMelodyPlay (melodyPlay) {
+
+  setMelodyPlay(melodyPlay) {
     if (melodyPlay) {
       classFnc.remove(document.getElementById('settings-melody-stop'), 'hide');
       classFnc.add(document.getElementById('settings-melody-play'), 'hide');
@@ -176,7 +187,8 @@ class View {
       this.stopSound();
     }
   };
-  setTimeFromKey (fieldName, num, pos) {
+
+  setTimeFromKey(fieldName, num, pos) {
     var posEnd, shortFieldName = fieldName.charAt(0);
     switch (pos) {
       case 0:
@@ -306,16 +318,17 @@ class View {
     view.renewClockFace();
     return posEnd;
   };
-  changeMode () {
+
+  changeMode() {
     switch (data.flag.mode) {
       case 'timer':
         localStorage.setItem("mode", "timer");
         classFnc.add(document.getElementById('settings-mode-timer'), 'active');
         classFnc.remove(document.getElementById('settings-mode-stopwatch'), 'active');
         classFnc.remove(document.getElementById('settings-mode-watch'), 'active');
-        modeView.watch(false);
-        modeView.stopwatch(false);
-        modeView.timer(true);
+        this.modeView.watch(false);
+        this.modeView.stopwatch(false);
+        this.modeView.timer(true);
         break;
 
       case 'stopwatch':
@@ -324,9 +337,9 @@ class View {
         classFnc.remove(document.getElementById('settings-mode-timer'), 'active');
         classFnc.add(document.getElementById('settings-mode-stopwatch'), 'active');
         classFnc.remove(document.getElementById('settings-mode-watch'), 'active');
-        modeView.watch(false);
-        modeView.stopwatch(true);
-        modeView.timer(false);
+        this.modeView.watch(false);
+        this.modeView.stopwatch(true);
+        this.modeView.timer(false);
         break;
 
       case 'watch':
@@ -334,13 +347,14 @@ class View {
         classFnc.remove(document.getElementById('settings-mode-timer'), 'active');
         classFnc.remove(document.getElementById('settings-mode-stopwatch'), 'active');
         classFnc.add(document.getElementById('settings-mode-watch'), 'active');
-        modeView.watch(true);
-        modeView.stopwatch(false);
-        modeView.timer(false);
+        this.modeView.watch(true);
+        this.modeView.stopwatch(false);
+        this.modeView.timer(false);
         break;
     }
   };
-  copyToClipboard () {
+
+  copyToClipboard() {
     var textArea = document.createElement("textarea");
     textArea.value = data.time.h + ':' + data.time.m + ':' + data.time.s;
     document.body.appendChild(textArea);
@@ -354,115 +368,117 @@ class View {
       classFnc.remove(document.getElementById('copyToClipboard'), 'green');
     }, 1000);
   };
-  onStart () {
+
+  onStart() {
     this.renewClockFace();
     this.setMarginTop();
-    buildMelodiesList();
-    setSettingsFromStorage();
+    this.buildMelodiesList();
+    this.setSettingsFromStorage();
   };
 }
-View.prototype.modeView = {
-    timer: function (bool) {
-      if (bool) {
-        classFnc.remove(document.getElementById('settings-alarm-wrapper'), 'hide');
-        classFnc.remove(document.getElementById('settings-end-continue-wrapper'), 'hide');
-        if (data.flag.sound) {
-          classFnc.remove(document.getElementById('settings-melody'), 'hide');
-        }
-      } else {
-        classFnc.add(document.getElementById('settings-alarm-wrapper'), 'hide');
-        classFnc.add(document.getElementById('settings-end-continue-wrapper'), 'hide');
-        classFnc.add(document.getElementById('settings-melody'), 'hide');
-      }
-    },
-    stopwatch: function (bool) {
-      for (var i = 0; i <= data.timeButtonArr.length - 1; i++) {
-        if (bool) {
-          classFnc.add(document.getElementById("set" + data.timeButtonArr[i]), 'stopwatch');
-        } else {
-          classFnc.remove(document.getElementById("set" + data.timeButtonArr[i]), 'stopwatch');
-        }
-      }
-    },
-    watch: function (bool) {
-      if (bool) {
-        classFnc.add(document.getElementById('clock-face'), 'hide');
-        classFnc.add(document.getElementById('settings-name-wrapper'), 'hide');
-        classFnc.remove(document.getElementById('w-clock-face'), 'hide');
-        classFnc.add(document.getElementById('watch-clock-face'), 'transparent');
-        document.getElementById('push').disabled = true;
-        state.timeButtons('disable');
-      } else {
-        classFnc.remove(document.getElementById('clock-face'), 'hide');
-        classFnc.remove(document.getElementById('settings-name-wrapper'), 'hide');
-        classFnc.add(document.getElementById('w-clock-face'), 'hide');
-        classFnc.remove(document.getElementById('watch-clock-face'), 'transparent');
-        document.getElementById('push').disabled = false;
-        state.timeButtons('enable');
-      }
-    }
-  };
 View.prototype.state = {
-    timeButtons: function (state) {
-      for (var i = 0; i < data.timeButtonArr.length; i++) {
-        switch (state) {
-          case 'disable':
-            document.getElementById("set" + data.timeButtonArr[i]).disabled = true;
-            break;
+  timeButtons (state) {
+    for (var i = 0; i < data.timeButtonArr.length; i++) {
+      switch (state) {
+        case 'disable':
+          document.getElementById("set" + data.timeButtonArr[i]).disabled = true;
+          break;
 
-          case 'enable':
-            document.getElementById("set" + data.timeButtonArr[i]).disabled = false;
-            break;
-        }
+        case 'enable':
+          document.getElementById("set" + data.timeButtonArr[i]).disabled = false;
+          break;
       }
     }
-  };
+  }
+};
+View.prototype.modeView = {
+  timer (bool) {
+    if (bool) {
+      classFnc.remove(document.getElementById('settings-alarm-wrapper'), 'hide');
+      classFnc.remove(document.getElementById('settings-end-continue-wrapper'), 'hide');
+      if (data.flag.sound) {
+        classFnc.remove(document.getElementById('settings-melody'), 'hide');
+      }
+    } else {
+      classFnc.add(document.getElementById('settings-alarm-wrapper'), 'hide');
+      classFnc.add(document.getElementById('settings-end-continue-wrapper'), 'hide');
+      classFnc.add(document.getElementById('settings-melody'), 'hide');
+    }
+  },
+  stopwatch (bool) {
+    for (var i = 0; i <= data.timeButtonArr.length - 1; i++) {
+      if (bool) {
+        classFnc.add(document.getElementById("set" + data.timeButtonArr[i]), 'stopwatch');
+      } else {
+        classFnc.remove(document.getElementById("set" + data.timeButtonArr[i]), 'stopwatch');
+      }
+    }
+  },
+  watch (bool) {
+    if (bool) {
+      classFnc.add(document.getElementById('clock-face'), 'hide');
+      classFnc.add(document.getElementById('settings-name-wrapper'), 'hide');
+      classFnc.remove(document.getElementById('w-clock-face'), 'hide');
+      classFnc.add(document.getElementById('watch-clock-face'), 'transparent');
+      document.getElementById('push').disabled = true;
+      view.state.timeButtons('disable');
+    } else {
+      classFnc.remove(document.getElementById('clock-face'), 'hide');
+      classFnc.remove(document.getElementById('settings-name-wrapper'), 'hide');
+      classFnc.add(document.getElementById('w-clock-face'), 'hide');
+      classFnc.remove(document.getElementById('watch-clock-face'), 'transparent');
+      document.getElementById('push').disabled = false;
+      view.state.timeButtons('enable');
+    }
+  }
+};
+
 View.prototype.renewTitle = {
-    timer: function () {
-      if (data.time.h == '00') {
-        document.getElementById('title').innerHTML = data.time.m + ':' + data.time.s + ' ' + document.getElementById('timer-name').value;
-      } else {
-        document.getElementById('title').innerHTML = data.time.h + ':' + data.time.m + ':' + data.time.s + ' ' + document.getElementById('timer-name').value;
-      }
-      if (document.getElementById('timer-name').value !== '') {
-        localStorage.setItem('name', document.getElementById('timer-name').value)
-      } else {
-        if (localStorage.getItem('name')) {
-          localStorage.setItem('name', localStorage.getItem('name'));
-        }
-      }
-    },
-    watch: function (h, m, s) {
-      document.getElementById('title').innerHTML = h + ':' + m + ':' + s;
+  timer: function () {
+    if (data.time.h == '00') {
+      document.getElementById('title').innerHTML = data.time.m + ':' + data.time.s + ' ' + document.getElementById('timer-name').value;
+    } else {
+      document.getElementById('title').innerHTML = data.time.h + ':' + data.time.m + ':' + data.time.s + ' ' + document.getElementById('timer-name').value;
     }
-  };
+    if (document.getElementById('timer-name').value !== '') {
+      localStorage.setItem('name', document.getElementById('timer-name').value)
+    } else {
+      if (localStorage.getItem('name')) {
+        localStorage.setItem('name', localStorage.getItem('name'));
+      }
+    }
+  },
+  watch: function (h, m, s) {
+    document.getElementById('title').innerHTML = h + ':' + m + ':' + s;
+  }
+};
 View.prototype.reverse = {
-    set: function () {
-      data.flag.reverse = true;
-      classFnc.add(document.getElementById('clock-face'), 'reverse');
-    },
-    unset: function () {
-      data.flag.reverse = false;
-      classFnc.remove(document.getElementById('clock-face'), 'reverse');
-    }
-  };
+  set: function () {
+    data.flag.reverse = true;
+    classFnc.add(document.getElementById('clock-face'), 'reverse');
+  },
+  unset: function () {
+    data.flag.reverse = false;
+    classFnc.remove(document.getElementById('clock-face'), 'reverse');
+  }
+};
 View.prototype.ending = {
-    set: function () {
-      classFnc.add(document.getElementById('clock-face'), 'ending');
-    },
-    unset: function () {
-      classFnc.remove(document.getElementById('clock-face'), 'ending');
-    }
-  };
+  set: function () {
+    classFnc.add(document.getElementById('clock-face'), 'ending');
+  },
+  unset: function () {
+    classFnc.remove(document.getElementById('clock-face'), 'ending');
+  }
+};
 View.prototype.warning = {
-    finishOff: function () {
-      classFnc.add(document.getElementById('settings-end-continue'), 'warning');
-      setTimeout(function () {
-        classFnc.remove(document.getElementById('settings-end-continue'), 'warning');
-      }, 1000);
-    },
-    reset: function () {
-      classFnc.add(document.getElementById('set0'), 'stopwatch');
-    }
-  };
+  finishOff: function () {
+    classFnc.add(document.getElementById('settings-end-continue'), 'warning');
+    setTimeout(function () {
+      classFnc.remove(document.getElementById('settings-end-continue'), 'warning');
+    }, 1000);
+  },
+  reset: function () {
+    classFnc.add(document.getElementById('set0'), 'stopwatch');
+  }
+};
 view = new View();

@@ -55,7 +55,7 @@ class Timer {
   };
   startOrStop () {
     if (data.flag.stop) {
-      start();
+      this.start();
     } else {
       view.stopSound();
       this.stop();
