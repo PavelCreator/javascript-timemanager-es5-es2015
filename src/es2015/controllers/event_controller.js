@@ -10,10 +10,10 @@ class Events {
   };
   fieldInsertTimerName () {
     document.getElementById('timer-name').onfocus = function () {
-      data.flag.disableKeyEvents = true;
+      flag.set('disableKeyEvents', true);
     };
     document.getElementById('timer-name').onblur = function () {
-      data.flag.disableKeyEvents = false;
+      flag.set('disableKeyEvents', false);
     };
     document.getElementById('timer-name').oninput = function () {
       view.renewTitle.timer();
@@ -45,13 +45,13 @@ class Events {
       switch (e.which) {
         //Stop or Stop - Enter, Space
         case 32:
-          if (!data.flag.disableKeyEvents && data.flag.mode !== 'watch') {
+          if (!flag.get('disableKeyEvents') && (flag.get('mode') !== 'watch')) {
             document.getElementById('hidden').focus();
             timer.startOrStop();
           }
           break;
         case 13:
-          if (!data.flag.disableKeyEvents && data.flag.mode !== 'watch') {
+          if (!flag.get('disableKeyEvents') && (flag.get('mode') !== 'watch')) {
             document.getElementById('hidden').focus();
             timer.startOrStop();
           } else {
@@ -64,7 +64,7 @@ class Events {
         case 1105:
         case 114:
         case 1082:
-          if (!data.flag.disableKeyEvents) {
+          if (!flag.get('disableKeyEvents')) {
             timer.set(0);
           }
           break;
@@ -85,23 +85,23 @@ class Events {
       timer.startOrStop();
     }
     document.getElementById('settings-alarm-on').onclick = function () {
-      if (data.flag.sound === false) {
+      if (flag.get('sound') === false) {
         view.setSoundMode();
       }
     }
     document.getElementById('settings-alarm-off').onclick = function () {
-      if (data.flag.sound === true) {
+      if (flag.get('sound') === true) {
         view.setSoundMode();
       }
     }
     document.getElementById("settings-end-continue").onclick = function () {
-      if (data.flag.finish === true) {
+      if (flag.get('finish') === true) {
         view.setFinishMode();
       }
     }
     document.getElementById("settings-end-stop").onclick = function () {
-      if (data.flag.finish === false) {
-        if (data.flag.reverse) {
+      if (flag.get('finish') === false) {
+        if (flag.get('reverse')) {
           timer.set('0');
         }
         view.setFinishMode();
@@ -118,7 +118,7 @@ class Events {
     for (var i = 0; i < modes.length; i++) {
       document.getElementById("settings-mode-" + modes[i]).onclick = (function (x) {
         return function () {
-          if (data.flag.mode !== modes[x]) {
+          if (flag.get('mode') !== modes[x]) {
             timer.changeMode(modes[x]);
             view.changeMode();
           }

@@ -31,7 +31,7 @@ class TimerSvc {
       parseFloat(data.time.s);
   };
   setTimeLocalStorage () {
-    if ((data.flag.reverse === true) && (data.flag.mode === 'timer')) {
+    if ((flag.get('reverse') === true) && (flag.get('mode') === 'timer')) {
       localStorage.setItem("reverse", true);
     }else{
       localStorage.setItem("reverse", false);

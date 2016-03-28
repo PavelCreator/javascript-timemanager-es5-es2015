@@ -5,16 +5,6 @@ data.time = {
   s: '00'
 };
 data.timeInSec = 0;
-data.flag = {
-  stop: true,
-  reverse: false,
-  sound: true,
-  finish: false,
-  showWatch: true,
-  mode: 'timer',
-  disableKeyEvents: false,
-  undouble: 0
-};
 data.audio = new Audio();
 data.audioSettings = {
   url: 'alarm_clock_1.mp3',

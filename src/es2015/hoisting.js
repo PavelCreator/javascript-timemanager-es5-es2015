@@ -9,9 +9,12 @@ var
   /*Timeout*/
   oneSec,
 
+  /*Storages*/
+  flag,
+  data,
+
   /*App Services*/
   timerSvc,
-  data,
 
   /*Auxiliary Services*/
   logger,

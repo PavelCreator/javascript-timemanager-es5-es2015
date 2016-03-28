@@ -14,7 +14,7 @@ class Watch {
       }
       if (document.getElementById('w-sec').value != s) {
         document.getElementById('w-sec').value = s;
-        if (data.flag.mode === 'watch') {
+        if (flag.get('mode') === 'watch') {
           view.renewTitle.watch(h, m, s);
         }
       }

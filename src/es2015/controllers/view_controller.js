@@ -51,13 +51,13 @@ class View {
     if (finish === '1') {
       this.setFinishMode();
     } else {
-      data.flag.finish = true;
+      flag.set('finish', true);
       this.setFinishMode();
     }
     if (soundPlay === '0') {
       this.setSoundMode();
     } else {
-      data.flag.sound = false;
+      flag.set('sound', false);
       this.setSoundMode();
     }
     if (mode) {
@@ -80,7 +80,7 @@ class View {
     }
     if (name) {
       document.getElementById('timer-name').value = name;
-      if (data.flag.mode !== 'watch') view.renewTitle.timer();
+      if (flag.get('mode') !== 'watch') view.renewTitle.timer();
     }
     if (!firstTime) {
       events.modalLogic.openModal();
@@ -118,7 +118,7 @@ class View {
   };
 
   reset() {
-    if (data.flag.mode === 'timer') {
+    if (flag.get('mode') === 'timer') {
       this.stopSound();
       this.reverse.unset();
       this.ending.unset();
@@ -131,14 +131,14 @@ class View {
   };
 
   setSoundMode() {
-    if (data.flag.sound) {
-      data.flag.sound = false;
+    if (flag.get('sound')) {
+      flag.set('sound', false);
       localStorage.setItem("sound-play", "0");
       classFnc.add(document.getElementById('settings-melody'), 'hide');
       classFnc.remove(document.getElementById('settings-alarm-on'), 'active');
       classFnc.add(document.getElementById('settings-alarm-off'), 'active');
     } else {
-      data.flag.sound = true;
+      flag.set('sound', true);
       localStorage.setItem("sound-play", "1");
       classFnc.remove(document.getElementById('settings-melody'), 'hide');
       classFnc.add(document.getElementById('settings-alarm-on'), 'active');
@@ -147,13 +147,13 @@ class View {
   };
 
   setFinishMode() {
-    if (data.flag.finish) {
-      data.flag.finish = false;
+    if (flag.get('finish')) {
+      flag.set('finish', false);
       localStorage.setItem("finish", "0");
       classFnc.add(document.getElementById('settings-end-continue'), 'active');
       classFnc.remove(document.getElementById('settings-end-stop'), 'active');
     } else {
-      data.flag.finish = true;
+      flag.set('finish', true);
       localStorage.setItem("finish", "1");
       classFnc.remove(document.getElementById('settings-end-continue'), 'active');
       classFnc.add(document.getElementById('settings-end-stop'), 'active');
@@ -320,7 +320,7 @@ class View {
   };
 
   changeMode() {
-    switch (data.flag.mode) {
+    switch (flag.get('mode')) {
       case 'timer':
         localStorage.setItem("mode", "timer");
         classFnc.add(document.getElementById('settings-mode-timer'), 'active');
@@ -396,7 +396,7 @@ View.prototype.modeView = {
     if (bool) {
       classFnc.remove(document.getElementById('settings-alarm-wrapper'), 'hide');
       classFnc.remove(document.getElementById('settings-end-continue-wrapper'), 'hide');
-      if (data.flag.sound) {
+      if (flag.get('sound')) {
         classFnc.remove(document.getElementById('settings-melody'), 'hide');
       }
     } else {
@@ -454,11 +454,11 @@ View.prototype.renewTitle = {
 };
 View.prototype.reverse = {
   set: function () {
-    data.flag.reverse = true;
+    flag.set('reverse', true);
     classFnc.add(document.getElementById('clock-face'), 'reverse');
   },
   unset: function () {
-    data.flag.reverse = false;
+    flag.set('reverse', false);
     classFnc.remove(document.getElementById('clock-face'), 'reverse');
   }
 };
