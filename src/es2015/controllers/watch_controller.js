@@ -5,7 +5,7 @@ class Watch {
       var h = addZero(d.getHours());
       var m = addZero(d.getMinutes());
       var s = addZero(d.getSeconds());
-      var currentTime = h + '<span>:</span>' + m
+      var currentTime = `${h}<span>:</span>${m}`;
       if (document.getElementById('w-hour').value != h) {
         document.getElementById('w-hour').value = h;
       }

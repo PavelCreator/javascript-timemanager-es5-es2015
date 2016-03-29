@@ -12,8 +12,8 @@ class View {
       : 0;
     for (var i = 0; i < data.audios.length; i++) {
       melodiesList += (i == defaultMelody)
-        ? '<option value="' + i + '" selected>' + data.audios[i].name + '</option>'
-        : '<option value="' + i + '">' + data.audios[i].name + '</option>';
+        ? `<option value="${i}" selected>${data.audios[i].name}</option>`
+        : `<option value="${i}">${data.audios[i].name}</option>`;
     }
 
     var defaultVolume = localStorage.getItem("sound-volume")
@@ -21,8 +21,8 @@ class View {
       : 7;
     for (var i = 10; i > 0; i--) {
       volumeList += (i == defaultVolume)
-        ? '<option value="' + i / 10 + '" selected>' + i * 10 + '%</option>'
-        : '<option value="' + i / 10 + '">' + i * 10 + '%</option>';
+        ? `<option value="${i / 10}" selected>${i * 10}%</option>`
+        : `<option value="${i / 10}">${i * 10}%</option>`;
     }
 
     document.getElementById('melodies-list').innerHTML = melodiesList;
@@ -107,7 +107,7 @@ class View {
 
   playSound() {
     data.audio.volume = data.audioSettings.volume;
-    data.audio.src = '/timemanager/src/audio/' + data.audioSettings.url;
+    data.audio.src = `/timemanager/src/audio/${data.audioSettings.url}`;
     data.audio.autoplay = true;
   };
 
@@ -169,7 +169,7 @@ class View {
 
     if (height > 600) {
       var marginTop = (height - 600) * 0.25;
-      document.getElementById('app-wrapper').style.marginTop = marginTop + 'px';
+      document.getElementById('app-wrapper').style.marginTop = `${marginTop}px`;
     }
   };
 
@@ -214,7 +214,7 @@ class View {
             break;
 
           case 'delete':
-            data.time[shortFieldName] = '0' + data.time[shortFieldName].charAt(1);
+            data.time[shortFieldName] = `0${data.time[shortFieldName].charAt(1)}`;
             posEnd = 1;
             break;
 
@@ -223,7 +223,7 @@ class View {
           case 8:
           case 9:
             if (shortFieldName !== 'h') {
-              data.time[shortFieldName] = '5' + data.time[shortFieldName].charAt(1);
+              data.time[shortFieldName] = `5${data.time[shortFieldName].charAt(1)}`;
               view.ending.set();
               setTimeout(function () {
                 view.ending.unset();
@@ -231,13 +231,13 @@ class View {
               posEnd = 1;
             }
             else {
-              data.time[shortFieldName] = num + data.time[shortFieldName].charAt(1);
+              data.time[shortFieldName] = `${num}${data.time[shortFieldName].charAt(1)}`;
               posEnd = 1;
             }
             break;
 
           default:
-            data.time[shortFieldName] = num + data.time[shortFieldName].charAt(1);
+            data.time[shortFieldName] = `${num}${data.time[shortFieldName].charAt(1)}`;
             posEnd = 1;
             break;
         }
@@ -254,17 +254,17 @@ class View {
             break;
 
           case 'delete':
-            data.time[shortFieldName] = data.time[shortFieldName].charAt(0) + '0';
+            data.time[shortFieldName] = `${data.time[shortFieldName].charAt(0)}0`;
             posEnd = 2;
             break;
 
           case 'blackspace':
-            data.time[shortFieldName] = '0' + data.time[shortFieldName].charAt(1);
+            data.time[shortFieldName] = `0${data.time[shortFieldName].charAt(1)}`;
             posEnd = 0;
             break;
 
           default:
-            data.time[shortFieldName] = data.time[shortFieldName].charAt(0) + num;
+            data.time[shortFieldName] = `${data.time[shortFieldName].charAt(0)}${num}`;
             view.renewClockFace();
             switch (shortFieldName) {
               case 'h':
@@ -305,7 +305,7 @@ class View {
             break;
 
           case 'blackspace':
-            data.time[shortFieldName] = data.time[shortFieldName].charAt(0) + '0';
+            data.time[shortFieldName] = `${data.time[shortFieldName].charAt(0)}0`;
             posEnd = 1;
             break;
 
@@ -356,7 +356,7 @@ class View {
 
   copyToClipboard() {
     var textArea = document.createElement("textarea");
-    textArea.value = data.time.h + ':' + data.time.m + ':' + data.time.s;
+    textArea.value = `${data.time.h}:${data.time.m}:${data.time.s}`;
     document.body.appendChild(textArea);
     textArea.select();
     document.execCommand('copy');
@@ -381,11 +381,11 @@ View.prototype.state = {
     for (var i = 0; i < data.timeButtonArr.length; i++) {
       switch (state) {
         case 'disable':
-          document.getElementById("set" + data.timeButtonArr[i]).disabled = true;
+          document.getElementById(`set${data.timeButtonArr[i]}`).disabled = true;
           break;
 
         case 'enable':
-          document.getElementById("set" + data.timeButtonArr[i]).disabled = false;
+          document.getElementById(`set${data.timeButtonArr[i]}`).disabled = false;
           break;
       }
     }
@@ -408,9 +408,9 @@ View.prototype.modeView = {
   stopwatch (bool) {
     for (var i = 0; i <= data.timeButtonArr.length - 1; i++) {
       if (bool) {
-        classFnc.add(document.getElementById("set" + data.timeButtonArr[i]), 'stopwatch');
+        classFnc.add(document.getElementById(`set${data.timeButtonArr[i]}`), 'stopwatch');
       } else {
-        classFnc.remove(document.getElementById("set" + data.timeButtonArr[i]), 'stopwatch');
+        classFnc.remove(document.getElementById(`set${data.timeButtonArr[i]}`), 'stopwatch');
       }
     }
   },
@@ -436,9 +436,9 @@ View.prototype.modeView = {
 View.prototype.renewTitle = {
   timer: function () {
     if (data.time.h == '00') {
-      document.getElementById('title').innerHTML = data.time.m + ':' + data.time.s + ' ' + document.getElementById('timer-name').value;
+      document.getElementById('title').innerHTML = `${data.time.m}:${data.time.s} ${document.getElementById('timer-name').value}`;
     } else {
-      document.getElementById('title').innerHTML = data.time.h + ':' + data.time.m + ':' + data.time.s + ' ' + document.getElementById('timer-name').value;
+      document.getElementById('title').innerHTML = `${data.time.h}:${data.time.m}:${data.time.s} ${document.getElementById('timer-name').value}`;
     }
     if (document.getElementById('timer-name').value !== '') {
       localStorage.setItem('name', document.getElementById('timer-name').value)
@@ -449,7 +449,7 @@ View.prototype.renewTitle = {
     }
   },
   watch: function (h, m, s) {
-    document.getElementById('title').innerHTML = h + ':' + m + ':' + s;
+    document.getElementById('title').innerHTML = `${h}:${m}:${s}`;
   }
 };
 View.prototype.reverse = {

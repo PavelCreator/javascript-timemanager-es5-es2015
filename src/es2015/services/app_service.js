@@ -5,10 +5,10 @@ class TimerSvc {
         data.time[hms] = document.getElementById(elId).value;
         break;
       case 1:
-        data.time[hms] = '0' + document.getElementById(elId).value;
+        data.time[hms] = `0${document.getElementById(elId).value}`;
         break;
       default:
-        data.time[hms] = '00';
+        data.time[hms] = `00`;
         break;
     }
   };
@@ -46,28 +46,28 @@ class TimerSvc {
      data.time.h = '24';
      } else {*/
     if (timeInSec >= 36000) {
-      data.time.h = '' + Math.floor(timeInSec / 3600);
+      data.time.h = String(Math.floor(timeInSec / 3600));
     } else {
       if (timeInSec >= 3600) {
-        data.time.h = '0' + Math.floor(timeInSec / 3600);
+        data.time.h = `0${Math.floor(timeInSec / 3600)}`;
       } else {
-        data.time.h = '00';
+        data.time.h = `00`;
       }
     }
     /*    }*/
     //MIN
     var min = Math.floor((timeInSec - parseFloat(data.time.h) * 3600) / 60);
     if (min < 10) {
-      data.time.m = '0' + min.toString();
+      data.time.m = `0${min}`;
     } else {
-      data.time.m = min.toString();
+      data.time.m = String(min);
     }
     //SEC
     var sec = Math.floor((timeInSec - parseFloat(data.time.h) * 3600)) - min * 60;
     if (sec < 10) {
-      data.time.s = '0' + sec.toString();
+      data.time.s = `0${sec}`;
     } else {
-      data.time.s = sec.toString();
+      data.time.s = String(sec);
     }
   };
   getValuesFromHTML () {
@@ -76,7 +76,6 @@ class TimerSvc {
     this.getTimeParameterFromHTML('s', 'sec');
   };
   getNumFromKeycode (keycode) {
-    console.log("keycode =", keycode);
     switch (keycode) {
       case 32:
         document.getElementById('hidden').focus();

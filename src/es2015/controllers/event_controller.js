@@ -75,7 +75,7 @@ class Events {
   buttonPress () {
     var nums = data.timeButtonArr;
     for (var i = 0; i <= nums.length - 1; i++) {
-      document.getElementById("set" + nums[i]).onclick = (function (x) {
+      document.getElementById(`set${nums[i]}`).onclick = (function (x) {
         return function () {
           timer.set(nums[x]);
         }
@@ -116,7 +116,7 @@ class Events {
     }
     var modes = ['timer', 'stopwatch', 'watch'];
     for (var i = 0; i < modes.length; i++) {
-      document.getElementById("settings-mode-" + modes[i]).onclick = (function (x) {
+      document.getElementById(`settings-mode-${modes[i]}`).onclick = (function (x) {
         return function () {
           if (flag.get('mode') !== modes[x]) {
             timer.changeMode(modes[x]);
