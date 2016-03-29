@@ -435,7 +435,7 @@ View.prototype.modeView = {
 };
 
 View.prototype.renewTitle = {
-  timer: () => {
+  timer() {
     if (data.time.h == '00') {
       document.getElementById('title').innerHTML = `${data.time.m}:${data.time.s} ${document.getElementById('timer-name').value}`;
     } else {
@@ -449,36 +449,36 @@ View.prototype.renewTitle = {
       }
     }
   },
-  watch: (h, m, s) => {
+  watch(h, m, s) {
     document.getElementById('title').innerHTML = `${h}:${m}:${s}`;
   }
 };
 View.prototype.reverse = {
-  set: () => {
+  set() {
     flag.set('reverse', true);
     classFnc.add(document.getElementById('clock-face'), 'reverse');
   },
-  unset: () => {
+  unset() {
     flag.set('reverse', false);
     classFnc.remove(document.getElementById('clock-face'), 'reverse');
   }
 };
 View.prototype.ending = {
-  set: () => {
+  set() {
     classFnc.add(document.getElementById('clock-face'), 'ending');
   },
-  unset: () => {
+  unset() {
     classFnc.remove(document.getElementById('clock-face'), 'ending');
   }
 };
 View.prototype.warning = {
-  finishOff: () => {
+  finishOff() {
     classFnc.add(document.getElementById('settings-end-continue'), 'warning');
     setTimeout(() => {
       classFnc.remove(document.getElementById('settings-end-continue'), 'warning');
     }, 1000);
   },
-  reset: () => {
+  reset() {
     classFnc.add(document.getElementById('set0'), 'stopwatch');
   }
 };

@@ -163,7 +163,7 @@ class Events {
   };
 }
 Events.prototype.modalLogic = {
-  watchers: () => {
+  watchers() {
     document.getElementById("openModal").onclick = () => {
       events.modalLogic.openModal();
     }
@@ -176,11 +176,11 @@ Events.prototype.modalLogic = {
       }
     }
   },
-  openModal: () => {
+  openModal() {
     document.getElementById('modalWrapper').style.display = "block";
     document.getElementsByTagName("html")[0].style.overflow = "hidden";
   },
-  closeModal: () => {
+  closeModal() {
     document.getElementById('modalWrapper').style.display = "none";
     document.getElementsByTagName("html")[0].style.overflow = "auto";
   }
