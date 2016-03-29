@@ -1,6 +1,6 @@
 class Watch {
   start() {
-    startWatch = function () {
+    let startWatch = () => {
       const d = new Date();
       const h = addZero(d.getHours());
       const m = addZero(d.getMinutes());
@@ -23,7 +23,7 @@ class Watch {
       }
     }
     startWatch();
-    setInterval(function () {
+    setInterval(() => {
       startWatch();
     }, 1000);
   }

@@ -2,20 +2,20 @@ class Events {
   fieldFocusStopTimer () {
     const field = data.hms;
     for (let i = 0; i <= field.length - 1; i++) {
-      document.getElementById(field[i]).onfocus = function () {
+      document.getElementById(field[i]).onfocus = () => {
         view.ending.unset();
         timer.stop();
       };
     }
   };
   fieldInsertTimerName () {
-    document.getElementById('timer-name').onfocus = function () {
+    document.getElementById('timer-name').onfocus = () => {
       flag.set('disableKeyEvents', true);
     };
-    document.getElementById('timer-name').onblur = function () {
+    document.getElementById('timer-name').onblur = () => {
       flag.set('disableKeyEvents', false);
     };
-    document.getElementById('timer-name').oninput = function () {
+    document.getElementById('timer-name').oninput = () => {
       view.renewTitle.timer();
       localStorage.setItem('name', document.getElementById('timer-name').value)
     };
@@ -23,8 +23,8 @@ class Events {
   fieldInput () {
     const field = data.hms;
     for (let i = 0; i < field.length; i++) {
-      document.getElementById(field[i]).onkeydown = (function (fieldName) {
-        return function (e) {
+      document.getElementById(field[i]).onkeydown = ((fieldName) => {
+        return (e) => {
           console.log(e);
           e.preventDefault();
           let pos = e.target.selectionStart;
@@ -40,7 +40,7 @@ class Events {
   keypress () {
     window.captureEvents(Event.KEYPRESS);
     window.onkeypress = pressed;
-    function pressed(e) {
+    let pressed = (e) => {
       let ctrlDown = e.ctrlKey || e.metaKey
       switch (e.which) {
         //Stop or Stop - Enter, Space
@@ -75,31 +75,31 @@ class Events {
   buttonPress () {
     const nums = data.timeButtonArr;
     for (let i = 0; i <= nums.length - 1; i++) {
-      document.getElementById(`set${nums[i]}`).onclick = (function (x) {
-        return function () {
+      document.getElementById(`set${nums[i]}`).onclick = ((x) => {
+        return () => {
           timer.set(nums[x]);
         }
       })(i);
     }
-    document.getElementById("push").onclick = function () {
+    document.getElementById("push").onclick = () => {
       timer.startOrStop();
     }
-    document.getElementById('settings-alarm-on').onclick = function () {
+    document.getElementById('settings-alarm-on').onclick = () => {
       if (flag.get('sound') === false) {
         view.setSoundMode();
       }
     }
-    document.getElementById('settings-alarm-off').onclick = function () {
+    document.getElementById('settings-alarm-off').onclick = () => {
       if (flag.get('sound') === true) {
         view.setSoundMode();
       }
     }
-    document.getElementById("settings-end-continue").onclick = function () {
+    document.getElementById("settings-end-continue").onclick = () => {
       if (flag.get('finish') === true) {
         view.setFinishMode();
       }
     }
-    document.getElementById("settings-end-stop").onclick = function () {
+    document.getElementById("settings-end-stop").onclick = () => {
       if (flag.get('finish') === false) {
         if (flag.get('reverse')) {
           timer.set('0');
@@ -108,16 +108,16 @@ class Events {
       }
     }
 
-    document.getElementById("settings-melody-play").onclick = function () {
+    document.getElementById("settings-melody-play").onclick = () => {
       view.setMelodyPlay(true);
     }
-    document.getElementById("settings-melody-stop").onclick = function () {
+    document.getElementById("settings-melody-stop").onclick = () => {
       view.setMelodyPlay(false);
     }
     const modes = data.modes;
     for (let i = 0; i < modes.length; i++) {
-      document.getElementById(`settings-mode-${modes[i]}`).onclick = (function (x) {
-        return function () {
+      document.getElementById(`settings-mode-${modes[i]}`).onclick = ((x) => {
+        return () => {
           if (flag.get('mode') !== modes[x]) {
             timer.changeMode(modes[x]);
             view.changeMode();
@@ -125,17 +125,17 @@ class Events {
         }
       })(i);
     }
-    document.getElementById("copyToClipboard").onclick = function () {
+    document.getElementById("copyToClipboard").onclick = () => {
       view.copyToClipboard();
     }
   };
   resizeEvent () {
-    addEvent(window, "resize", function (event) {
+    addEvent(window, "resize", (event) => {
       view.setMarginTop();
     });
   };
   changeMelodiesListEvent () {
-    document.getElementById('melodies-list').onchange = function () {
+    document.getElementById('melodies-list').onchange = () => {
       view.setMelodyPlay(false);
       let value = document.getElementById('melodies-list').value;
       document.getElementById('settings-melody-name').innerHTML = data.audios[value].name;
@@ -143,7 +143,7 @@ class Events {
       localStorage.setItem("sound-melody", value);
       view.setMelodyPlay(true);
     };
-    document.getElementById('volume-list').onchange = function () {
+    document.getElementById('volume-list').onchange = () => {
       view.setMelodyPlay(false);
       let volume = document.getElementById('volume-list').value;
       data.audioSettings.volume = volume;
@@ -163,24 +163,24 @@ class Events {
   };
 }
 Events.prototype.modalLogic = {
-  watchers: function () {
-    document.getElementById("openModal").onclick = function () {
+  watchers: () => {
+    document.getElementById("openModal").onclick = () => {
       events.modalLogic.openModal();
     }
-    document.getElementById("closeModal").onclick = function () {
+    document.getElementById("closeModal").onclick = () => {
       events.modalLogic.closeModal();
     }
-    window.onclick = function (event) {
+    window.onclick = (event) => {
       if (event.target == document.getElementById('modalWrapper')) {
         events.modalLogic.closeModal();
       }
     }
   },
-  openModal: function () {
+  openModal: () => {
     document.getElementById('modalWrapper').style.display = "block";
     document.getElementsByTagName("html")[0].style.overflow = "hidden";
   },
-  closeModal: function () {
+  closeModal: () => {
     document.getElementById('modalWrapper').style.display = "none";
     document.getElementsByTagName("html")[0].style.overflow = "auto";
   }

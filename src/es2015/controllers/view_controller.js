@@ -178,7 +178,7 @@ class View {
       classFnc.remove(document.getElementById('settings-melody-stop'), 'hide');
       classFnc.add(document.getElementById('settings-melody-play'), 'hide');
       this.playSound();
-      data.audio.onended = function () {
+      data.audio.onended = () => {
         view.setMelodyPlay(false);
       };
     } else {
@@ -226,7 +226,7 @@ class View {
             if (shortFieldName !== 'h') {
               data.time[shortFieldName] = `5${data.time[shortFieldName].charAt(1)}`;
               view.ending.set();
-              setTimeout(function () {
+              setTimeout(() => {
                 view.ending.unset();
               }, 1000);
               posEnd = 1;
@@ -364,7 +364,7 @@ class View {
     document.body.removeChild(textArea);
     document.getElementById('copySuccess').style.opacity = '1';
     classFnc.add(document.getElementById('copyToClipboard'), 'green');
-    setTimeout(function () {
+    setTimeout(() => {
       document.getElementById('copySuccess').style.opacity = '0';
       classFnc.remove(document.getElementById('copyToClipboard'), 'green');
     }, 1000);
@@ -435,7 +435,7 @@ View.prototype.modeView = {
 };
 
 View.prototype.renewTitle = {
-  timer: function () {
+  timer: () => {
     if (data.time.h == '00') {
       document.getElementById('title').innerHTML = `${data.time.m}:${data.time.s} ${document.getElementById('timer-name').value}`;
     } else {
@@ -449,36 +449,36 @@ View.prototype.renewTitle = {
       }
     }
   },
-  watch: function (h, m, s) {
+  watch: (h, m, s) => {
     document.getElementById('title').innerHTML = `${h}:${m}:${s}`;
   }
 };
 View.prototype.reverse = {
-  set: function () {
+  set: () => {
     flag.set('reverse', true);
     classFnc.add(document.getElementById('clock-face'), 'reverse');
   },
-  unset: function () {
+  unset: () => {
     flag.set('reverse', false);
     classFnc.remove(document.getElementById('clock-face'), 'reverse');
   }
 };
 View.prototype.ending = {
-  set: function () {
+  set: () => {
     classFnc.add(document.getElementById('clock-face'), 'ending');
   },
-  unset: function () {
+  unset: () => {
     classFnc.remove(document.getElementById('clock-face'), 'ending');
   }
 };
 View.prototype.warning = {
-  finishOff: function () {
+  finishOff: () => {
     classFnc.add(document.getElementById('settings-end-continue'), 'warning');
-    setTimeout(function () {
+    setTimeout(() => {
       classFnc.remove(document.getElementById('settings-end-continue'), 'warning');
     }, 1000);
   },
-  reset: function () {
+  reset: () => {
     classFnc.add(document.getElementById('set0'), 'stopwatch');
   }
 };

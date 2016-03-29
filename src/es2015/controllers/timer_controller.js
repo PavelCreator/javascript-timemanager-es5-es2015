@@ -6,7 +6,7 @@ class Timer {
 
     if ((flag.get('finish')) && (flag.get('mode') === 'timer') && (data.timeInSec == 0)) {
       view.warning.finishOff();
-      setTimeout(function () {
+      setTimeout(() => {
         view.startOrStop('stop');
       }, 1000);
       return;
@@ -17,7 +17,7 @@ class Timer {
       return;
     }
 
-    oneSec = setInterval(function () {
+    oneSec = setInterval(() => {
       flag.set('undouble', 0);
       if ((flag.get('sound')) && (!flag.get('stop')) && (data.timeInSec == 1) && (!flag.get('reverse'))) {
         view.setMelodyPlay(true);
