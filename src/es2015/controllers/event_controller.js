@@ -28,7 +28,7 @@ class Events {
           console.log(e);
           e.preventDefault();
           let pos = e.target.selectionStart;
-          let num = timerSvc.getNumFromKeycode(e.keyCode);
+          let num = TimerSvc.getNumFromKeycode(e.keyCode);
           if (num !== false) {
             let positionEnd = view.setTimeFromKey(fieldName, num, pos);
             if (positionEnd !== false) e.target.selectionEnd = positionEnd;

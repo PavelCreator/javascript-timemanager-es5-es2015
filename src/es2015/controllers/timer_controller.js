@@ -1,8 +1,8 @@
 class Timer {
   start () {
     view.startOrStop('start');
-    timerSvc.getValuesFromHTML();
-    timerSvc.fromTimeToSec();
+    TimerSvc.getValuesFromHTML();
+    TimerSvc.fromTimeToSec();
 
     if ((flag.get('finish')) && (flag.get('mode') === 'timer') && (data.timeInSec == 0)) {
       view.warning.finishOff();
@@ -42,7 +42,7 @@ class Timer {
         data.timeInSec--;
       }
 
-      timerSvc.fromSecToTime();
+      TimerSvc.fromSecToTime();
       view.renewClockFace();
     }, 1000);
   };
@@ -71,7 +71,7 @@ class Timer {
     flag.set('stop', true);
     flag.set('undouble', 0);
 
-    timerSvc.fromSecToTime();
+    TimerSvc.fromSecToTime();
     view.renewClockFace();
   };
   changeMode (mode) {

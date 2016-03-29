@@ -13,9 +13,6 @@ let
   flag,
   data,
 
-  /*App Services*/
-  timerSvc,
-
   /*Auxiliary Services*/
   logger,
   classFnc,

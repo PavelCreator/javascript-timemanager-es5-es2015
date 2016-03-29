@@ -70,7 +70,7 @@ class View {
     if (time) {
       if (!localStorage.getItem('singleton')) {
         data.timeInSec = time;
-        timerSvc.fromSecToTime();
+        TimerSvc.fromSecToTime();
         this.renewClockFace();
       }
     }

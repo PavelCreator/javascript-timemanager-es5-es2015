@@ -1,5 +1,5 @@
 class TimerSvc {
-  getTimeParameterFromHTML (hms, elId) {
+  static getTimeParameterFromHTML (hms, elId) {
     switch (data.time[hms].length) {
       case 2:
         data.time[hms] = document.getElementById(elId).value;
@@ -12,7 +12,7 @@ class TimerSvc {
         break;
     }
   };
-  fromTimeToSec () {
+  static fromTimeToSec () {
     if (data.time.s > 59) {
       data.time.s = 60;
     }
@@ -30,7 +30,7 @@ class TimerSvc {
       parseFloat(data.time.m) * 60 +
       parseFloat(data.time.s);
   };
-  setTimeLocalStorage () {
+  static setTimeLocalStorage () {
     if ((flag.get('reverse') === true) && (flag.get('mode') === 'timer')) {
       localStorage.setItem("reverse", true);
     }else{
@@ -38,7 +38,7 @@ class TimerSvc {
     }
     localStorage.setItem("time", data.timeInSec);
   };
-  fromSecToTime () {
+  static fromSecToTime () {
     const timeInSec = data.timeInSec;
     this.setTimeLocalStorage();
     //HOUR
@@ -70,12 +70,12 @@ class TimerSvc {
       data.time.s = String(sec);
     }
   };
-  getValuesFromHTML () {
+  static getValuesFromHTML () {
     this.getTimeParameterFromHTML('h', 'hour');
     this.getTimeParameterFromHTML('m', 'min');
     this.getTimeParameterFromHTML('s', 'sec');
   };
-  getNumFromKeycode (keycode) {
+  static getNumFromKeycode (keycode) {
     switch (keycode) {
       case 32:
         document.getElementById('hidden').focus();
@@ -159,4 +159,3 @@ class TimerSvc {
     }
   };
 }
-timerSvc = new TimerSvc();
