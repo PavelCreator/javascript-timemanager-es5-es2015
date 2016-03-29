@@ -41,7 +41,7 @@
 <strong>npm install</strong></li>
 <li>2) make build
 <br><strong>gulp b5</strong> - to generate ES5 build
-<br><strong>gulp b6</strong> - to generate ES2015 build
+<br><strong>gulp b2015</strong> - to generate ES2015 build
 <br><strong>gulp bt</strong> - to generate build with Chai/Mocha tests
 </ul>
 
