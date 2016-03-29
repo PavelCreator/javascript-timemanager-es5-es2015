@@ -39,7 +39,7 @@ class TimerSvc {
     localStorage.setItem("time", data.timeInSec);
   };
   fromSecToTime () {
-    let timeInSec = data.timeInSec;
+    const timeInSec = data.timeInSec;
     this.setTimeLocalStorage();
     //HOUR
     /*    if (timeInSec >= 90000) {
@@ -56,14 +56,14 @@ class TimerSvc {
     }
     /*    }*/
     //MIN
-    let min = Math.floor((timeInSec - parseFloat(data.time.h) * 3600) / 60);
+    const min = Math.floor((timeInSec - parseFloat(data.time.h) * 3600) / 60);
     if (min < 10) {
       data.time.m = `0${min}`;
     } else {
       data.time.m = String(min);
     }
     //SEC
-    let sec = Math.floor((timeInSec - parseFloat(data.time.h) * 3600)) - min * 60;
+    const sec = Math.floor((timeInSec - parseFloat(data.time.h) * 3600)) - min * 60;
     if (sec < 10) {
       data.time.s = `0${sec}`;
     } else {

@@ -57,3 +57,5 @@ data.audios = [
   }
 ];
 data.timeButtonArr = ['0', '1', '2', '5', '10', '15', '20', '30', '45', '60', '120'];
+data.hms = ['hour', 'min', 'sec'];
+data.modes = ['timer', 'stopwatch', 'watch'];
