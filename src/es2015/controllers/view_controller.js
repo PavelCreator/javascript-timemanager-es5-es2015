@@ -7,7 +7,7 @@ class View {
     let melodiesList = '',
       volumeList = '';
 
-    let defaultMelody = localStorage.getItem("sound-melody")
+    const defaultMelody = localStorage.getItem("sound-melody")
       ? localStorage.getItem("sound-melody")
       : 0;
     for (let i = 0; i < data.audios.length; i++) {
@@ -16,7 +16,7 @@ class View {
         : `<option value="${i}">${data.audios[i].name}</option>`;
     }
 
-    let defaultVolume = localStorage.getItem("sound-volume")
+    const defaultVolume = localStorage.getItem("sound-volume")
       ? localStorage.getItem("sound-volume") * 10
       : 7;
     for (let i = 10; i > 0; i--) {
@@ -30,7 +30,7 @@ class View {
   };
 
   setSettingsFromStorage() {
-    let
+    const
       soundMelodyId = localStorage.getItem("sound-melody"),
       soundVolume = localStorage.getItem("sound-volume"),
       finish = localStorage.getItem("finish"),
@@ -161,10 +161,10 @@ class View {
   };
 
   setMarginTop() {
-    let body = document.body,
+    const body = document.body,
       html = document.documentElement;
 
-    let height = Math.max(body.scrollHeight, body.offsetHeight,
+    const height = Math.max(body.scrollHeight, body.offsetHeight,
       html.clientHeight, html.scrollHeight, html.offsetHeight);
 
     if (height > 600) {
@@ -189,7 +189,8 @@ class View {
   };
 
   setTimeFromKey(fieldName, num, pos) {
-    let posEnd, shortFieldName = fieldName.charAt(0);
+    let posEnd;
+    const shortFieldName = fieldName.charAt(0);
     switch (pos) {
       case 0:
         switch (num) {

@@ -1,6 +1,6 @@
 class Events {
   fieldFocusStopTimer () {
-    let field = ['hour', 'min', 'sec'];
+    const field = data.hms;
     for (let i = 0; i <= field.length - 1; i++) {
       document.getElementById(field[i]).onfocus = function () {
         view.ending.unset();
@@ -21,7 +21,7 @@ class Events {
     };
   };
   fieldInput () {
-    let field = ['hour', 'min', 'sec'];
+    const field = data.hms;
     for (let i = 0; i < field.length; i++) {
       document.getElementById(field[i]).onkeydown = (function (fieldName) {
         return function (e) {
@@ -73,7 +73,7 @@ class Events {
     }
   };
   buttonPress () {
-    let nums = data.timeButtonArr;
+    const nums = data.timeButtonArr;
     for (let i = 0; i <= nums.length - 1; i++) {
       document.getElementById(`set${nums[i]}`).onclick = (function (x) {
         return function () {
@@ -114,7 +114,7 @@ class Events {
     document.getElementById("settings-melody-stop").onclick = function () {
       view.setMelodyPlay(false);
     }
-    let modes = ['timer', 'stopwatch', 'watch'];
+    const modes = data.modes;
     for (let i = 0; i < modes.length; i++) {
       document.getElementById(`settings-mode-${modes[i]}`).onclick = (function (x) {
         return function () {

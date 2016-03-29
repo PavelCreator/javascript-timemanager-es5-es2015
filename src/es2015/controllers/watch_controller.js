@@ -1,11 +1,11 @@
 class Watch {
   start() {
-    let startWatch = function () {
-      let d = new Date();
-      let h = addZero(d.getHours());
-      let m = addZero(d.getMinutes());
-      let s = addZero(d.getSeconds());
-      let currentTime = `${h}<span>:</span>${m}`;
+    startWatch = function () {
+      const d = new Date();
+      const h = addZero(d.getHours());
+      const m = addZero(d.getMinutes());
+      const s = addZero(d.getSeconds());
+      const currentTime = `${h}<span>:</span>${m}`;
       if (document.getElementById('w-hour').value != h) {
         document.getElementById('w-hour').value = h;
       }
