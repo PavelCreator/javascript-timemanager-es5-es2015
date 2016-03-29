@@ -1,5 +1,5 @@
 "use strict";
-var
+let
   /*Entities*/
   timer,
   watch,

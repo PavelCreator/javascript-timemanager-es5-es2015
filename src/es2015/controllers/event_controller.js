@@ -1,7 +1,7 @@
 class Events {
   fieldFocusStopTimer () {
-    var field = ['hour', 'min', 'sec'];
-    for (var i = 0; i <= field.length - 1; i++) {
+    let field = ['hour', 'min', 'sec'];
+    for (let i = 0; i <= field.length - 1; i++) {
       document.getElementById(field[i]).onfocus = function () {
         view.ending.unset();
         timer.stop();
@@ -21,16 +21,16 @@ class Events {
     };
   };
   fieldInput () {
-    var field = ['hour', 'min', 'sec'];
-    for (var i = 0; i < field.length; i++) {
+    let field = ['hour', 'min', 'sec'];
+    for (let i = 0; i < field.length; i++) {
       document.getElementById(field[i]).onkeydown = (function (fieldName) {
         return function (e) {
           console.log(e);
           e.preventDefault();
-          var pos = e.target.selectionStart;
-          var num = timerSvc.getNumFromKeycode(e.keyCode);
+          let pos = e.target.selectionStart;
+          let num = timerSvc.getNumFromKeycode(e.keyCode);
           if (num !== false) {
-            var positionEnd = view.setTimeFromKey(fieldName, num, pos);
+            let positionEnd = view.setTimeFromKey(fieldName, num, pos);
             if (positionEnd !== false) e.target.selectionEnd = positionEnd;
           }
         }
@@ -41,7 +41,7 @@ class Events {
     window.captureEvents(Event.KEYPRESS);
     window.onkeypress = pressed;
     function pressed(e) {
-      var ctrlDown = e.ctrlKey || e.metaKey
+      let ctrlDown = e.ctrlKey || e.metaKey
       switch (e.which) {
         //Stop or Stop - Enter, Space
         case 32:
@@ -73,8 +73,8 @@ class Events {
     }
   };
   buttonPress () {
-    var nums = data.timeButtonArr;
-    for (var i = 0; i <= nums.length - 1; i++) {
+    let nums = data.timeButtonArr;
+    for (let i = 0; i <= nums.length - 1; i++) {
       document.getElementById(`set${nums[i]}`).onclick = (function (x) {
         return function () {
           timer.set(nums[x]);
@@ -114,8 +114,8 @@ class Events {
     document.getElementById("settings-melody-stop").onclick = function () {
       view.setMelodyPlay(false);
     }
-    var modes = ['timer', 'stopwatch', 'watch'];
-    for (var i = 0; i < modes.length; i++) {
+    let modes = ['timer', 'stopwatch', 'watch'];
+    for (let i = 0; i < modes.length; i++) {
       document.getElementById(`settings-mode-${modes[i]}`).onclick = (function (x) {
         return function () {
           if (flag.get('mode') !== modes[x]) {
@@ -137,7 +137,7 @@ class Events {
   changeMelodiesListEvent () {
     document.getElementById('melodies-list').onchange = function () {
       view.setMelodyPlay(false);
-      var value = document.getElementById('melodies-list').value;
+      let value = document.getElementById('melodies-list').value;
       document.getElementById('settings-melody-name').innerHTML = data.audios[value].name;
       data.audioSettings.url = data.audios[value].url;
       localStorage.setItem("sound-melody", value);
@@ -145,7 +145,7 @@ class Events {
     };
     document.getElementById('volume-list').onchange = function () {
       view.setMelodyPlay(false);
-      var volume = document.getElementById('volume-list').value;
+      let volume = document.getElementById('volume-list').value;
       data.audioSettings.volume = volume;
       localStorage.setItem("sound-volume", volume);
       view.setMelodyPlay(true);

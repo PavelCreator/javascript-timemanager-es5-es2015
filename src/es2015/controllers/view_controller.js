@@ -4,22 +4,22 @@ class View {
   };
 
   buildMelodiesList() {
-    var melodiesList = '',
+    let melodiesList = '',
       volumeList = '';
 
-    var defaultMelody = localStorage.getItem("sound-melody")
+    let defaultMelody = localStorage.getItem("sound-melody")
       ? localStorage.getItem("sound-melody")
       : 0;
-    for (var i = 0; i < data.audios.length; i++) {
+    for (let i = 0; i < data.audios.length; i++) {
       melodiesList += (i == defaultMelody)
         ? `<option value="${i}" selected>${data.audios[i].name}</option>`
         : `<option value="${i}">${data.audios[i].name}</option>`;
     }
 
-    var defaultVolume = localStorage.getItem("sound-volume")
+    let defaultVolume = localStorage.getItem("sound-volume")
       ? localStorage.getItem("sound-volume") * 10
       : 7;
-    for (var i = 10; i > 0; i--) {
+    for (let i = 10; i > 0; i--) {
       volumeList += (i == defaultVolume)
         ? `<option value="${i / 10}" selected>${i * 10}%</option>`
         : `<option value="${i / 10}">${i * 10}%</option>`;
@@ -30,7 +30,7 @@ class View {
   };
 
   setSettingsFromStorage() {
-    var
+    let
       soundMelodyId = localStorage.getItem("sound-melody"),
       soundVolume = localStorage.getItem("sound-volume"),
       finish = localStorage.getItem("finish"),
@@ -161,14 +161,14 @@ class View {
   };
 
   setMarginTop() {
-    var body = document.body,
+    let body = document.body,
       html = document.documentElement;
 
-    var height = Math.max(body.scrollHeight, body.offsetHeight,
+    let height = Math.max(body.scrollHeight, body.offsetHeight,
       html.clientHeight, html.scrollHeight, html.offsetHeight);
 
     if (height > 600) {
-      var marginTop = (height - 600) * 0.25;
+      let marginTop = (height - 600) * 0.25;
       document.getElementById('app-wrapper').style.marginTop = `${marginTop}px`;
     }
   };
@@ -189,7 +189,7 @@ class View {
   };
 
   setTimeFromKey(fieldName, num, pos) {
-    var posEnd, shortFieldName = fieldName.charAt(0);
+    let posEnd, shortFieldName = fieldName.charAt(0);
     switch (pos) {
       case 0:
         switch (num) {
@@ -355,7 +355,7 @@ class View {
   };
 
   copyToClipboard() {
-    var textArea = document.createElement("textarea");
+    let textArea = document.createElement("textarea");
     textArea.value = `${data.time.h}:${data.time.m}:${data.time.s}`;
     document.body.appendChild(textArea);
     textArea.select();
@@ -378,7 +378,7 @@ class View {
 }
 View.prototype.state = {
   timeButtons (state) {
-    for (var i = 0; i < data.timeButtonArr.length; i++) {
+    for (let i = 0; i < data.timeButtonArr.length; i++) {
       switch (state) {
         case 'disable':
           document.getElementById(`set${data.timeButtonArr[i]}`).disabled = true;
@@ -406,7 +406,7 @@ View.prototype.modeView = {
     }
   },
   stopwatch (bool) {
-    for (var i = 0; i <= data.timeButtonArr.length - 1; i++) {
+    for (let i = 0; i <= data.timeButtonArr.length - 1; i++) {
       if (bool) {
         classFnc.add(document.getElementById(`set${data.timeButtonArr[i]}`), 'stopwatch');
       } else {
