@@ -379,14 +379,14 @@ class View {
 }
 View.prototype.state = {
   timeButtons (state) {
-    for (let i = 0; i < data.timeButtonArr.length; i++) {
+    for (let timeButton of data.timeButtonArr) {
       switch (state) {
         case 'disable':
-          document.getElementById(`set${data.timeButtonArr[i]}`).disabled = true;
+          document.getElementById(`set${timeButton}`).disabled = true;
           break;
 
         case 'enable':
-          document.getElementById(`set${data.timeButtonArr[i]}`).disabled = false;
+          document.getElementById(`set${timeButton}`).disabled = false;
           break;
       }
     }
@@ -407,11 +407,11 @@ View.prototype.modeView = {
     }
   },
   stopwatch (bool) {
-    for (let i = 0; i <= data.timeButtonArr.length - 1; i++) {
+    for (let timeButton of data.timeButtonArr) {
       if (bool) {
-        classFnc.add(document.getElementById(`set${data.timeButtonArr[i]}`), 'stopwatch');
+        classFnc.add(document.getElementById(`set${timeButton}`), 'stopwatch');
       } else {
-        classFnc.remove(document.getElementById(`set${data.timeButtonArr[i]}`), 'stopwatch');
+        classFnc.remove(document.getElementById(`set${timeButton}`), 'stopwatch');
       }
     }
   },

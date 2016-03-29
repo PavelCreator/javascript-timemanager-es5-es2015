@@ -1,8 +1,7 @@
 class Events {
   fieldFocusStopTimer () {
-    const field = data.hms;
-    for (let i = 0; i <= field.length - 1; i++) {
-      document.getElementById(field[i]).onfocus = () => {
+    for (let hms of data.hms) {
+      document.getElementById(hms).onfocus = () => {
         view.ending.unset();
         timer.stop();
       };
@@ -74,7 +73,7 @@ class Events {
   };
   buttonPress () {
     const nums = data.timeButtonArr;
-    for (let i = 0; i <= nums.length - 1; i++) {
+    for (let i = 0; i < nums.length; i++) {
       document.getElementById(`set${nums[i]}`).onclick = ((x) => {
         return () => {
           timer.set(nums[x]);
