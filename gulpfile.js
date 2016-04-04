@@ -95,16 +95,16 @@ gulp.task('build-js-tests', () => {
 
 gulp.task('build-js-es2015', () =>
     gulp.src(config.src.jsES2015)
-      //.pipe(sourcemaps.init())
+      .pipe(sourcemaps.init())
       .pipe(babel({
         presets: ['es2015']
       }).on('error', swallowError))
       .pipe(concat('main.min.js'))
-      //.pipe(uglify())
-      //.pipe(stripDebug())
-      //.pipe(sourcemaps.write('.'))
+      .pipe(uglify())
+      .pipe(stripDebug())
+      .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(config.build.jsES2015))
-      //.pipe(notify({message: 'Build ES2015 task complete'}))
+      .pipe(notify({message: 'Build ES2015 task complete'}))
 );
 
 gulp.task('build-html-es5', () => {
@@ -171,5 +171,4 @@ gulp.task('bt', ['build-css', 'build-js-es5', 'build-img', 'build-html-tests', '
 
 gulp.task('w2015', ['watch-css', 'watch-js-es2015', 'watch-img', 'watch-html-es2015'])
 gulp.task('b2015', ['build-css', 'build-js-es2015', 'build-img', 'build-html-es2015'])
-gulp.task('default', ['w5'])
-/*npm install --save-dev packName*/
+gulp.task('default', ['w2015'])
