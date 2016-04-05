@@ -1,5 +1,5 @@
 class Events {
-  fieldFocusStopTimer () {
+  fieldFocusStopTimer() {
     for (let hms of data.hms) {
       document.getElementById(hms).onfocus = () => {
         view.ending.unset();
@@ -7,7 +7,8 @@ class Events {
       };
     }
   };
-  fieldInsertTimerName () {
+
+  fieldInsertTimerName() {
     document.getElementById('timer-name').onfocus = () => {
       flag.set('disableKeyEvents', true);
     };
@@ -19,7 +20,8 @@ class Events {
       localStorage.setItem('name', document.getElementById('timer-name').value)
     };
   };
-  fieldInput () {
+
+  fieldInput() {
     const field = data.hms;
     for (let i = 0; i < field.length; i++) {
       document.getElementById(field[i]).onkeydown = ((fieldName) => {
@@ -36,9 +38,8 @@ class Events {
       })(field[i]);
     }
   };
-  keypress () {
-    window.captureEvents(Event.KEYPRESS);
-    window.onkeypress = pressed;
+
+  keypress() {
     let pressed = (e) => {
       let ctrlDown = e.ctrlKey || e.metaKey
       switch (e.which) {
@@ -70,8 +71,11 @@ class Events {
       }
       /*console.log(e.which);*/
     }
+    window.captureEvents(Event.KEYPRESS);
+    window.onkeypress = pressed;
   };
-  buttonPress () {
+
+  buttonPress() {
     const nums = data.timeButtonArr;
     for (let i = 0; i < nums.length; i++) {
       document.getElementById(`set${nums[i]}`).onclick = ((x) => {
@@ -128,12 +132,14 @@ class Events {
       view.copyToClipboard();
     }
   };
-  resizeEvent () {
+
+  resizeEvent() {
     addEvent(window, "resize", (event) => {
       view.setMarginTop();
     });
   };
-  changeMelodiesListEvent () {
+
+  changeMelodiesListEvent() {
     document.getElementById('melodies-list').onchange = () => {
       view.setMelodyPlay(false);
       let value = document.getElementById('melodies-list').value;
@@ -150,6 +156,7 @@ class Events {
       view.setMelodyPlay(true);
     };
   };
+
   onStart() {
     this.keypress();
     this.buttonPress();
